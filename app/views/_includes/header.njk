@@ -1,0 +1,11 @@
+{{ govukHeader({
+    homepageUrl: "#",
+    serviceName: serviceName,
+    serviceUrl: '/',
+    navigation: [
+      {
+        href: "/account/sign-out",
+        text: "Sign out"
+      }
+    ] if user
+  }) }}

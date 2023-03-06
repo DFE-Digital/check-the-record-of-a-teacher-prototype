@@ -6,4 +6,18 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+router.all('*', (req, res, next) => {
+  res.locals.user = req.session.user
+  next()
+})
+
+require('./routes/account')(router)
+require('./routes/teachers')(router)
+
+router.get('/', (req, res) => {
+  if(!req.session.data.user) {
+    res.redirect('/account/sign-in')
+  } else {
+    res.redirect('/teachers')
+  }
+})
