@@ -22,6 +22,109 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">{{title}}</h1>
+
+      {{ govukButton({
+        text: "Add to list of my teachers"
+      }) }}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "TRN"
+            },
+            value: {
+              text: '1234567'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: 'name@example.com'
+            }
+          },
+          {
+            key: {
+              text: "QTS"
+            },
+            value: {
+              text: '1 January 2023'
+            }
+          },
+          {
+            key: {
+              text: "Inducted"
+            },
+            value: {
+              text: 'Yes'
+            }
+          }
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">
+        Other thing
+      </h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: '1234567'
+            }
+          },
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: 'name@example.com'
+            }
+          },
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: '1 January 2023'
+            }
+          }
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">
+        Other thing
+      </h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: '1234567'
+            }
+          },
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: 'name@example.com'
+            }
+          },
+          {
+            key: {
+              text: "Detail"
+            },
+            value: {
+              text: '1 January 2023'
+            }
+          }
+        ]
+      }) }}
     </div>
   </div>
 {% endblock %}
