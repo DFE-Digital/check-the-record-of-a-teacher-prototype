@@ -11,6 +11,10 @@
     padding-top: 0;
   }
 
+  &:last-of-type {
+    @include govuk-responsive-margin(4, $direction: "bottom");
+  }
+
   h2 {
     margin-bottom: govuk-spacing(1);
   }

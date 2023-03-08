@@ -1,0 +1,17 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "trn",
+      name: "trn",
+      label: {
+        text: "Search for teacher by TRN",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukButton({
+      text: 'Search',
+      href: '/teachers'
+    }) }}
+  </form>
+</div>

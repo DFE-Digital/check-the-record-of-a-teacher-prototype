@@ -18,7 +18,7 @@ module.exports = router => {
   // })
 
   router.post('/account/sign-in', (req, res) => {
-    res.locals.user = req.session.user = users[0]
+    res.locals.user = req.session.data.user = users[0]
 
     if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
@@ -28,7 +28,7 @@ module.exports = router => {
   })
 
   router.get('/account/sign-out', (req, res) => {
-    res.locals.user = req.session.user = null
+    res.locals.user = req.session.data.user = null
     res.redirect('/')
   })
 

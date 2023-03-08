@@ -7,7 +7,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 router.all('*', (req, res, next) => {
-  res.locals.user = req.session.user
+  res.locals.user = req.session.data.user
   next()
 })
 

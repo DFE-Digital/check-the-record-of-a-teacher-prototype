@@ -6,6 +6,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">{{title}}</h1>
+
+      {% include "_includes/search-form.njk" %}
+
       <div class="app-list">
 
         {% for teacher in teachers %}
@@ -52,6 +55,32 @@
             }) }}
           </div>
         {% endfor %}
+
+        {{ govukPagination({
+          previous: {
+            href: "#"
+          },
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              current: true,
+              href: "#"
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+
+
       </div>
     </div>
   </div>
