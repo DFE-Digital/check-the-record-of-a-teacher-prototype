@@ -1,0 +1,23 @@
+{{ appSearch({
+  label: {
+    text: 'Search by teacher reference number (TRN)',
+    classes: 'govuk-label--m'
+  },
+  input: {
+    id: 'trn',
+    name: 'trn',
+    value: data.trn
+  },
+  action: '/teachers',
+  buttons: [{
+    text: 'Search',
+    classes: 'app-search__button'
+  }],
+  classes: 'govuk-!-margin-bottom-4' if not data.trn
+}) }}
+
+{% if data.trn %}
+  <p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-8">
+    <a class="govuk-link govuk-link--no-visited-state" href="/teachers/clear-search">Clear search</a>
+  </p>
+{% endif %}

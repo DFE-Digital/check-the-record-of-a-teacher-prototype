@@ -1,87 +1,92 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Find a teacher' %}
+{% set title = 'Find teacher' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">{{title}}</h1>
 
-      {% include "_includes/search-form.njk" %}
+      {# {% include "_includes/search-form.njk" %} #}
+      {% include "_includes/search-panel.njk" %}
 
-      <div class="app-list">
+      {% if data.trn and teachers.length == 0 %}
+        <p>Teacher not found.</p>
+      {% else %}
+        <div class="app-list">
 
-        {% for teacher in teachers %}
-          <div class="app-list__item">
-            <h2 class="govuk-heading-m">
-              <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
-            </h2>
-            {{ govukSummaryList({
-              classes: 'govuk-summary-list--no-border app-summary-list--compact',
-              rows: [
-                {
-                  key: {
-                    text: "TRN"
+          {% for teacher in teachers %}
+            <div class="app-list__item">
+              <h2 class="govuk-heading-m">
+                <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+              </h2>
+              {{ govukSummaryList({
+                classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                rows: [
+                  {
+                    key: {
+                      text: "TRN"
+                    },
+                    value: {
+                      text: '1234567'
+                    }
                   },
-                  value: {
-                    text: '1234567'
-                  }
-                },
-                {
-                  key: {
-                    text: "Email address"
+                  {
+                    key: {
+                      text: "Email address"
+                    },
+                    value: {
+                      text: 'name@example.com'
+                    }
                   },
-                  value: {
-                    text: 'name@example.com'
-                  }
-                },
-                {
-                  key: {
-                    text: "QTS"
+                  {
+                    key: {
+                      text: "QTS"
+                    },
+                    value: {
+                      text: '1 January 2023'
+                    }
                   },
-                  value: {
-                    text: '1 January 2023'
+                  {
+                    key: {
+                      text: "Inducted"
+                    },
+                    value: {
+                      text: 'Yes'
+                    }
                   }
-                },
-                {
-                  key: {
-                    text: "Inducted"
-                  },
-                  value: {
-                    text: 'Yes'
-                  }
-                }
-              ]
-            }) }}
-          </div>
-        {% endfor %}
+                ]
+              }) }}
+            </div>
+          {% endfor %}
 
-        {{ govukPagination({
-          previous: {
-            href: "#"
-          },
-          next: {
-            href: "#"
-          },
-          items: [
-            {
-              number: 1,
-              current: true,
+          {# {{ govukPagination({
+            previous: {
               href: "#"
             },
-            {
-              number: 2,
+            next: {
               href: "#"
             },
-            {
-              number: 3,
-              href: "#"
-            }
-          ]
-        }) }}
+            items: [
+              {
+                number: 1,
+                current: true,
+                href: "#"
+              },
+              {
+                number: 2,
+                href: "#"
+              },
+              {
+                number: 3,
+                href: "#"
+              }
+            ]
+          }) }} #}
 
 
-      </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

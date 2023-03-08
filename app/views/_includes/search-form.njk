@@ -3,15 +3,16 @@
     {{ govukInput({
       id: "trn",
       name: "trn",
+      classes: "govuk-input--width-10",
       label: {
         text: "Search for teacher by TRN",
         classes: "govuk-label--s"
-      }
+      },
+      value: data.trn
     }) }}
 
     {{ govukButton({
-      text: 'Search',
-      href: '/teachers'
+      text: 'Search'
     }) }}
   </form>
 </div>

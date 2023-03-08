@@ -9,6 +9,7 @@ const generateTeacher = (params = {}) => {
   teacher.id = _.get(params, 'id') || ('' + faker.datatype.number({min: 123456, max: 999999}))
   teacher.firstName = _.get(params, 'firstName') || faker.name.firstName()
   teacher.lastName = _.get(params, 'lastName') || faker.name.lastName()
+  teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
   return teacher
 }
 

@@ -5,6 +5,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 
+{% from "_components/search/macro.njk" import appSearch %}
+
 {% block pageTitle %}
   {{title}} – {{serviceName}} – GOV.UK
 {% endblock %}
