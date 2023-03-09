@@ -1,0 +1,33 @@
+{% set footerHtml %}
+    <h2 class="govuk-heading-m">Get help</h2>
+
+    <p class="govuk-!-font-size-16">Email: <a href="mailto:misconduct.teacher@education.gov.uk">misconduct.teacher@education.gov.uk</a></br>
+    You’ll get a response within 3 working days.</p>
+
+    <p class="govuk-!-font-size-16">Phone: 020 7593 5393</br>
+    Monday to Friday, 9am to 5pm (except public holidays)</p>
+    <hr class="govuk-section-break govuk-section-break--l">
+    <ul class="govuk-footer__inline-list">
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/manage-prototype">
+          Manage your prototype
+        </a>
+      </li>
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/manage-prototype/clear-data">
+          Clear data
+        </a>
+      </li>
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/teachers?trn={{trn}}">
+          Teacher
+        </a>
+      </li>
+    </ul>
+  {% endset %}
+
+  {{ govukFooter({
+    meta: {
+      html: footerHtml
+    }
+  }) }}

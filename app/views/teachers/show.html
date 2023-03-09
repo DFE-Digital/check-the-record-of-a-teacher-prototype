@@ -20,6 +20,10 @@
         text: "Add to list of my teachers"
       }) }}
 
+      <h2 class="govuk-heading-m">
+        Personal details
+      </h2>
+
       {{ govukSummaryList({
         rows: [
           {
@@ -37,44 +41,128 @@
             value: {
               text: 'name@example.com'
             }
-          },
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Qualified teching status (QTS)
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
           {
             key: {
               text: "QTS"
             },
             value: {
-              text: '1 January 2023'
+              text: 'Qualified teacher (trained)'
             }
           },
           {
             key: {
-              text: "Inducted"
+              text: "Awarded date"
             },
             value: {
-              text: 'Yes'
+              text: '1 January 2021'
+            }
+          },
+          {
+            key: {
+              text: "Partial recognition date"
+            },
+            value: {
+              text: '-'
             }
           }
         ]
       }) }}
+
       <h2 class="govuk-heading-m">
-        Other thing
+        Early years teacher status (EYTS)
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "EYTS"
+            },
+            value: {
+              text: 'Some status'
+            }
+          },
+          {
+            key: {
+              text: "Awarded date"
+            },
+            value: {
+              text: '1 January 2021'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Induction status
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Induction status"
+            },
+            value: {
+              text: 'Needs to be completed'
+            }
+          },
+          {
+            key: {
+              text: "Reason"
+            },
+            value: {
+              text: '-'
+            }
+          },
+          {
+            key: {
+              text: "Are they eligible to complete a one year induction period under transition arrangements?"
+            },
+            value: {
+              text: 'No'
+            }
+          },
+          {
+            key: {
+              text: "Induction status completion date"
+            },
+            value: {
+              text: '-'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Employment details
       </h2>
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Detail"
+              text: "Employer ID"
             },
             value: {
-              text: '1234567'
+              text: '101023'
             }
           },
           {
             key: {
-              text: "Detail"
+              text: "Employment address"
             },
             value: {
-              text: 'name@example.com'
+              text: 'CV1 2WT'
             }
           },
           {
@@ -88,32 +176,136 @@
         ]
       }) }}
       <h2 class="govuk-heading-m">
-        Other thing
+        Initial teacher training
       </h2>
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Detail"
+              text: "Qualification"
             },
             value: {
-              text: '1234567'
+              text: '-'
             }
           },
           {
             key: {
-              text: "Detail"
+              text: "ITT organisation"
             },
             value: {
-              text: 'name@example.com'
+              text: 'Department for Education'
             }
           },
           {
             key: {
-              text: "Detail"
+              text: "Programme type"
             },
             value: {
-              text: '1 January 2023'
+              text: 'HEI'
+            }
+          },
+          {
+            key: {
+              text: "Subject"
+            },
+            value: {
+              text: 'Historical linguistics'
+            }
+          },
+          {
+            key: {
+              text: "Additional subjects"
+            },
+            value: {
+              text: 'Maths'
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: '6 to 19 years'
+            }
+          },
+          {
+            key: {
+              text: "Course end date"
+            },
+            value: {
+              text: '6 May 2021'
+            }
+          },
+          {
+            key: {
+              text: "Result"
+            },
+            value: {
+              text: 'Pass'
+            }
+          },
+          {
+            key: {
+              text: "Grade"
+            },
+            value: {
+              text: 'First class honours'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Additional qualifications
+      </h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Mandatory qualification (MQ) specialism"
+            },
+            value: {
+              text: 'Multi sensory impairment'
+            }
+          },
+          {
+            key: {
+              text: "MQ date awarded"
+            },
+            value: {
+              text: '19 September 2018'
+            }
+          },
+          {
+            key: {
+              text: "National professional qualification (NPQ) for executive leadership"
+            },
+            value: {
+              text: '19 September 2018'
+            }
+          },
+          {
+            key: {
+              text: "National professional qualification (NPQ) for headteacher"
+            },
+            value: {
+              text: '19 September 2018'
+            }
+          },
+          {
+            key: {
+              text: "National professional qualification (NPQ) for senior leadership"
+            },
+            value: {
+              text: '-'
+            }
+          },
+          {
+            key: {
+              text: "National professional qualification (NPQ) for middle leadership"
+            },
+            value: {
+              text: '-'
             }
           }
         ]

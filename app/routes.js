@@ -8,6 +8,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.all('*', (req, res, next) => {
   res.locals.user = req.session.data.user
+  res.locals.trn = require('../app/data/teachers.json')[0].trn
   next()
 })
 
