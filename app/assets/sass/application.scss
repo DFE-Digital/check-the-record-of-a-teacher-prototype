@@ -8,5 +8,27 @@
 @import "../../views/_components/summary-list/summary-list.scss";
 @import "../../views/_components/search-form/search-form.scss";
 @import "../../views/_components/search/search.scss";
+@import "../../views/_components/primary-navigation/primary-navigation.scss";
+@import "../../views/_components/filter/filter.scss";
+@import "../../views/_components/filter-layout/filter-layout.scss";
 
 // Add extra styles here
+// .govuk-header {
+//   border-bottom: 10px solid #1d70b8;
+// }
+
+// .govuk-header__logo {
+//   @include govuk-media-query($from: tablet) {
+//     width: 60%;
+//   }
+// }
+
+// .govuk-header__content {
+//   @include govuk-media-query($from: tablet) {
+//     width: 40%;
+//   }
+// }
+
+.app-phase-banner {
+  border-bottom: 0;
+}

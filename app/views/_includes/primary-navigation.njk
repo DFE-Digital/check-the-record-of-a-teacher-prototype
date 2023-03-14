@@ -1,0 +1,14 @@
+{{ appPrimaryNavigation({
+  items: [
+    {
+      href: "/teachers",
+      text: "Your teachers",
+      active: primaryNavId == 'yourTeachers'
+    },
+    {
+      href: "#",
+      text: "Blah",
+      active: primaryNavId == 'blah'
+    }
+  ]
+}) if user}}

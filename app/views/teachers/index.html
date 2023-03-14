@@ -1,14 +1,24 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Find teacher' %}
+{% set title = 'Teachers' %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">{{title}}</h1>
+  <h1 class="govuk-heading-l">{{title}}</h1>
 
+  {# <p><a href="#">Find a teacher by TRN and date of birth</a></p> #}
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "_includes/filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
       {# {% include "_includes/search-form.njk" %} #}
       {% include "_includes/search-panel.njk" %}
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
 
       {% if data.trn and teachers.length == 0 %}
         <p>Teacher not found.</p>
@@ -60,7 +70,7 @@
             </div>
           {% endfor %}
 
-          {# {{ govukPagination({
+          {{ govukPagination({
             previous: {
               href: "#"
             },
@@ -82,11 +92,26 @@
                 href: "#"
               }
             ]
-          }) }} #}
+          }) }}
 
 
         </div>
       {% endif %}
+    </div>
+  </div>
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+
+
+
+
     </div>
   </div>
 {% endblock %}

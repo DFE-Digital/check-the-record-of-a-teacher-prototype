@@ -6,6 +6,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 
 {% from "_components/search/macro.njk" import appSearch %}
+{% from "_components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 
 {% block pageTitle %}
   {{title}} – {{serviceName}} – GOV.UK
@@ -18,10 +19,19 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       text: "Beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.',
-    classes: 'govuk-width-container'
+    classes: 'govuk-width-container app-phase-banne'
   }) }}
+  {# {% include "_includes/primary-navigation.njk" %} #}
 {% endblock %}
 
 {% block footer %}
   {% include "_includes/footer.njk" %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript">
+    var AppFrontend = {}
+  </script>
+  <script src="/public/javascripts/filter-toggle-button.js"></script>
 {% endblock %}

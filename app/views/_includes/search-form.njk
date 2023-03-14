@@ -1,14 +1,47 @@
 <div class="app-search-form">
+  <h2 class="govuk-heading-m">
+    Find teacher
+  </h2>
   <form>
     {{ govukInput({
       id: "trn",
       name: "trn",
       classes: "govuk-input--width-10",
       label: {
-        text: "Search for teacher by TRN",
+        text: "Teacher reference number (TRN)",
         classes: "govuk-label--s"
       },
       value: data.trn
+    }) }}
+
+    {{ govukDateInput({
+      id: "dob",
+      namePrefix: "dob",
+      fieldset: {
+        legend: {
+          text: "Date of birth",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      },
+      items: [{
+        name: "dob[day]",
+        label: "Day",
+        classes: "govuk-input--width-2",
+        value: data.dob.day
+      }, {
+        name: "dob[month]",
+        label: "Month",
+        classes: "govuk-input--width-2",
+        value: data.dob.month
+      }, {
+        name: "dob[year]",
+        label: "Year",
+        classes: "govuk-input--width-4",
+        value: data.dob.year
+      }]
     }) }}
 
     {{ govukButton({

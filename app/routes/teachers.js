@@ -2,7 +2,12 @@ const allTeachers = require('../data/teachers.json')
 module.exports = router => {
 
   router.get('/teachers', (req, res) => {
-    var teachers = allTeachers.filter(teacher => teacher.trn == req.session.data.trn)
+    let teachers
+    if(req.session.data.trn) {
+      teachers = allTeachers.filter(teacher => teacher.trn == req.session.data.trn)
+    } else {
+      teachers = allTeachers
+    }
 
     res.render('teachers/index', {
       teachers

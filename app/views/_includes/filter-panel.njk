@@ -1,0 +1,86 @@
+{% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[role]",
+    name: "filters[role]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Prohibition",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Category 1',
+      text: 'Category 1'
+    }, {
+      value: 'Category 2',
+      text: 'Category 2'
+    }, {
+      value: 'Category 3',
+      text: 'Category 3'
+    }, {
+      value: 'Category 4',
+      text: 'Category 4'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[role]",
+    name: "filters[role]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Your teachers",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Your teacher',
+      text: 'Your teachers'
+    }, {
+      value: 'Not your teachers',
+      text: 'Not your teachers'
+    }]
+  }) }}
+
+{% endset %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action">
+
+    </div>
+  </div>
+  <div class="app-filter__content">
+    {% if selectedFilters %}
+      <div class="app-filter__selected">
+        <div class="app-filter__selected-heading">
+          <div class="app-filter__heading-title">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
+            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/applications/remove-all-filters">Clear filters</a></p>
+          </div>
+        </div>
+        {% for category in selectedFilters.categories %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
+          <ul class="app-filter-tags">
+            {% for item in category.items %}
+              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="app-filter__options">
+      <form method="get" action="/applications" novalidate>
+        <button class="govuk-button" data-module="govuk-button">
+          Apply filters
+        </button>
+        {{filterOptionsHtml | safe}}
+      </form>
+    </div>
+  </div>
+</div>
