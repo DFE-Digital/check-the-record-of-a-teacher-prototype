@@ -6,10 +6,11 @@
     "generate-data": "node ./scripts/generate-teachers.js && node ./scripts/generate-users.js"
   },
   "dependencies": {
-    "@govuk-prototype-kit/common-templates": "^1.0.0",
     "@faker-js/faker": "^7.4.0",
+    "@govuk-prototype-kit/common-templates": "^1.0.0",
     "govuk-frontend": "^4.5.0",
     "govuk-prototype-kit": "^13.3.0",
+    "jquery": "^3.6.4",
     "lodash": "^4.17.21",
     "luxon": "^3.1.0"
   }

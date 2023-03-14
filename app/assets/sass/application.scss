@@ -11,8 +11,19 @@
 @import "../../views/_components/primary-navigation/primary-navigation.scss";
 @import "../../views/_components/filter/filter.scss";
 @import "../../views/_components/filter-layout/filter-layout.scss";
+@import "../../views/_components/action-bar/action-bar.scss";
 
 // Add extra styles here
+
+.js-enabled .app-js-hidden {
+  display: none;
+}
+
+.app-hidden {
+  display: none;
+}
+
+
 // .govuk-header {
 //   border-bottom: 10px solid #1d70b8;
 // }

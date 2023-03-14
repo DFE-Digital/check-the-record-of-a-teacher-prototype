@@ -1,11 +1,9 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Teachers' %}
+{% set title = 'Teachers (' + totalCount + ')' %}
 
 {% block content %}
   <h1 class="govuk-heading-l">{{title}}</h1>
-
-  {# <p><a href="#">Find a teacher by TRN and date of birth</a></p> #}
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -13,15 +11,14 @@
     </div>
 
     <div class="app-filter-layout__content">
-      {# {% include "_includes/search-form.njk" %} #}
-      {% include "_includes/search-panel.njk" %}
-
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
       </div>
 
-      {% if data.trn and teachers.length == 0 %}
-        <p>Teacher not found.</p>
+      {% include "_includes/search-form.njk" %}
+
+      {% if teachers.length == 0 %}
+        <p>No teachers found.</p>
       {% else %}
         <div class="app-list">
 
@@ -39,6 +36,22 @@
                     },
                     value: {
                       text: teacher.trn
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Your teacher"
+                    },
+                    value: {
+                      text: teacher.yourTeacher
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Prohibitions"
+                    },
+                    value: {
+                      text: teacher.prohibitions | join(', ') | title
                     }
                   },
                   {
@@ -73,45 +86,18 @@
           {{ govukPagination({
             previous: {
               href: "#"
-            },
+            } if pagination.pageNumber > 1,
             next: {
               href: "#"
-            },
-            items: [
-              {
-                number: 1,
-                current: true,
-                href: "#"
-              },
-              {
-                number: 2,
-                href: "#"
-              },
-              {
-                number: 3,
-                href: "#"
-              }
-            ]
+            } if pagination.pageNumber < pagination.pageCount,
+            items: pagination.pageItems
           }) }}
-
 
         </div>
       {% endif %}
     </div>
   </div>
 
+  {{selectedFilters | log}}
 
-
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-
-
-
-
-
-
-
-    </div>
-  </div>
 {% endblock %}

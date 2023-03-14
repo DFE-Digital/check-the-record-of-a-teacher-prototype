@@ -137,7 +137,7 @@
 
 .app-filter__selected {
   background-color: govuk-colour("light-grey");
-  padding: govuk-spacing(4) govuk-spacing(3);
+  padding: govuk-spacing(0) govuk-spacing(3) govuk-spacing(4);
 
   ul:last-of-type {
     margin-bottom: 0; // IE9 +
