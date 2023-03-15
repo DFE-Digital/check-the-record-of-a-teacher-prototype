@@ -26,9 +26,9 @@ module.exports = router => {
     }
 
     // Filters
-    let prohibitions = _.get(req.session.data.filters, 'prohibitions')
     let yourTeachers = _.get(req.session.data.filters, 'yourTeachers')
-    let hasFilters = _.get(prohibitions, 'length') || _.get(yourTeachers, 'length')
+    let prohibitionTypes = _.get(req.session.data.filters, 'prohibitionTypes')
+    let hasFilters = _.get(prohibitionTypes, 'length') || _.get(yourTeachers, 'length')
 
     let selectedFilters = {
       categories: []
@@ -36,35 +36,23 @@ module.exports = router => {
 
     if(hasFilters) {
       teachers = teachers.filter(teacher => {
-        let prohibitionsValid = true
+        let prohibitionTypesValid = true
         let yourTeachersValid = true
 
-        if(prohibitions) {
-          prohibitionsValid = hasCommonArrayValues(prohibitions, teacher.prohibitions)
+        if(prohibitionTypes) {
+          prohibitionTypesValid = hasCommonArrayValues(prohibitionTypes, teacher.prohibitionTypes)
         }
 
         if(yourTeachers) {
-          yourTeachersValid = teacher.yourTeacher
+          yourTeachersValid = (yourTeachers.includes('Your teacher') && teacher.yourTeacher) || (yourTeachers.includes('Not your teacher') && !teacher.yourTeacher)
         }
 
-        return prohibitionsValid && yourTeachersValid
+        return prohibitionTypesValid && yourTeachersValid
       })
-
-      if(_.get(prohibitions, 'length')) {
-        selectedFilters.categories.push({
-          heading: { text: 'Prohibitions' },
-          items: prohibitions.map(prohibitionItem => {
-            return {
-              text: prohibitionItem,
-              href: `/teachers/remove-prohibition/${prohibitionItem}`
-            }
-          })
-        })
-      }
 
       if(_.get(yourTeachers, 'length')) {
         selectedFilters.categories.push({
-          heading: { text: 'Your teachers' },
+          heading: { text: 'Your teacher' },
           items: yourTeachers.map(yourTeacherItem => {
             return {
               text: yourTeacherItem,
@@ -73,6 +61,20 @@ module.exports = router => {
           })
         })
       }
+
+      if(_.get(prohibitionTypes, 'length')) {
+        selectedFilters.categories.push({
+          heading: { text: 'Prohibition type' },
+          items: prohibitionTypes.map(prohibitionItem => {
+            return {
+              text: prohibitionItem,
+              href: `/teachers/remove-prohibitionType/${prohibitionItem}`
+            }
+          })
+        })
+      }
+
+
 
     }
 
@@ -94,8 +96,8 @@ module.exports = router => {
     res.redirect('/teachers')
   })
 
-  router.get('/teachers/remove-prohibition/:prohibition', (req, res) => {
-    req.session.data.filters.prohibitions = removeFilter(req.params.prohibition, req.session.data.filters.prohibitions)
+  router.get('/teachers/remove-prohibitionType/:prohibitionType', (req, res) => {
+    req.session.data.filters.prohibitionTypes = removeFilter(req.params.prohibitionType, req.session.data.filters.prohibitionTypes)
     res.redirect('/teachers')
   })
 
@@ -105,7 +107,7 @@ module.exports = router => {
   })
 
   router.get('/teachers/clear-filters', (req, res) => {
-    _.set(req.session.data.filters, 'prohibitions', null)
+    _.set(req.session.data.filters, 'prohibitionTypes', null)
     _.set(req.session.data.filters, 'yourTeachers', null)
     res.redirect('/teachers')
   })

@@ -10,16 +10,25 @@ const generateTeacher = (params = {}) => {
   teacher.firstName = _.get(params, 'firstName') || faker.name.firstName()
   teacher.lastName = _.get(params, 'lastName') || faker.name.lastName()
   teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
-  teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-    ['Category 1', 'Category 2', 'Category 3'],
+  teacher.prohibitionTypes = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
+    ['Type 1', 'Type 2', 'Type 3'],
     faker.datatype.number({min: 0, max: 2})
   )
-  teacher.yourTeacher = _.get(params, 'yourTeacher') || faker.helpers.arrayElement([true, false])
+  teacher.yourTeacher = _.get(params, 'yourTeacher') || faker.helpers.arrayElement([true, false, false, false, false])
   return teacher
 }
 
 const generateTeachers = () => {
   const teachers = []
+
+  teachers.push(generateTeacher({
+    yourTeacher: true
+  }))
+
+  teachers.push(generateTeacher({
+    yourTeacher: true
+  }))
+
   for(let i = 0; i < 101; i++) {
     teachers.push(generateTeacher())
   }
