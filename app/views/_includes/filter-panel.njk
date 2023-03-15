@@ -21,8 +21,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[hasProhibition]",
-    name: "filters[hasProhibition]",
+    idPrefix: "filters[prohibitionStatuses]",
+    name: "filters[prohibitionStatuses]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -37,7 +37,7 @@
       value: 'Does not have a prohibition',
       text: 'Does not have a prohibition'
     }],
-    values: data.filters.hasProhibition
+    values: data.filters.prohibitionStatuses
   }) }}
 
   {{ govukCheckboxes({
@@ -90,7 +90,12 @@
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
           <ul class="app-filter-tags">
             {% for item in category.items %}
-              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+              <li>
+                <a class="app-filter__tag" href="{{item.href}}">
+                  {{item.text}}
+                  <span class="govuk-visually-hidden"> Remove filter</span>
+                </a>
+              </li>
             {% endfor %}
           </ul>
         {% endfor %}
