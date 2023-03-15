@@ -28,7 +28,7 @@ module.exports = router => {
     // Filters
     let prohibitions = _.get(req.session.data.filters, 'prohibitions')
     let yourTeachers = _.get(req.session.data.filters, 'yourTeachers')
-    let hasFilters = prohibitions || yourTeachers
+    let hasFilters = _.get(prohibitions, 'length') || _.get(yourTeachers, 'length')
 
     let selectedFilters = {
       categories: []
