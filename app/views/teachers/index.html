@@ -84,6 +84,7 @@
           {% endfor %}
 
           {{ govukPagination({
+            classes: 'govuk-!-margin-bottom-2',
             previous: {
               href: "#"
             } if pagination.pageNumber > 1,
@@ -92,6 +93,7 @@
             } if pagination.pageNumber < pagination.pageCount,
             items: pagination.pageItems
           }) }}
+          <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
 
         </div>
       {% endif %}
