@@ -1,1001 +1,873 @@
 [
   {
-    "id": "976868",
-    "firstName": "Vada",
-    "lastName": "Torp",
-    "trn": "5320709",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "362811",
-    "firstName": "Darius",
-    "lastName": "Ebert",
-    "trn": "1087401",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "368647",
-    "firstName": "Jamarcus",
-    "lastName": "Okuneva",
-    "trn": "4986218",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "941786",
-    "firstName": "Allison",
-    "lastName": "Rutherford",
-    "trn": "2036814",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "630808",
-    "firstName": "Eveline",
-    "lastName": "Graham",
-    "trn": "1802824",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "327040",
-    "firstName": "Nicole",
-    "lastName": "Jones",
-    "trn": "3538760",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "719289",
-    "firstName": "Robyn",
-    "lastName": "Rath",
-    "trn": "1995298",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "455914",
-    "firstName": "Jimmie",
-    "lastName": "Kautzer",
-    "trn": "2635104",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "319140",
-    "firstName": "Clifford",
-    "lastName": "Stoltenberg",
-    "trn": "9427027",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "157872",
-    "firstName": "Derick",
-    "lastName": "King",
-    "trn": "7286830",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "593358",
-    "firstName": "Roscoe",
-    "lastName": "Jast",
-    "trn": "7538765",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "126617",
-    "firstName": "Izaiah",
-    "lastName": "Hermann",
-    "trn": "7288035",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "318316",
-    "firstName": "Nikita",
-    "lastName": "Heathcote",
-    "trn": "6683440",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "612135",
-    "firstName": "Alford",
-    "lastName": "Dickinson",
-    "trn": "8815549",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "364072",
-    "firstName": "Jensen",
-    "lastName": "Aufderhar",
-    "trn": "6706537",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "351329",
-    "firstName": "Rogers",
-    "lastName": "Gutkowski",
-    "trn": "8633710",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "272591",
-    "firstName": "Kiana",
-    "lastName": "Murray",
-    "trn": "6599683",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "850380",
-    "firstName": "Robb",
-    "lastName": "Lindgren",
-    "trn": "3758399",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "791093",
-    "firstName": "Pansy",
-    "lastName": "Cruickshank",
-    "trn": "1765490",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "541823",
-    "firstName": "Otilia",
-    "lastName": "Koss",
-    "trn": "3414375",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "896532",
-    "firstName": "Bria",
-    "lastName": "Stehr",
-    "trn": "2898798",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "350866",
-    "firstName": "Catherine",
-    "lastName": "Feeney",
-    "trn": "3599699",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "263900",
-    "firstName": "Ronaldo",
-    "lastName": "Casper",
-    "trn": "3672246",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "178815",
-    "firstName": "Zechariah",
-    "lastName": "O'Kon",
-    "trn": "1107360",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "189163",
-    "firstName": "Jasper",
-    "lastName": "Connelly",
-    "trn": "3249287",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "777328",
-    "firstName": "Braden",
-    "lastName": "Schimmel",
-    "trn": "2429460",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "869854",
-    "firstName": "Joannie",
-    "lastName": "McGlynn",
-    "trn": "3628436",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "811448",
-    "firstName": "Gardner",
-    "lastName": "Balistreri",
-    "trn": "6199643",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "163013",
-    "firstName": "Thalia",
-    "lastName": "Hauck",
-    "trn": "6329750",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "257002",
-    "firstName": "Ismael",
-    "lastName": "Reynolds",
-    "trn": "4854804",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "888656",
-    "firstName": "Trycia",
-    "lastName": "Jacobi",
-    "trn": "6463321",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "801931",
-    "firstName": "Lelia",
-    "lastName": "Weimann",
-    "trn": "6796429",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "216258",
-    "firstName": "Hallie",
-    "lastName": "Swift",
-    "trn": "3516803",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "964460",
-    "firstName": "Una",
-    "lastName": "O'Reilly",
-    "trn": "5339834",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "168888",
-    "firstName": "Elody",
-    "lastName": "Daniel",
-    "trn": "9488296",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "312876",
-    "firstName": "Aurelia",
-    "lastName": "Collier",
-    "trn": "3539157",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "918940",
-    "firstName": "Josie",
-    "lastName": "Denesik",
-    "trn": "7137273",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "687478",
-    "firstName": "Vivian",
-    "lastName": "Abbott",
-    "trn": "1198016",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "250413",
-    "firstName": "Sasha",
-    "lastName": "Stokes",
-    "trn": "2700549",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "153433",
-    "firstName": "Brycen",
-    "lastName": "Renner",
-    "trn": "6882889",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "809983",
-    "firstName": "Marcia",
-    "lastName": "Douglas",
-    "trn": "4448141",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "407804",
-    "firstName": "Gunner",
-    "lastName": "Heller",
-    "trn": "6664137",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "943529",
-    "firstName": "Selena",
-    "lastName": "Brakus",
-    "trn": "4972584",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "402490",
-    "firstName": "Flossie",
-    "lastName": "Dickens",
-    "trn": "9761963",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "825625",
-    "firstName": "Alivia",
-    "lastName": "Bins",
-    "trn": "6416930",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "929929",
-    "firstName": "Dolores",
-    "lastName": "Ruecker",
-    "trn": "5493474",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "209461",
-    "firstName": "Abbigail",
-    "lastName": "Hessel",
-    "trn": "1214487",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "870099",
-    "firstName": "Travis",
-    "lastName": "Bauch",
-    "trn": "2937428",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "750881",
-    "firstName": "Gennaro",
-    "lastName": "Keebler",
-    "trn": "5166451",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "827776",
-    "firstName": "Tyler",
-    "lastName": "Becker",
-    "trn": "3421312",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "601349",
-    "firstName": "Domingo",
-    "lastName": "Smith",
-    "trn": "8773073",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "771608",
-    "firstName": "Bert",
-    "lastName": "Schuster",
-    "trn": "7263677",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "868420",
-    "firstName": "Mariam",
-    "lastName": "Kub",
-    "trn": "1269240",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "140752",
-    "firstName": "Ashlee",
-    "lastName": "Bergstrom",
-    "trn": "3952725",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "474959",
-    "firstName": "Macy",
-    "lastName": "Fritsch",
-    "trn": "3197774",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "595115",
-    "firstName": "Jammie",
-    "lastName": "Marvin",
-    "trn": "2473506",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "325057",
-    "firstName": "Lina",
-    "lastName": "Jacobs",
-    "trn": "6929162",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "631162",
-    "firstName": "Grayson",
-    "lastName": "Ryan",
-    "trn": "2972679",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "714542",
-    "firstName": "Angeline",
-    "lastName": "Lesch",
-    "trn": "1965489",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "806604",
-    "firstName": "Orion",
-    "lastName": "Morar",
-    "trn": "5088706",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "438505",
-    "firstName": "Kamren",
-    "lastName": "Spencer",
-    "trn": "2018274",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "362280",
-    "firstName": "Dimitri",
-    "lastName": "Hartmann",
-    "trn": "5086067",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "219847",
-    "firstName": "Josiah",
-    "lastName": "Toy",
-    "trn": "4686114",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "931382",
-    "firstName": "Gus",
-    "lastName": "Ondricka",
-    "trn": "6656500",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "440482",
-    "firstName": "Gia",
-    "lastName": "Klein",
-    "trn": "4096743",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "973010",
-    "firstName": "Keith",
-    "lastName": "Nienow",
-    "trn": "9672408",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "830428",
-    "firstName": "Liliana",
-    "lastName": "Turcotte",
-    "trn": "6599635",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "718404",
-    "firstName": "Malinda",
-    "lastName": "Beatty",
-    "trn": "1776839",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "716029",
-    "firstName": "Kaleb",
-    "lastName": "Kemmer",
-    "trn": "5391822",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "385603",
-    "firstName": "Estevan",
-    "lastName": "Goyette",
-    "trn": "7569872",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "955209",
-    "firstName": "Emile",
-    "lastName": "Stroman",
-    "trn": "5496225",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "770209",
-    "firstName": "Nellie",
-    "lastName": "Ziemann",
-    "trn": "2002604",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "635242",
-    "firstName": "Mara",
-    "lastName": "Daugherty",
-    "trn": "5152254",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "212847",
-    "firstName": "Demetris",
-    "lastName": "Boyer",
-    "trn": "1905734",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "979846",
-    "firstName": "Katelin",
-    "lastName": "Rohan",
-    "trn": "2111907",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "649569",
-    "firstName": "Tyrique",
-    "lastName": "Parisian",
-    "trn": "3882693",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "932073",
-    "firstName": "Merritt",
-    "lastName": "Mosciski",
-    "trn": "1162540",
-    "prohibitionTypes": [
-      "Type 3",
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "888384",
-    "firstName": "Ashly",
-    "lastName": "Johnston",
-    "trn": "4263157",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "434539",
-    "firstName": "Janessa",
-    "lastName": "Murray",
-    "trn": "7180929",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "417155",
-    "firstName": "Oswaldo",
-    "lastName": "Corwin",
-    "trn": "2319095",
-    "prohibitionTypes": [],
-    "yourTeacher": true
-  },
-  {
-    "id": "950369",
-    "firstName": "Lennie",
-    "lastName": "Lemke",
-    "trn": "7342215",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "386823",
-    "firstName": "Neoma",
-    "lastName": "Rosenbaum",
-    "trn": "3451957",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "620574",
-    "firstName": "Madelynn",
-    "lastName": "Upton",
-    "trn": "9429828",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "650333",
-    "firstName": "Eriberto",
-    "lastName": "Howell",
-    "trn": "4490732",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "758240",
-    "firstName": "Carmel",
-    "lastName": "Yost",
-    "trn": "5197569",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "226173",
-    "firstName": "Jules",
-    "lastName": "Bauch",
-    "trn": "9009229",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "402886",
-    "firstName": "Jamel",
-    "lastName": "Cole",
-    "trn": "8953903",
-    "prohibitionTypes": [],
-    "yourTeacher": false
-  },
-  {
-    "id": "317377",
-    "firstName": "Irma",
-    "lastName": "O'Keefe",
-    "trn": "8191050",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "819950",
-    "firstName": "Dudley",
-    "lastName": "Lehner",
-    "trn": "6961027",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "201922",
-    "firstName": "Raymond",
-    "lastName": "Swaniawski",
-    "trn": "4673225",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "436390",
-    "firstName": "Gage",
-    "lastName": "Pagac",
-    "trn": "4435825",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "996463",
-    "firstName": "Brando",
-    "lastName": "Lockman",
-    "trn": "1126321",
-    "prohibitionTypes": [
-      "Type 1",
-      "Type 2"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "480516",
-    "firstName": "Nicolette",
-    "lastName": "Pagac",
-    "trn": "5619355",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 3"
-    ],
-    "yourTeacher": true
-  },
-  {
-    "id": "193258",
-    "firstName": "Shyann",
-    "lastName": "Altenwerth",
-    "trn": "5314016",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
-  },
-  {
-    "id": "176084",
-    "firstName": "Ted",
+    "id": "979590",
+    "firstName": "Alvera",
+    "lastName": "Runolfsson",
+    "trn": "8843078",
+    "prohibitions": []
+  },
+  {
+    "id": "505688",
+    "firstName": "Filiberto",
     "lastName": "Shields",
-    "trn": "3977342",
-    "prohibitionTypes": [],
-    "yourTeacher": true
+    "trn": "7608567",
+    "prohibitions": [
+      "Allows teaching"
+    ]
   },
   {
-    "id": "799861",
-    "firstName": "Trace",
-    "lastName": "Gislason",
-    "trn": "3829778",
-    "prohibitionTypes": [
-      "Type 3"
-    ],
-    "yourTeacher": false
+    "id": "309323",
+    "firstName": "Heather",
+    "lastName": "Cummerata",
+    "trn": "8715935",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching with restrictions"
+    ]
   },
   {
-    "id": "505986",
-    "firstName": "Lafayette",
-    "lastName": "Boyer",
-    "trn": "5603131",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
+    "id": "423481",
+    "firstName": "Edmond",
+    "lastName": "Gleichner",
+    "trn": "8472406",
+    "prohibitions": []
   },
   {
-    "id": "135511",
-    "firstName": "Thaddeus",
-    "lastName": "DuBuque",
-    "trn": "1736405",
-    "prohibitionTypes": [
-      "Type 1"
-    ],
-    "yourTeacher": false
+    "id": "951013",
+    "firstName": "Gayle",
+    "lastName": "Brakus",
+    "trn": "4230389",
+    "prohibitions": []
   },
   {
-    "id": "872865",
-    "firstName": "Bertram",
-    "lastName": "McDermott",
-    "trn": "6309074",
-    "prohibitionTypes": [],
-    "yourTeacher": true
+    "id": "857451",
+    "firstName": "Deanna",
+    "lastName": "Volkman",
+    "trn": "6258966",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
   },
   {
-    "id": "723315",
-    "firstName": "Crystal",
-    "lastName": "Sipes",
-    "trn": "8485937",
-    "prohibitionTypes": [
-      "Type 2",
-      "Type 1"
-    ],
-    "yourTeacher": false
+    "id": "926522",
+    "firstName": "Dell",
+    "lastName": "McKenzie",
+    "trn": "9122040",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Allows teaching"
+    ]
   },
   {
-    "id": "555252",
-    "firstName": "Zoie",
+    "id": "414703",
+    "firstName": "Armand",
+    "lastName": "Gusikowski",
+    "trn": "6202318",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "986722",
+    "firstName": "Otis",
+    "lastName": "Schroeder",
+    "trn": "6258314",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "236662",
+    "firstName": "Taryn",
+    "lastName": "Renner",
+    "trn": "6378994",
+    "prohibitions": []
+  },
+  {
+    "id": "133036",
+    "firstName": "Jerry",
+    "lastName": "Baumbach",
+    "trn": "2543321",
+    "prohibitions": []
+  },
+  {
+    "id": "777011",
+    "firstName": "Monroe",
+    "lastName": "Hermann",
+    "trn": "5773981",
+    "prohibitions": [
+      "Allows teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "412249",
+    "firstName": "Gonzalo",
     "lastName": "Abbott",
-    "trn": "2717998",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
+    "trn": "8461904",
+    "prohibitions": [
+      "Allows teaching"
+    ]
   },
   {
-    "id": "146538",
-    "firstName": "Juana",
-    "lastName": "Heidenreich",
-    "trn": "5123010",
-    "prohibitionTypes": [
-      "Type 2"
-    ],
-    "yourTeacher": false
+    "id": "784165",
+    "firstName": "Aniya",
+    "lastName": "Predovic",
+    "trn": "2586527",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
   },
   {
-    "id": "679747",
-    "firstName": "Carlotta",
-    "lastName": "Bergstrom",
-    "trn": "1857968",
-    "prohibitionTypes": [],
-    "yourTeacher": false
+    "id": "942409",
+    "firstName": "Carlo",
+    "lastName": "Gislason",
+    "trn": "5172396",
+    "prohibitions": [
+      "Allows teaching",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "318059",
+    "firstName": "Camryn",
+    "lastName": "McClure",
+    "trn": "7236621",
+    "prohibitions": []
+  },
+  {
+    "id": "531973",
+    "firstName": "Shania",
+    "lastName": "Roob",
+    "trn": "8911567",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "228070",
+    "firstName": "Matilda",
+    "lastName": "Feest",
+    "trn": "9834883",
+    "prohibitions": []
+  },
+  {
+    "id": "220794",
+    "firstName": "Lula",
+    "lastName": "Schulist",
+    "trn": "8218534",
+    "prohibitions": []
+  },
+  {
+    "id": "184646",
+    "firstName": "Alison",
+    "lastName": "Herman",
+    "trn": "1318611",
+    "prohibitions": []
+  },
+  {
+    "id": "723370",
+    "firstName": "Eino",
+    "lastName": "Kilback",
+    "trn": "6335651",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "598726",
+    "firstName": "Ashly",
+    "lastName": "Satterfield",
+    "trn": "1485242",
+    "prohibitions": []
+  },
+  {
+    "id": "289435",
+    "firstName": "Clare",
+    "lastName": "Gibson",
+    "trn": "4937143",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "354783",
+    "firstName": "Jerod",
+    "lastName": "Steuber",
+    "trn": "9410400",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "149067",
+    "firstName": "Chet",
+    "lastName": "Purdy",
+    "trn": "2279426",
+    "prohibitions": []
+  },
+  {
+    "id": "844419",
+    "firstName": "Cleveland",
+    "lastName": "Schowalter",
+    "trn": "6918565",
+    "prohibitions": []
+  },
+  {
+    "id": "757351",
+    "firstName": "Ivah",
+    "lastName": "Macejkovic",
+    "trn": "3296306",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "150947",
+    "firstName": "Valerie",
+    "lastName": "Sauer",
+    "trn": "1269921",
+    "prohibitions": []
+  },
+  {
+    "id": "290837",
+    "firstName": "Raheem",
+    "lastName": "Rodriguez",
+    "trn": "9316150",
+    "prohibitions": []
+  },
+  {
+    "id": "358252",
+    "firstName": "Mason",
+    "lastName": "Koch",
+    "trn": "9783935",
+    "prohibitions": [
+      "Allows teaching",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "754694",
+    "firstName": "Clair",
+    "lastName": "Yost",
+    "trn": "3392256",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "880366",
+    "firstName": "Myrtis",
+    "lastName": "Lakin",
+    "trn": "8044711",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "537963",
+    "firstName": "Alysha",
+    "lastName": "Rolfson",
+    "trn": "6250928",
+    "prohibitions": []
+  },
+  {
+    "id": "746868",
+    "firstName": "Kaitlyn",
+    "lastName": "Stehr",
+    "trn": "5589974",
+    "prohibitions": []
+  },
+  {
+    "id": "961660",
+    "firstName": "Brendan",
+    "lastName": "Greenholt",
+    "trn": "6198584",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "740274",
+    "firstName": "Nat",
+    "lastName": "Ruecker",
+    "trn": "3123224",
+    "prohibitions": []
+  },
+  {
+    "id": "140822",
+    "firstName": "Nakia",
+    "lastName": "Wiza",
+    "trn": "6764790",
+    "prohibitions": []
+  },
+  {
+    "id": "727361",
+    "firstName": "Phyllis",
+    "lastName": "Quigley",
+    "trn": "2634336",
+    "prohibitions": []
+  },
+  {
+    "id": "622611",
+    "firstName": "Macy",
+    "lastName": "D'Amore",
+    "trn": "9903160",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "301018",
+    "firstName": "Mark",
+    "lastName": "Kihn",
+    "trn": "8600332",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "997501",
+    "firstName": "Cyrus",
+    "lastName": "Lynch",
+    "trn": "1698976",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "731832",
+    "firstName": "Lila",
+    "lastName": "Upton",
+    "trn": "4164045",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "930796",
+    "firstName": "Khalid",
+    "lastName": "Bartoletti",
+    "trn": "3778812",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "411746",
+    "firstName": "Brock",
+    "lastName": "Mraz",
+    "trn": "5718494",
+    "prohibitions": []
+  },
+  {
+    "id": "590521",
+    "firstName": "Emanuel",
+    "lastName": "Blick",
+    "trn": "7211168",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "769301",
+    "firstName": "Alice",
+    "lastName": "Macejkovic",
+    "trn": "3896917",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "151841",
+    "firstName": "Michaela",
+    "lastName": "Borer",
+    "trn": "2956689",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "191485",
+    "firstName": "Walker",
+    "lastName": "Jones",
+    "trn": "6705558",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "457575",
+    "firstName": "Katarina",
+    "lastName": "Gutkowski",
+    "trn": "5340641",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "455723",
+    "firstName": "Ernestine",
+    "lastName": "Goodwin",
+    "trn": "4934447",
+    "prohibitions": [
+      "Allows teaching",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "520104",
+    "firstName": "Colin",
+    "lastName": "Beahan",
+    "trn": "1432122",
+    "prohibitions": []
+  },
+  {
+    "id": "780682",
+    "firstName": "Nakia",
+    "lastName": "Altenwerth",
+    "trn": "4345042",
+    "prohibitions": []
+  },
+  {
+    "id": "484190",
+    "firstName": "Ransom",
+    "lastName": "Heller",
+    "trn": "6342698",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "372019",
+    "firstName": "Dusty",
+    "lastName": "Lind",
+    "trn": "8533322",
+    "prohibitions": []
+  },
+  {
+    "id": "335620",
+    "firstName": "Cleta",
+    "lastName": "Kuvalis",
+    "trn": "2661183",
+    "prohibitions": []
+  },
+  {
+    "id": "254611",
+    "firstName": "Isadore",
+    "lastName": "Satterfield",
+    "trn": "7813253",
+    "prohibitions": [
+      "Allows teaching",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "396708",
+    "firstName": "Tess",
+    "lastName": "Schulist",
+    "trn": "9823516",
+    "prohibitions": []
+  },
+  {
+    "id": "432644",
+    "firstName": "Marcel",
+    "lastName": "Tremblay",
+    "trn": "3092516",
+    "prohibitions": []
+  },
+  {
+    "id": "605679",
+    "firstName": "Elisabeth",
+    "lastName": "Schaefer",
+    "trn": "5072385",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "737256",
+    "firstName": "Margarette",
+    "lastName": "Botsford",
+    "trn": "6886507",
+    "prohibitions": []
+  },
+  {
+    "id": "362481",
+    "firstName": "Phoebe",
+    "lastName": "Langworth",
+    "trn": "4833751",
+    "prohibitions": []
+  },
+  {
+    "id": "920049",
+    "firstName": "Abraham",
+    "lastName": "Kozey",
+    "trn": "8426951",
+    "prohibitions": [
+      "Allows teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "979321",
+    "firstName": "Tess",
+    "lastName": "Jones",
+    "trn": "6563699",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "424871",
+    "firstName": "Princess",
+    "lastName": "Wilderman",
+    "trn": "5843675",
+    "prohibitions": []
+  },
+  {
+    "id": "177856",
+    "firstName": "Lilla",
+    "lastName": "Nienow",
+    "trn": "5842682",
+    "prohibitions": []
+  },
+  {
+    "id": "848504",
+    "firstName": "Shirley",
+    "lastName": "Runolfsdottir",
+    "trn": "9002582",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "577489",
+    "firstName": "Audra",
+    "lastName": "Ferry",
+    "trn": "3289616",
+    "prohibitions": [
+      "Allows teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "349408",
+    "firstName": "Floy",
+    "lastName": "Marks",
+    "trn": "6774287",
+    "prohibitions": []
+  },
+  {
+    "id": "370862",
+    "firstName": "Sam",
+    "lastName": "Kilback",
+    "trn": "4252446",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "383432",
+    "firstName": "Beulah",
+    "lastName": "Kilback",
+    "trn": "8351711",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "204496",
+    "firstName": "Matteo",
+    "lastName": "Dietrich",
+    "trn": "7513393",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "476422",
+    "firstName": "Ismael",
+    "lastName": "Schoen",
+    "trn": "4529576",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "923920",
+    "firstName": "Jonathon",
+    "lastName": "O'Reilly",
+    "trn": "1266769",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "962205",
+    "firstName": "Edmund",
+    "lastName": "Sporer",
+    "trn": "6189973",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "660168",
+    "firstName": "Quinten",
+    "lastName": "Schamberger",
+    "trn": "9261502",
+    "prohibitions": []
+  },
+  {
+    "id": "668799",
+    "firstName": "Jaida",
+    "lastName": "Hermiston",
+    "trn": "8169378",
+    "prohibitions": []
+  },
+  {
+    "id": "929551",
+    "firstName": "Althea",
+    "lastName": "McDermott",
+    "trn": "9363424",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "168728",
+    "firstName": "Marcelina",
+    "lastName": "Hoeger",
+    "trn": "4451333",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "243978",
+    "firstName": "Chase",
+    "lastName": "Kilback",
+    "trn": "4202273",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "615833",
+    "firstName": "Ila",
+    "lastName": "Sipes",
+    "trn": "6857189",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "600674",
+    "firstName": "Loraine",
+    "lastName": "Armstrong",
+    "trn": "6763459",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "345270",
+    "firstName": "Ariane",
+    "lastName": "Sawayn",
+    "trn": "2032999",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "617974",
+    "firstName": "Scot",
+    "lastName": "Volkman",
+    "trn": "7593092",
+    "prohibitions": []
+  },
+  {
+    "id": "308632",
+    "firstName": "Nadia",
+    "lastName": "Murray",
+    "trn": "5580792",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "826142",
+    "firstName": "Darian",
+    "lastName": "Beahan",
+    "trn": "1046356",
+    "prohibitions": []
+  },
+  {
+    "id": "697855",
+    "firstName": "Alysa",
+    "lastName": "Kihn",
+    "trn": "1584822",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "920763",
+    "firstName": "Rhea",
+    "lastName": "Littel",
+    "trn": "1236562",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "543049",
+    "firstName": "Joannie",
+    "lastName": "Murphy",
+    "trn": "1555572",
+    "prohibitions": []
+  },
+  {
+    "id": "691373",
+    "firstName": "Nicolette",
+    "lastName": "Ernser",
+    "trn": "7067596",
+    "prohibitions": []
+  },
+  {
+    "id": "155025",
+    "firstName": "Ken",
+    "lastName": "Williamson",
+    "trn": "4020543",
+    "prohibitions": []
+  },
+  {
+    "id": "363443",
+    "firstName": "Meredith",
+    "lastName": "Corwin",
+    "trn": "3932674",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "728661",
+    "firstName": "Jeremy",
+    "lastName": "Kuphal",
+    "trn": "4042391",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "987876",
+    "firstName": "Walker",
+    "lastName": "Lang",
+    "trn": "7916675",
+    "prohibitions": [
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "707057",
+    "firstName": "Jed",
+    "lastName": "Schaefer",
+    "trn": "3126321",
+    "prohibitions": []
+  },
+  {
+    "id": "597558",
+    "firstName": "Florencio",
+    "lastName": "Cummerata",
+    "trn": "5828822",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "193460",
+    "firstName": "Jensen",
+    "lastName": "Considine",
+    "trn": "4195111",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "142556",
+    "firstName": "Isaac",
+    "lastName": "Koelpin",
+    "trn": "7233995",
+    "prohibitions": []
+  },
+  {
+    "id": "136459",
+    "firstName": "Ray",
+    "lastName": "Jast",
+    "trn": "2538284",
+    "prohibitions": [
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "793989",
+    "firstName": "Malachi",
+    "lastName": "Zieme",
+    "trn": "6856976",
+    "prohibitions": [
+      "Does not allow teaching",
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "890011",
+    "firstName": "Oral",
+    "lastName": "Bradtke",
+    "trn": "6670854",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Does not allow teaching"
+    ]
+  },
+  {
+    "id": "372456",
+    "firstName": "Rosanna",
+    "lastName": "Hegmann",
+    "trn": "2992726",
+    "prohibitions": [
+      "Allows teaching with restrictions",
+      "Allows teaching"
+    ]
+  },
+  {
+    "id": "285949",
+    "firstName": "Marco",
+    "lastName": "Kulas",
+    "trn": "2257138",
+    "prohibitions": [
+      "Allows teaching with restrictions"
+    ]
+  },
+  {
+    "id": "730357",
+    "firstName": "Esteban",
+    "lastName": "Howe",
+    "trn": "5240857",
+    "prohibitions": [
+      "Allows teaching",
+      "Does not allow teaching"
+    ]
   }
 ]

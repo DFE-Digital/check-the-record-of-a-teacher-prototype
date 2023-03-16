@@ -1,26 +1,26 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[yourTeachers]",
-    name: "filters[yourTeachers]",
+    idPrefix: "filters[organisation]",
+    name: "filters[organisation]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Your teacher",
+        text: "Organisation",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Your teacher',
-      text: 'Your teacher'
+      value: 'Within your organisation',
+      text: 'Within your organisation'
     }, {
-      value: 'Not your teacher',
-      text: 'Not your teacher'
+      value: 'Not in your organisation',
+      text: 'Not in your organisation'
     }],
-    values: data.filters.yourTeachers
+    values: data.filters.organisation
   }) }}
 
-  {{ govukCheckboxes({
+  {# {{ govukCheckboxes({
     idPrefix: "filters[prohibitionStatuses]",
     name: "filters[prohibitionStatuses]",
     classes: "govuk-checkboxes--small",
@@ -38,32 +38,29 @@
       text: 'Does not have a prohibition'
     }],
     values: data.filters.prohibitionStatuses
-  }) }}
+  }) }} #}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[prohibitionTypes]",
-    name: "filters[prohibitionTypes]",
+    idPrefix: "filters[statuses]",
+    name: "filters[statuses]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Prohibition type",
+        text: "Status",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Type 1',
-      text: 'Type 1'
+      value: 'Allowed to teach',
+      text: 'Allowed to teach'
     }, {
-      value: 'Type 2',
-      text: 'Type 2'
+      value: 'Has restrictions',
+      text: 'Has restrictions'
     }, {
-      value: 'Type 3',
-      text: 'Type 3'
-    }, {
-      value: 'Type 4',
-      text: 'Type 4'
+      value: 'Banned',
+      text: 'Banned'
     }],
-    values: data.filters.prohibitionTypes
+    values: data.filters.statuses
   }) }}
 
 {% endset %}

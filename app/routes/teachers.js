@@ -14,6 +14,20 @@ function hasCommonArrayValues(arr1, arr2) {
   return arr1.some(item => arr2.includes(item))
 }
 
+function decorateTeacher(teacher) {
+  teacher = _.clone(teacher)
+
+  teacher.status = 'Allowed to teach'
+
+  if(teacher.prohibitions.includes('Does not allow teaching')) {
+    teacher.status = 'Banned'
+  } else if(teacher.prohibitions.includes('Allows teaching with restrictions')) {
+    teacher.status = 'Has restrictions'
+  }
+
+  return teacher
+}
+
 module.exports = router => {
 
   router.get('/teachers', (req, res) => {
@@ -98,6 +112,8 @@ module.exports = router => {
     let totalCount = teachers.length
     let pagination = PaginationHelper.getPagination(teachers, req.query.page, 25)
     teachers = PaginationHelper.getDataByPage(teachers, pagination.pageNumber, 25)
+
+    teachers = teachers.map(decorateTeacher)
 
     res.render('teachers/index', {
       teachers,

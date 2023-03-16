@@ -26,6 +26,19 @@
             <div class="app-list__item">
               <h2 class="govuk-heading-m">
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+
+                {% if teacher.status == 'Allowed to teach' %}
+                  {% set classes = 'govuk-tag--green' %}
+                {% elseif teacher.status == 'Has restrictions' %}
+                  {% set classes = 'govuk-tag--yellow' %}
+                {% elseif teacher.status == 'Banned' %}
+                  {% set classes = 'govuk-tag--red' %}
+                {% endif %}
+
+                {{ govukTag({
+                  text: teacher.status,
+                  classes: classes
+                }) }}
               </h2>
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
@@ -45,15 +58,15 @@
                     value: {
                       text: teacher.yourTeacher
                     }
-                  },
+                  } if 1 == 2,
                   {
                     key: {
                       text: "Prohibitions"
                     },
                     value: {
-                      text: teacher.prohibitionTypes | join(', ') | title
+                      text: teacher.prohibitions | join(', ') | title
                     }
-                  },
+                  } if 1 == 2,
                   {
                     key: {
                       text: "Email address"
@@ -61,7 +74,7 @@
                     value: {
                       text: 'name@example.com'
                     }
-                  },
+                  } if 1 == 2,
                   {
                     key: {
                       text: "QTS"
@@ -77,7 +90,7 @@
                     value: {
                       text: 'Yes'
                     }
-                  }
+                  } if 1 == 2
                 ]
               }) }}
             </div>
