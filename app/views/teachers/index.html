@@ -27,17 +27,9 @@
               <h2 class="govuk-heading-m">
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
 
-                {% if teacher.status == 'Allowed to teach' %}
-                  {% set classes = 'govuk-tag--green' %}
-                {% elseif teacher.status == 'Has restrictions' %}
-                  {% set classes = 'govuk-tag--yellow' %}
-                {% elseif teacher.status == 'Banned' %}
-                  {% set classes = 'govuk-tag--red' %}
-                {% endif %}
-
                 {{ govukTag({
                   text: teacher.status,
-                  classes: classes
+                  classes: teacher.status | statusClass
                 }) }}
               </h2>
               {{ govukSummaryList({

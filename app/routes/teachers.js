@@ -154,7 +154,9 @@ module.exports = router => {
 
 
   router.get('/teachers/:id', (req, res) => {
-    let teacher = allTeachers.find(teacher => teacher.id == req.params.id)
+    let teacher = allTeachers
+      .map(decorateTeacher)
+      .find(teacher => teacher.id == req.params.id)
     res.render('teachers/show', {
       teacher
     })

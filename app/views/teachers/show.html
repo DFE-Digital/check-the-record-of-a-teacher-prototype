@@ -14,9 +14,17 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">{{title}}</h1>
+      <h1 class="govuk-heading-l">
+        {{title}}
+        {{ govukTag({
+          text: teacher.status,
+          classes: teacher.status | statusClass
+        }) }}
+      </h1>
 
       <p><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+
+
 
       <h2 class="govuk-heading-m">
         Personal details
