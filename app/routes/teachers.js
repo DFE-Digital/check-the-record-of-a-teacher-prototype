@@ -62,7 +62,7 @@ module.exports = router => {
         }
 
         if(organisations) {
-          if(organisations.includes('Within your organisation')) {
+          if(organisations.includes('Your organisation')) {
             organisationsValid = teacher.organisation.name == req.session.data.user.organisation.name
           }
           if(organisations.includes('Not in your organisation')) {

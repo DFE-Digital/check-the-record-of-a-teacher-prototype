@@ -4,7 +4,6 @@
 //
 
 // components
-@import "../../views/_components/list/list.scss";
 @import "../../views/_components/summary-list/summary-list.scss";
 @import "../../views/_components/search-form/search-form.scss";
 @import "../../views/_components/search/search.scss";
@@ -12,6 +11,7 @@
 @import "../../views/_components/filter-layout/filter-layout.scss";
 @import "../../views/_components/action-bar/action-bar.scss";
 @import "components/filter.scss";
+@import "components/list.scss";
 
 // Add extra styles here
 

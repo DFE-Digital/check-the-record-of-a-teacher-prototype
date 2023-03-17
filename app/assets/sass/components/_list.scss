@@ -6,13 +6,16 @@
   border-bottom: 1px solid $govuk-border-colour;
   padding-top: govuk-spacing(3);
   padding-bottom: govuk-spacing(3);
-
-  &:first-of-type {
-    padding-top: 0;
-  }
+  position: relative;
 
   &:last-of-type {
     @include govuk-responsive-margin(4, $direction: "bottom");
+  }
+
+  .govuk-tag {
+    position: absolute;
+    right: 0;
+    top: govuk-spacing(3);
   }
 
   h2 {

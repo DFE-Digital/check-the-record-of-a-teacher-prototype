@@ -24,14 +24,15 @@
 
           {% for teacher in teachers %}
             <div class="app-list__item">
-              <h2 class="govuk-heading-m">
-                <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
 
-                {{ govukTag({
-                  text: teacher.status,
-                  classes: teacher.status | statusClass
-                }) }}
+              <h2 class="govuk-heading-s">
+                <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
               </h2>
+
+              {{ govukTag({
+                text: teacher.status,
+                classes: teacher.status | statusClass
+              }) }}
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
@@ -45,44 +46,12 @@
                   },
                   {
                     key: {
-                      text: "Your teacher"
+                      text: "Organisation"
                     },
                     value: {
-                      text: teacher.yourTeacher
+                      text: teacher.organisation.name
                     }
-                  } if 1 == 2,
-                  {
-                    key: {
-                      text: "Prohibitions"
-                    },
-                    value: {
-                      text: teacher.prohibitions | join(', ') | title
-                    }
-                  } if 1 == 2,
-                  {
-                    key: {
-                      text: "Email address"
-                    },
-                    value: {
-                      text: 'name@example.com'
-                    }
-                  } if 1 == 2,
-                  {
-                    key: {
-                      text: "QTS"
-                    },
-                    value: {
-                      text: '1 January 2023'
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Inducted"
-                    },
-                    value: {
-                      text: 'Yes'
-                    }
-                  } if 1 == 2
+                  }
                 ]
               }) }}
             </div>
