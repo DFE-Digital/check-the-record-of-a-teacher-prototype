@@ -1,6 +1,6 @@
 [
   {
-    "id": "d8a7344f-045e-4b85-b0b4-3d37745a751f",
+    "id": "32636",
     "name": "Stark School",
     "address": {
       "address1": "10 Seed Street",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "id": "033627f8-e209-42fc-8844-aba3cbd12149",
+    "id": "68269",
     "name": "Ultron Academy",
     "address": {
       "address1": "10 Seed Street",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "id": "b7de4bd4-3825-4f49-8be2-21ded6f85d49",
+    "id": "97091",
     "name": "Thanos College",
     "address": {
       "address1": "10 Seed Street",

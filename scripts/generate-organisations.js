@@ -3,11 +3,12 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
-const { v4: uuidv4 } = require('uuid')
+// const { v4: uuidv4 } = require('uuid')
 
 const generateOrganisation = (params = {}) => {
   let organisation = {}
-  organisation.id = uuidv4()
+  // organisation.id = uuidv4()
+  organisation.id = _.get(params, 'id') || ('' + faker.datatype.number({min: 10000, max: 99999}))
   organisation.name = params.name || faker.company.name() + ' School'
   organisation.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   return organisation

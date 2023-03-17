@@ -22,9 +22,42 @@
         }) }}
       </h1>
 
-      <p><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+      {% if user.organisation.name == teacher.organisation.name %}
+        <p><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
+      {% else %}
+        <p><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+      {% endif %}
 
+      <h2 class="govuk-heading-m">
+        Organisation details
+      </h2>
 
+      {% set address %}
+        <p>{{teacher.organisation.address.address1}},<br>
+        {{teacher.organisation.address.town}},<br>
+        {{teacher.organisation.address.postcode}}</p>
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Organisation ID"
+            },
+            value: {
+              text: teacher.organisation.id
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: address
+            }
+          }
+        ]
+      }) }}
 
       <h2 class="govuk-heading-m">
         Personal details
@@ -45,14 +78,14 @@
               text: "Email address"
             },
             value: {
-              text: 'name@example.com'
+              text: teacher.emailAddress
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Qualified teching status (QTS)
+        Qualified teaching status (QTS)
       </h2>
 
       {{ govukSummaryList({
@@ -150,37 +183,6 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">
-        Employment details
-      </h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Employer ID"
-            },
-            value: {
-              text: '101023'
-            }
-          },
-          {
-            key: {
-              text: "Employment address"
-            },
-            value: {
-              text: 'CV1 2WT'
-            }
-          },
-          {
-            key: {
-              text: "Detail"
-            },
-            value: {
-              text: '1 January 2023'
-            }
-          }
-        ]
-      }) }}
       <h2 class="govuk-heading-m">
         Initial teacher training
       </h2>
