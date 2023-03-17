@@ -154,4 +154,34 @@ module.exports = router => {
     })
   })
 
+  router.get('/teachers/:id/add', (req, res) => {
+    let teacher = allTeachers
+      .map(decorateStatus)
+      .find(teacher => teacher.id == req.params.id)
+    res.render('teachers/add/index', {
+      teacher
+    })
+  })
+
+  router.post('/teachers/:id/add', (req, res) => {
+    let teacher = allTeachers.find(teacher => teacher.id == req.params.id)
+    teacher.organisation = req.session.data.user.organisation
+    res.redirect(`/teachers/${req.params.id}`)
+  })
+
+  router.get('/teachers/:id/remove', (req, res) => {
+    let teacher = allTeachers
+      .map(decorateStatus)
+      .find(teacher => teacher.id == req.params.id)
+    res.render('teachers/remove/index', {
+      teacher
+    })
+  })
+
+  router.post('/teachers/:id/remove', (req, res) => {
+    let teacher = allTeachers.find(teacher => teacher.id == req.params.id)
+    teacher.organisation = null
+    res.redirect(`/teachers/${req.params.id}`)
+  })
+
 }

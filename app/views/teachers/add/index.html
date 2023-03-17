@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %}
+
+{% set title = 'Confirm that you want to add this teacher to your organisation' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/teachers/" + teacher.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      <form method="post">
+        {{ govukButton({
+          text: "Add to your organisation",
+          classes: 'govuk-button--warning'
+        }) }}
+        <p><a href="/teachers/{{teacher.id}}">Cancel</a><p>
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

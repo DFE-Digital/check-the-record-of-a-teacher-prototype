@@ -54,45 +54,48 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">
-        Organisation details
-      </h2>
+      {% if teacher.organisation %}
 
-      {% set address %}
-        <p>{{teacher.organisation.address.address1}},<br>
-        {{teacher.organisation.address.town}},<br>
-        {{teacher.organisation.address.postcode}}</p>
-      {% endset %}
+        <h2 class="govuk-heading-m">
+          Organisation details
+        </h2>
 
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "ID"
+        {% set address %}
+          <p>{{teacher.organisation.address.address1}},<br>
+          {{teacher.organisation.address.town}},<br>
+          {{teacher.organisation.address.postcode}}</p>
+        {% endset %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "ID"
+              },
+              value: {
+                text: teacher.organisation.id
+              }
             },
-            value: {
-              text: teacher.organisation.id
-            }
-          },
-          {
-            key: {
-              text: "Name"
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: teacher.organisation.name
+              }
             },
-            value: {
-              text: teacher.organisation.name
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: address
+              }
             }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: address
-            }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Qualified teaching status (QTS)
