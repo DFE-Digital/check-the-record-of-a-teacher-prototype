@@ -63,10 +63,10 @@ module.exports = router => {
 
         if(organisations) {
           if(organisations.includes('Your organisation')) {
-            organisationsValid = teacher.organisation.name == req.session.data.user.organisation.name
+            organisationsValid = teacher.organisation && teacher.organisation.name == req.session.data.user.organisation.name
           }
           if(organisations.includes('Other organisation')) {
-            organisationsValid = teacher.organisation.name != req.session.data.user.organisation.name
+            organisationsValid = teacher.organisation && teacher.organisation.name != req.session.data.user.organisation.name
           }
         }
 
@@ -96,19 +96,6 @@ module.exports = router => {
           })
         })
       }
-
-      // if(_.get(yourTeachers, 'length')) {
-      //   selectedFilters.categories.push({
-      //     heading: { text: 'Your teacher' },
-      //     items: yourTeachers.map(yourTeacherItem => {
-      //       return {
-      //         text: yourTeacherItem,
-      //         href: `/teachers/remove-yourTeacher/${yourTeacherItem}`
-      //       }
-      //     })
-      //   })
-      // }
-
     }
 
     // Pagination
@@ -166,6 +153,7 @@ module.exports = router => {
   router.post('/teachers/:id/add', (req, res) => {
     let teacher = allTeachers.find(teacher => teacher.id == req.params.id)
     teacher.organisation = req.session.data.user.organisation
+    req.flash('success', 'Teacher added to your organisation')
     res.redirect(`/teachers/${req.params.id}`)
   })
 
@@ -181,6 +169,7 @@ module.exports = router => {
   router.post('/teachers/:id/remove', (req, res) => {
     let teacher = allTeachers.find(teacher => teacher.id == req.params.id)
     teacher.organisation = null
+    req.flash('success', 'Teacher removed from your organisation')
     res.redirect(`/teachers/${req.params.id}`)
   })
 

@@ -17,7 +17,7 @@ const generateTeacher = (params = {}) => {
       faker.datatype.number({min: 0, max: 2}
     )
   )
-  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations)
+  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null))
   return teacher
 }
 
