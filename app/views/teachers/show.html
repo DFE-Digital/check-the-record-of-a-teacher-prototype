@@ -29,41 +29,11 @@
       {% endif %}
 
       <h2 class="govuk-heading-m">
-        Organisation details
-      </h2>
-
-      {% set address %}
-        <p>{{teacher.organisation.address.address1}},<br>
-        {{teacher.organisation.address.town}},<br>
-        {{teacher.organisation.address.postcode}}</p>
-      {% endset %}
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Organisation ID"
-            },
-            value: {
-              text: teacher.organisation.id
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: address
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
         Personal details
       </h2>
 
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -85,10 +55,51 @@
       }) }}
 
       <h2 class="govuk-heading-m">
+        Organisation details
+      </h2>
+
+      {% set address %}
+        <p>{{teacher.organisation.address.address1}},<br>
+        {{teacher.organisation.address.town}},<br>
+        {{teacher.organisation.address.postcode}}</p>
+      {% endset %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "ID"
+            },
+            value: {
+              text: teacher.organisation.id
+            }
+          },
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: teacher.organisation.name
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: address
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
         Qualified teaching status (QTS)
       </h2>
 
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -122,6 +133,7 @@
       </h2>
 
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -147,6 +159,7 @@
       </h2>
 
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -187,6 +200,7 @@
         Initial teacher training
       </h2>
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -267,6 +281,7 @@
         Additional qualifications
       </h2>
       {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
