@@ -1,8 +1,8 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[organisation]",
-    name: "filters[organisation]",
+    idPrefix: "filters[organisations]",
+    name: "filters[organisations]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -17,28 +17,8 @@
       value: 'Not in your organisation',
       text: 'Not in your organisation'
     }],
-    values: data.filters.organisation
+    values: data.filters.organisations
   }) }}
-
-  {# {{ govukCheckboxes({
-    idPrefix: "filters[prohibitionStatuses]",
-    name: "filters[prohibitionStatuses]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Prohibition",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Has a prohibition',
-      text: 'Has a prohibition'
-    }, {
-      value: 'Does not have a prohibition',
-      text: 'Does not have a prohibition'
-    }],
-    values: data.filters.prohibitionStatuses
-  }) }} #}
 
   {{ govukCheckboxes({
     idPrefix: "filters[statuses]",

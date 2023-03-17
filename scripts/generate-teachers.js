@@ -3,6 +3,7 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
+const organisations = require('../app/data/organisations.json')
 
 const generateTeacher = (params = {}) => {
   let teacher = {}
@@ -15,8 +16,7 @@ const generateTeacher = (params = {}) => {
       faker.datatype.number({min: 0, max: 2}
     )
   )
-
-  // teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement([true, false, false, false, false])
+  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations)
   return teacher
 }
 
