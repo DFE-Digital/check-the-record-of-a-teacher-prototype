@@ -5,9 +5,16 @@
 {% set title = name %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/teachers"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: 'Teachers',
+        href: '/teachers'
+      },
+      {
+        text: name
+      }
+    ]
   }) }}
 {% endblock %}
 
