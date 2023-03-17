@@ -1,6 +1,15 @@
 [
   {
     "emailAddress": "anne.smith@example.com",
-    "password": "tra"
+    "password": "tra",
+    "organisation": {
+      "id": "95104",
+      "name": "Stark School",
+      "address": {
+        "address1": "10 Seed Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      }
+    }
   }
 ]

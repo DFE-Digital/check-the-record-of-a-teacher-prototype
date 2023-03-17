@@ -1,14 +1,12 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
-
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
+const flash = require('connect-flash')
+
+router.use(flash())
 
 router.all('*', (req, res, next) => {
   res.locals.user = req.session.data.user
-  res.locals.trn = require('../app/data/teachers.json')[0].trn
+  res.locals.flash = req.flash('success')
   next()
 })
 

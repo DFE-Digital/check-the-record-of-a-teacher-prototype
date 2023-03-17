@@ -3,11 +3,13 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
+const organisations = require('../app/data/organisations.json')
 
 const generateUser = (params = {}) => {
   let user = {}
   user.emailAddress = params.emailAddress
   user.password = params.password || 'tra'
+  user.organisation = params.organisation || organisations[0]
   return user
 }
 
@@ -21,13 +23,6 @@ const generateUsers = () => {
   return users
 }
 
-/**
- * Generate JSON file
- *
- * @param {String} filePath Location of generated file
- * @param {String} count Number of applications to generate
- *
- */
 const generateUsersFile = (filePath) => {
   const users = generateUsers()
   const filedata = JSON.stringify(users, null, 2)
@@ -38,7 +33,7 @@ const generateUsersFile = (filePath) => {
       if (error) {
         console.error(error)
       }
-      console.log(`Users data file generated: ${filePath}`)
+      console.log(`Users generated: ${filePath}`)
     }
   )
 }

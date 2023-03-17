@@ -1,69 +1,46 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[yourTeachers]",
-    name: "filters[yourTeachers]",
+    idPrefix: "filters[organisations]",
+    name: "filters[organisations]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Your teacher",
+        text: "Organisation",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Your teacher',
-      text: 'Your teacher'
+      value: 'Your organisation',
+      text: 'Your organisation'
     }, {
-      value: 'Not your teacher',
-      text: 'Not your teacher'
+      value: 'Other organisation',
+      text: 'Other organisation'
     }],
-    values: data.filters.yourTeachers
+    values: data.filters.organisations
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[prohibitionStatuses]",
-    name: "filters[prohibitionStatuses]",
+    idPrefix: "filters[statuses]",
+    name: "filters[statuses]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Prohibition",
+        text: "Status",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Has a prohibition',
-      text: 'Has a prohibition'
+      value: 'Allowed to teach',
+      text: 'Allowed to teach'
     }, {
-      value: 'Does not have a prohibition',
-      text: 'Does not have a prohibition'
+      value: 'Has restrictions',
+      text: 'Has restrictions'
+    }, {
+      value: 'Banned',
+      text: 'Banned'
     }],
-    values: data.filters.prohibitionStatuses
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filters[prohibitionTypes]",
-    name: "filters[prohibitionTypes]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Prohibition type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Type 1',
-      text: 'Type 1'
-    }, {
-      value: 'Type 2',
-      text: 'Type 2'
-    }, {
-      value: 'Type 3',
-      text: 'Type 3'
-    }, {
-      value: 'Type 4',
-      text: 'Type 4'
-    }],
-    values: data.filters.prohibitionTypes
+    values: data.filters.statuses
   }) }}
 
 {% endset %}

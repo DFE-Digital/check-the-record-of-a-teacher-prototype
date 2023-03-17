@@ -3,6 +3,7 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
+const organisations = require('../app/data/organisations.json')
 
 const generateTeacher = (params = {}) => {
   let teacher = {}
@@ -10,11 +11,13 @@ const generateTeacher = (params = {}) => {
   teacher.firstName = _.get(params, 'firstName') || faker.name.firstName()
   teacher.lastName = _.get(params, 'lastName') || faker.name.lastName()
   teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
-  teacher.prohibitionTypes = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-    ['Type 1', 'Type 2', 'Type 3'],
-    faker.datatype.number({min: 0, max: 2})
+  teacher.emailAddress = _.get(params, 'emailAddress') || `${teacher.firstName.toLowerCase()}.${teacher.lastName.toLowerCase()}@gmail.com`;
+  teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
+      ['Allows teaching', 'Allows teaching with restrictions', 'Does not allow teaching'],
+      faker.datatype.number({min: 0, max: 2}
+    )
   )
-  teacher.yourTeacher = _.get(params, 'yourTeacher') || faker.helpers.arrayElement([true, false, false, false, false])
+  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null))
   return teacher
 }
 

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "95104",
+    "name": "Stark School",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    }
+  },
+  {
+    "id": "99770",
+    "name": "Ultron Academy",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    }
+  },
+  {
+    "id": "36854",
+    "name": "Thanos College",
+    "address": {
+      "address1": "10 Seed Street",
+      "town": "London",
+      "postcode": "N19 4PT"
+    }
+  }
+]
