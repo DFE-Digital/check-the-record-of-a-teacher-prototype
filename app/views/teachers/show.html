@@ -37,9 +37,9 @@
       </h1>
 
       {% if user.organisation.name == teacher.organisation.name %}
-        <p><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
       {% else %}
-        <p><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
       {% endif %}
 
       <h2 class="govuk-heading-m">
@@ -51,7 +51,7 @@
         rows: [
           {
             key: {
-              text: "TRN"
+              text: "Teacher reference number (TRN)"
             },
             value: {
               text: teacher.trn
@@ -85,7 +85,7 @@
           rows: [
             {
               key: {
-                text: "ID"
+                text: "Employer ID"
               },
               value: {
                 text: teacher.organisation.id
@@ -93,7 +93,7 @@
             },
             {
               key: {
-                text: "Name"
+                text: "Employer name"
               },
               value: {
                 text: teacher.organisation.name
@@ -101,7 +101,7 @@
             },
             {
               key: {
-                text: "Address"
+                text: "Employment address"
               },
               value: {
                 html: address
@@ -123,23 +123,23 @@
               text: "QTS"
             },
             value: {
-              text: 'Qualified teacher (trained)'
+              text: teacher.qts.status
             }
           },
           {
             key: {
-              text: "Awarded date"
+              text: "Date awarded"
             },
             value: {
-              text: '1 January 2021'
+              text: teacher.qts.dateAwarded | date
             }
           },
           {
             key: {
-              text: "Partial recognition date"
+              text: "Date partial QTS awarded"
             },
             value: {
-              text: '-'
+              text: teacher.qts.datePartiallyAwarded | date
             }
           }
         ]
@@ -157,22 +157,22 @@
               text: "EYTS"
             },
             value: {
-              text: 'Some status'
+              text: teacher.eyts.status
             }
           },
           {
             key: {
-              text: "Awarded date"
+              text: "Date awarded"
             },
             value: {
-              text: '1 January 2021'
+              text: teacher.eyts.dateAwarded | date
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Induction status
+        Induction
       </h2>
 
       {{ govukSummaryList({
@@ -183,38 +183,38 @@
               text: "Induction status"
             },
             value: {
-              text: 'Needs to be completed'
+              text: teacher.induction.status
             }
           },
           {
             key: {
-              text: "Reason"
+              text: "Reason for exemption"
             },
             value: {
-              text: '-'
+              text: teacher.induction.reasonForExemption
             }
           },
           {
             key: {
-              text: "Are they eligible to complete a one year induction period under transition arrangements?"
+              text: "Are they eligible to complete a one-year induction period?"
             },
             value: {
-              text: 'No'
+              text: teacher.induction.eligibleToCompleteOneYearInduction
             }
           },
           {
             key: {
-              text: "Induction status completion date"
+              text: "Date completed"
             },
             value: {
-              text: '-'
+              text: teacher.induction.dateCompleted | date
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Initial teacher training
+        Initial teacher training (ITT)
       </h2>
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -224,15 +224,15 @@
               text: "Qualification"
             },
             value: {
-              text: '-'
+              text: teacher.itt.qualification
             }
           },
           {
             key: {
-              text: "ITT organisation"
+              text: "ITT provider"
             },
             value: {
-              text: 'Department for Education'
+              text: teacher.itt.provider
             }
           },
           {
@@ -240,7 +240,7 @@
               text: "Programme type"
             },
             value: {
-              text: 'HEI'
+              text: teacher.itt.programmeType
             }
           },
           {
@@ -248,7 +248,7 @@
               text: "Subject"
             },
             value: {
-              text: 'Historical linguistics'
+              text: teacher.itt.subject
             }
           },
           {
@@ -256,7 +256,7 @@
               text: "Additional subjects"
             },
             value: {
-              text: 'Maths'
+              text: teacher.itt.additionalSubject
             }
           },
           {
@@ -264,7 +264,7 @@
               text: "Age range"
             },
             value: {
-              text: '6 to 19 years'
+              text: teacher.itt.ageRange
             }
           },
           {
@@ -272,15 +272,15 @@
               text: "Course end date"
             },
             value: {
-              text: '6 May 2021'
+              text: teacher.itt.dateCourseEnds | date
             }
           },
           {
             key: {
-              text: "Result"
+              text: "Course result"
             },
             value: {
-              text: 'Pass'
+              text: teacher.itt.result
             }
           },
           {
@@ -288,7 +288,7 @@
               text: "Grade"
             },
             value: {
-              text: 'First class honours'
+              text: teacher.itt.grade
             }
           }
         ]

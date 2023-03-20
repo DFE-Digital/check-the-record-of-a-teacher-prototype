@@ -68,6 +68,9 @@ module.exports = router => {
           if(organisations.includes('Other organisation')) {
             organisationsValid = teacher.organisation && teacher.organisation.name != req.session.data.user.organisation.name
           }
+          if(organisations.includes('No organisation')) {
+            organisationsValid = !teacher.organisation
+          }
         }
 
         return statusesValid && organisationsValid
