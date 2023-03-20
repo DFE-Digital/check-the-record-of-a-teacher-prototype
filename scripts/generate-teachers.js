@@ -106,6 +106,25 @@ const generateTeacher = (params = {}) => {
     'Third'
   ])
 
+  // MQ
+  teacher.mq = _.get(params, 'mq') || {}
+  teacher.mq.specialism = _.get(params, 'mq.specialism') || faker.helpers.arrayElement([
+    'Audio impairment',
+    'Visual impairment',
+    'Audio and visual impairment'
+  ])
+  teacher.mq.dateAwarded = _.get(params, 'mq.dateAwarded') || faker.date.past()
+
+  // NPQ
+  teacher.npq = _.get(params, 'npq') || {}
+  teacher.npq.dateExecutiveLeadershipAwarded = _.get(params, 'npq.dateExecutiveLeadershipAwarded') || faker.date.past()
+  teacher.npq.dateHeadshipAwarded = _.get(params, 'npq.dateHeadshipAwarded') || faker.date.past()
+  teacher.npq.dateSeniorLeadershipAwarded = _.get(params, 'npq.dateSeniorLeadershipAwarded') || faker.date.past()
+  teacher.npq.dateMiddleLeadershipAwarded = _.get(params, 'npq.dateMiddleLeadershipAwarded') || faker.date.past()
+  teacher.npq.dateLeadingTeacherDevelopmentAwarded = _.get(params, 'npq.dateLeadingTeacherDevelopmentAwarded') || faker.date.past()
+  teacher.npq.dateLeadingTeachingAwarded = _.get(params, 'npq.dateLeadingTeachingAwarded') || faker.date.past()
+  teacher.npq.dateLeadingBehaviourAwarded = _.get(params, 'npq.dateLeadingBehaviourAwarded') || faker.date.past()
+
   return teacher
 }
 

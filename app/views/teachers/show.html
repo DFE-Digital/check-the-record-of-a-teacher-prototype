@@ -295,57 +295,92 @@
       }) }}
 
       <h2 class="govuk-heading-m">
-        Additional qualifications
+        Mandatory qualifications (MQs)
       </h2>
+
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Mandatory qualification (MQ) specialism"
+              text: "MQ specialism"
             },
             value: {
-              text: 'Multi sensory impairment'
+              text: teacher.mq.specialism
             }
           },
           {
             key: {
-              text: "MQ date awarded"
+              text: "Date awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.mq.dateAwarded | date
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">
+        National professional qualifications (NPQs)
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Date NPQ for executive leadership awarded"
+            },
+            value: {
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for executive leadership"
+              text: "Date NPQ for headship awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.npq.dateHeadshipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for headteacher"
+              text: "Date NPQ for senior leadership awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for senior leadership"
+              text: "Date NPQ for middle leadership awarded"
             },
             value: {
-              text: '-'
+              text: teacher.npq.dateMiddleLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for middle leadership"
+              text: "Date NPQ for leading teacher development awarded"
             },
             value: {
-              text: '-'
+              text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
+            }
+          },
+          {
+            key: {
+              text: "Date NPQ for leading teaching awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingTeachingAwarded | date
+            }
+          },
+          {
+            key: {
+              text: "Date NPQ for leading behaviour and culture awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingBehaviourAwarded | date
             }
           }
         ]
