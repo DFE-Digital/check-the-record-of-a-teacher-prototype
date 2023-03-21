@@ -13,7 +13,16 @@ const generateTeacher = (params = {}) => {
   teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
   teacher.emailAddress = _.get(params, 'emailAddress') || `${teacher.firstName.toLowerCase()}.${teacher.lastName.toLowerCase()}@gmail.com`;
   teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-      ['Allows teaching', 'Allows teaching with restrictions', 'Does not allow teaching'],
+      [
+        'Allows teaching',
+        'Allows teaching',
+        'Allows teaching',
+        'Allows teaching',
+        'Allows teaching',
+        'Allows teaching',
+        'Allows teaching with restrictions',
+        'Does not allow teaching'
+      ],
       faker.datatype.number({min: 0, max: 2}
     )
   )

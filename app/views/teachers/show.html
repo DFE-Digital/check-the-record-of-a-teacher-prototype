@@ -33,7 +33,7 @@
         {{ govukTag({
           text: teacher.status,
           classes: teacher.status | statusClass
-        }) }}
+        }) if teacher.status != 'No restrictions' }}
       </h1>
 
       {% if user.organisation.name == teacher.organisation.name %}

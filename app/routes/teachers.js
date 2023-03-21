@@ -18,12 +18,12 @@ function hasCommonArrayValues(arr1, arr2) {
 function decorateStatus(teacher) {
   teacher = _.clone(teacher)
 
-  teacher.status = 'Allowed to teach'
+  teacher.status = 'No restrictions'
 
   if(teacher.prohibitions.includes('Does not allow teaching')) {
     teacher.status = 'Banned'
   } else if(teacher.prohibitions.includes('Allows teaching with restrictions')) {
-    teacher.status = 'Has restrictions'
+    teacher.status = 'Restrictions'
   }
 
   return teacher
