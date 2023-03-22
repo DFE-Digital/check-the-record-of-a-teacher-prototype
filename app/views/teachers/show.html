@@ -42,6 +42,108 @@
         <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
       {% endif %}
 
+      {% if teacher.hasProhibitions == 'Yes' %}
+          <h2 class="govuk-heading-m">
+            Restrictions
+          </h2>
+        {% set inset %}
+
+          {# {% for prohibition in teacher.prohibitions %}
+            <h3 class="govuk-heading-s">
+              {{prohibition.type}}
+            </h3>
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-8' if not loop.last,
+              rows: [
+                {
+                  key: {
+                    text: "Date started"
+                  },
+                  value: {
+                    text: prohibition.date | date
+                  }
+                },
+                {
+                  key: {
+                    text: "Date for review"
+                  },
+                  value: {
+                    text: prohibition.dateForReview | date
+                  }
+                } if prohibition.dateForReview,
+                {
+                  key: {
+                    text: "Details"
+                  },
+                  value: {
+                    text: prohibition.notes
+                  }
+                } if prohibition.notes
+              ]
+            }) }}
+          {% endfor %} #}
+
+          {% for prohibition in teacher.prohibitions %}
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+              {{prohibition.type}}
+            </h3>
+            <p class="govuk-!-margin-bottom-1">
+             {{prohibition.date | date}}
+              {% if prohibition.dateForReview %}
+                (Will be reviewed {{prohibition.dateForReview | date}})
+              {% endif %}
+            </p>
+            <p class="govuk-hint">{{prohibition.notes}}</p>
+
+            {# {% set prohibition %} #}
+              {# {{ govukSummaryList({
+                classes: 'govuk-!-margin-top-0',
+                rows: [
+                  {
+                    key: {
+                      text: "Date started"
+                    },
+                    value: {
+                      text: prohibition.date | date
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Date for review"
+                    },
+                    value: {
+                      text: prohibition.dateForReview | date
+                    }
+                  } if prohibition.dateForReview,
+                  {
+                    key: {
+                      text: "Details"
+                    },
+                    value: {
+                      text: prohibition.notes
+                    }
+                  } if prohibition.notes
+                ]
+              }) }} #}
+            {# {% endset %} #}
+            {# {{ govukInsetText({
+              classes: 'govuk-!-margin-top-2 app-inset-text--blue',
+              html: prohibition
+            }) }} #}
+          {% endfor %}
+
+
+        {% endset %}
+        {{ govukInsetText({
+          classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom- govuk-!-margin-top-0',
+          html: inset
+        }) }}
+
+
+
+
+      {% endif %}
+
       <h2 class="govuk-heading-m">
         Personal details
       </h2>
@@ -85,7 +187,7 @@
           rows: [
             {
               key: {
-                text: "Employer ID"
+                text: "Organisation ID"
               },
               value: {
                 text: teacher.organisation.id
@@ -93,7 +195,7 @@
             },
             {
               key: {
-                text: "Employer name"
+                text: "Name"
               },
               value: {
                 text: teacher.organisation.name
@@ -101,7 +203,7 @@
             },
             {
               key: {
-                text: "Employment address"
+                text: "Address"
               },
               value: {
                 html: address
@@ -295,7 +397,7 @@
       }) }}
 
       <h2 class="govuk-heading-m">
-        Mandatory qualifications (MQs)
+        Mandatory qualifications (MQ)
       </h2>
 
       {{ govukSummaryList({
@@ -321,7 +423,7 @@
       })}}
 
       <h2 class="govuk-heading-m">
-        National professional qualifications (NPQs)
+        National professional qualifications (NPQ)
       </h2>
 
       {{ govukSummaryList({

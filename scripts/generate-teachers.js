@@ -5,6 +5,27 @@ faker.setLocale('en_GB');
 const _ = require('lodash');
 const organisations = require('../app/data/organisations.json')
 
+const prohibitions = [
+  {
+    type: 'Interim prohibition by the Secretary of State',
+    date: faker.date.past(),
+    notes: 'Banned from teaching.'
+  },
+  {
+    type: 'Failed induction',
+    date: faker.date.past(),
+    notes: 'Can only teach in organisations where the completion of induction is not a requirement.'
+  },
+  {
+    type: 'Prohibited by the Secretary of State or independent schools tribunal',
+    date: faker.date.past(),
+    dateForReview: faker.date.future(),
+    notes: 'Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only.'
+  },
+]
+
+
+
 const generateTeacher = (params = {}) => {
   let teacher = {}
   teacher.id = _.get(params, 'id') || ('' + faker.datatype.number({min: 123456, max: 999999}))
@@ -12,20 +33,28 @@ const generateTeacher = (params = {}) => {
   teacher.lastName = _.get(params, 'lastName') || faker.name.lastName()
   teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
   teacher.emailAddress = _.get(params, 'emailAddress') || `${teacher.firstName.toLowerCase()}.${teacher.lastName.toLowerCase()}@gmail.com`;
-  teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-      [
-        'Allows teaching',
-        'Allows teaching',
-        'Allows teaching',
-        'Allows teaching',
-        'Allows teaching',
-        'Allows teaching',
-        'Allows teaching with restrictions',
-        'Does not allow teaching'
-      ],
-      faker.datatype.number({min: 0, max: 2}
+
+  teacher.hasProhibitions = _.get(params, 'hasProhibitions') || faker.helpers.arrayElement([
+    'Yes',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No',
+    'No'
+  ])
+
+  if(teacher.hasProhibitions == 'Yes') {
+    teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
+      prohibitions,
+      faker.datatype.number({min: 1, max: 2})
     )
-  )
+  }
+
   teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null))
 
   // QTS
@@ -60,7 +89,7 @@ const generateTeacher = (params = {}) => {
     'Other reason'
   ])
   teacher.induction.eligibleToCompleteOneYearInduction = _.get(params, 'induction.eligibleToCompleteOneYearInduction') || faker.helpers.arrayElement([
-    'Yes, they started induction before 1 September 2021',
+    'Yes',
     'No'
   ])
   teacher.induction.dateCompleted = _.get(params, 'induction.dateCompleted') || faker.date.past()

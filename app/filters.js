@@ -73,7 +73,7 @@ function statusClass(text) {
     case 'Banned':
       return 'govuk-tag--red'
     case 'Restrictions':
-      return 'govuk-tag--yellow'
+      return 'govuk-tag--red'
   }
 }
 addFilter('statusClass', statusClass)

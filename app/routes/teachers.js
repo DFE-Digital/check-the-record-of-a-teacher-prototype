@@ -20,10 +20,16 @@ function decorateStatus(teacher) {
 
   teacher.status = 'No restrictions'
 
-  if(teacher.prohibitions.includes('Does not allow teaching')) {
-    teacher.status = 'Banned'
-  } else if(teacher.prohibitions.includes('Allows teaching with restrictions')) {
-    teacher.status = 'Restrictions'
+  if(teacher.hasProhibitions == 'Yes') {
+
+    if(teacher.prohibitions.find(prohibition => prohibition.type == 'Interim prohibition by the Secretary of State')) {
+      teacher.status = 'Restrictions'
+    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Failed induction')) {
+      teacher.status = 'Restrictions'
+    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Prohibited by the Secretary of State or independent schools tribunal')) {
+      teacher.status = 'Restrictions'
+    }
+
   }
 
   return teacher
