@@ -18,12 +18,18 @@ function hasCommonArrayValues(arr1, arr2) {
 function decorateStatus(teacher) {
   teacher = _.clone(teacher)
 
-  teacher.status = 'Allowed to teach'
+  teacher.status = 'No restrictions'
 
-  if(teacher.prohibitions.includes('Does not allow teaching')) {
-    teacher.status = 'Banned'
-  } else if(teacher.prohibitions.includes('Allows teaching with restrictions')) {
-    teacher.status = 'Has restrictions'
+  if(teacher.hasProhibitions == 'Yes') {
+
+    if(teacher.prohibitions.find(prohibition => prohibition.type == 'Interim prohibition by the Secretary of State')) {
+      teacher.status = 'Restrictions'
+    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Failed induction')) {
+      teacher.status = 'Restrictions'
+    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Prohibited by the Secretary of State or independent schools tribunal')) {
+      teacher.status = 'Restrictions'
+    }
+
   }
 
   return teacher
@@ -67,6 +73,9 @@ module.exports = router => {
           }
           if(organisations.includes('Other organisation')) {
             organisationsValid = teacher.organisation && teacher.organisation.name != req.session.data.user.organisation.name
+          }
+          if(organisations.includes('No organisation')) {
+            organisationsValid = !teacher.organisation
           }
         }
 

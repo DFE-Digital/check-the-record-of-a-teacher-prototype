@@ -70,12 +70,10 @@ addFilter('dateTime', govukDateTime)
 
 function statusClass(text) {
   switch (text) {
-    case 'Allowed to teach':
-      return 'govuk-tag--green'
     case 'Banned':
       return 'govuk-tag--red'
-    case 'Has restrictions':
-      return 'govuk-tag--yellow'
+    case 'Restrictions':
+      return 'govuk-tag--red'
   }
 }
 addFilter('statusClass', statusClass)

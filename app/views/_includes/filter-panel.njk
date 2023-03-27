@@ -16,6 +16,9 @@
     }, {
       value: 'Other organisation',
       text: 'Other organisation'
+    }, {
+      value: 'No organisation',
+      text: 'No organisation'
     }],
     values: data.filters.organisations
   }) }}
@@ -26,19 +29,19 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Status",
+        text: "Restrictions",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Allowed to teach',
-      text: 'Allowed to teach'
-    }, {
-      value: 'Has restrictions',
-      text: 'Has restrictions'
+      value: 'Restrictions',
+      text: 'Restrictions'
     }, {
       value: 'Banned',
       text: 'Banned'
+    } if 1 == 2, {
+      value: 'No restrictions',
+      text: 'No restrictions'
     }],
     values: data.filters.statuses
   }) }}

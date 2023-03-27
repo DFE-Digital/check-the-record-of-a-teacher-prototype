@@ -33,13 +33,115 @@
         {{ govukTag({
           text: teacher.status,
           classes: teacher.status | statusClass
-        }) }}
+        }) if teacher.status != 'No restrictions' }}
       </h1>
 
       {% if user.organisation.name == teacher.organisation.name %}
-        <p><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
       {% else %}
-        <p><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+      {% endif %}
+
+      {% if teacher.hasProhibitions == 'Yes' %}
+          <h2 class="govuk-heading-m">
+            Restrictions
+          </h2>
+        {% set inset %}
+
+          {# {% for prohibition in teacher.prohibitions %}
+            <h3 class="govuk-heading-s">
+              {{prohibition.type}}
+            </h3>
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-8' if not loop.last,
+              rows: [
+                {
+                  key: {
+                    text: "Date started"
+                  },
+                  value: {
+                    text: prohibition.date | date
+                  }
+                },
+                {
+                  key: {
+                    text: "Date for review"
+                  },
+                  value: {
+                    text: prohibition.dateForReview | date
+                  }
+                } if prohibition.dateForReview,
+                {
+                  key: {
+                    text: "Details"
+                  },
+                  value: {
+                    text: prohibition.notes
+                  }
+                } if prohibition.notes
+              ]
+            }) }}
+          {% endfor %} #}
+
+          {% for prohibition in teacher.prohibitions %}
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+              {{prohibition.type}}
+            </h3>
+            <p class="govuk-!-margin-bottom-1">
+             {{prohibition.date | date}}
+              {% if prohibition.dateForReview %}
+                (Will be reviewed {{prohibition.dateForReview | date}})
+              {% endif %}
+            </p>
+            <p class="govuk-hint">{{prohibition.notes}}</p>
+
+            {# {% set prohibition %} #}
+              {# {{ govukSummaryList({
+                classes: 'govuk-!-margin-top-0',
+                rows: [
+                  {
+                    key: {
+                      text: "Date started"
+                    },
+                    value: {
+                      text: prohibition.date | date
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Date for review"
+                    },
+                    value: {
+                      text: prohibition.dateForReview | date
+                    }
+                  } if prohibition.dateForReview,
+                  {
+                    key: {
+                      text: "Details"
+                    },
+                    value: {
+                      text: prohibition.notes
+                    }
+                  } if prohibition.notes
+                ]
+              }) }} #}
+            {# {% endset %} #}
+            {# {{ govukInsetText({
+              classes: 'govuk-!-margin-top-2 app-inset-text--blue',
+              html: prohibition
+            }) }} #}
+          {% endfor %}
+
+
+        {% endset %}
+        {{ govukInsetText({
+          classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom- govuk-!-margin-top-0',
+          html: inset
+        }) }}
+
+
+
+
       {% endif %}
 
       <h2 class="govuk-heading-m">
@@ -51,7 +153,7 @@
         rows: [
           {
             key: {
-              text: "TRN"
+              text: "Teacher reference number (TRN)"
             },
             value: {
               text: teacher.trn
@@ -85,7 +187,7 @@
           rows: [
             {
               key: {
-                text: "ID"
+                text: "Organisation ID"
               },
               value: {
                 text: teacher.organisation.id
@@ -112,7 +214,7 @@
       {% endif %}
 
       <h2 class="govuk-heading-m">
-        Qualified teaching status (QTS)
+        Qualified teacher status (QTS)
       </h2>
 
       {{ govukSummaryList({
@@ -123,23 +225,23 @@
               text: "QTS"
             },
             value: {
-              text: 'Qualified teacher (trained)'
+              text: teacher.qts.status
             }
           },
           {
             key: {
-              text: "Awarded date"
+              text: "Date awarded"
             },
             value: {
-              text: '1 January 2021'
+              text: teacher.qts.dateAwarded | date
             }
           },
           {
             key: {
-              text: "Partial recognition date"
+              text: "Date partial QTS awarded"
             },
             value: {
-              text: '-'
+              text: teacher.qts.datePartiallyAwarded | date
             }
           }
         ]
@@ -157,22 +259,22 @@
               text: "EYTS"
             },
             value: {
-              text: 'Some status'
+              text: teacher.eyts.status
             }
           },
           {
             key: {
-              text: "Awarded date"
+              text: "Date awarded"
             },
             value: {
-              text: '1 January 2021'
+              text: teacher.eyts.dateAwarded | date
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Induction status
+        Induction
       </h2>
 
       {{ govukSummaryList({
@@ -183,38 +285,38 @@
               text: "Induction status"
             },
             value: {
-              text: 'Needs to be completed'
+              text: teacher.induction.status
             }
           },
           {
             key: {
-              text: "Reason"
+              text: "Reason for exemption"
             },
             value: {
-              text: '-'
+              text: teacher.induction.reasonForExemption
             }
           },
           {
             key: {
-              text: "Are they eligible to complete a one year induction period under transition arrangements?"
+              text: "Are they eligible to complete a one-year induction period?"
             },
             value: {
-              text: 'No'
+              text: teacher.induction.eligibleToCompleteOneYearInduction
             }
           },
           {
             key: {
-              text: "Induction status completion date"
+              text: "Date completed"
             },
             value: {
-              text: '-'
+              text: teacher.induction.dateCompleted | date
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Initial teacher training
+        Initial teacher training (ITT)
       </h2>
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -224,15 +326,15 @@
               text: "Qualification"
             },
             value: {
-              text: '-'
+              text: teacher.itt.qualification
             }
           },
           {
             key: {
-              text: "ITT organisation"
+              text: "ITT provider"
             },
             value: {
-              text: 'Department for Education'
+              text: teacher.itt.provider
             }
           },
           {
@@ -240,7 +342,7 @@
               text: "Programme type"
             },
             value: {
-              text: 'HEI'
+              text: teacher.itt.programmeType
             }
           },
           {
@@ -248,7 +350,7 @@
               text: "Subject"
             },
             value: {
-              text: 'Historical linguistics'
+              text: teacher.itt.subject
             }
           },
           {
@@ -256,7 +358,7 @@
               text: "Additional subjects"
             },
             value: {
-              text: 'Maths'
+              text: teacher.itt.additionalSubject
             }
           },
           {
@@ -264,7 +366,7 @@
               text: "Age range"
             },
             value: {
-              text: '6 to 19 years'
+              text: teacher.itt.ageRange
             }
           },
           {
@@ -272,15 +374,15 @@
               text: "Course end date"
             },
             value: {
-              text: '6 May 2021'
+              text: teacher.itt.dateCourseEnds | date
             }
           },
           {
             key: {
-              text: "Result"
+              text: "Course result"
             },
             value: {
-              text: 'Pass'
+              text: teacher.itt.result
             }
           },
           {
@@ -288,64 +390,99 @@
               text: "Grade"
             },
             value: {
-              text: 'First class honours'
+              text: teacher.itt.grade
             }
           }
         ]
       }) }}
 
       <h2 class="govuk-heading-m">
-        Additional qualifications
+        Mandatory qualifications (MQ)
       </h2>
+
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Mandatory qualification (MQ) specialism"
+              text: "MQ specialism"
             },
             value: {
-              text: 'Multi sensory impairment'
+              text: teacher.mq.specialism
             }
           },
           {
             key: {
-              text: "MQ date awarded"
+              text: "Date awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.mq.dateAwarded | date
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">
+        National professional qualifications (NPQ)
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Date NPQ for executive leadership awarded"
+            },
+            value: {
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for executive leadership"
+              text: "Date NPQ for headship awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.npq.dateHeadshipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for headteacher"
+              text: "Date NPQ for senior leadership awarded"
             },
             value: {
-              text: '19 September 2018'
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for senior leadership"
+              text: "Date NPQ for middle leadership awarded"
             },
             value: {
-              text: '-'
+              text: teacher.npq.dateMiddleLeadershipAwarded | date
             }
           },
           {
             key: {
-              text: "National professional qualification (NPQ) for middle leadership"
+              text: "Date NPQ for leading teacher development awarded"
             },
             value: {
-              text: '-'
+              text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
+            }
+          },
+          {
+            key: {
+              text: "Date NPQ for leading teaching awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingTeachingAwarded | date
+            }
+          },
+          {
+            key: {
+              text: "Date NPQ for leading behaviour and culture awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingBehaviourAwarded | date
             }
           }
         ]

@@ -32,7 +32,7 @@
               {{ govukTag({
                 text: teacher.status,
                 classes: teacher.status | statusClass
-              }) }}
+              }) if teacher.status != 'No restrictions' }}
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [

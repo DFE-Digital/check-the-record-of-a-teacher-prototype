@@ -31,3 +31,16 @@ h1 .govuk-tag {
   position: relative;
   top: -5px;
 }
+
+// .app-notification-banner--red {
+//   border-color: govuk-colour('red');
+//   background-color: govuk-colour('red');
+// }
+
+.app-inset-text--blue {
+  border-color: govuk-colour('blue');
+}
+
+.app-inset-text--red {
+  border-color:govuk-colour('red');
+}
