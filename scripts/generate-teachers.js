@@ -55,7 +55,7 @@ const generateTeacher = (params = {}) => {
     )
   }
 
-  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null))
+  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null, null, null, null, null, null, null, null, null, null, null, null))
 
   // QTS
   teacher.qts = _.get(params, 'qts') || {}

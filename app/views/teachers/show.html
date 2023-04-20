@@ -5,7 +5,7 @@
 {% set title = name %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
+  {# {{ govukBreadcrumbs({
     items: [
       {
         text: 'Teachers',
@@ -15,6 +15,10 @@
         text: name
       }
     ]
+  }) }} #}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/search"
   }) }}
 {% endblock %}
 
