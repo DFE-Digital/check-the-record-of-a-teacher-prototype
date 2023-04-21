@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Search record' %}
+{% set title = 'Find a teacher record' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -26,7 +26,7 @@
 
       {% if yourTeachers %}
         <h2 class="govuk-heading-m govuk-!-margin-top-6">
-          Your teachers
+          Teachers in your organisation
         </h2>
 
         <ul class="govuk-list govuk-list--bullet">
@@ -39,19 +39,15 @@
       {% endif %}
 
       <h2 class="govuk-heading-m govuk-!-margin-top-6">
-        Restrictions
+        Restricted teachers
       </h2>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="#">Teachers with X restriction</a>
-        </li>
-        <li>
-          <a href="#">Teachers with Y restriction</a>
-        </li>
-        <li>
-          <a href="#">Teachers with Z restriction</a>
-        </li>
+        {% for type in restrictionTypes %}
+          <li>
+            <a href="/restricted-teachers/{{type.id}}">{{type.label}}</a>
+          </li>
+        {% endfor %}
       </ul>
 
     </div>

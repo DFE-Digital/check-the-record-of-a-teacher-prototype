@@ -4,20 +4,21 @@ const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
 const organisations = require('../app/data/organisations.json')
+const restrictionTypes = require('../app/data/restriction-types.json')
 
-const prohibitions = [
+const restrictions = [
   {
-    type: 'Interim prohibition by the Secretary of State',
+    type: restrictionTypes.find(type => type.label == 'Interim prohibition by the Secretary of State'),
     date: faker.date.past(),
     notes: 'Banned from teaching.'
   },
   {
-    type: 'Failed induction',
+    type: restrictionTypes.find(type => type.label == 'Failed induction'),
     date: faker.date.past(),
     notes: 'Can only teach in organisations where the completion of induction is not a requirement.'
   },
   {
-    type: 'Prohibited by the Secretary of State or independent schools tribunal',
+    type: restrictionTypes.find(type => type.label == 'Prohibited by the Secretary of State or independent schools tribunal'),
     date: faker.date.past(),
     dateForReview: faker.date.future(),
     notes: 'Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only.'
@@ -49,8 +50,8 @@ const generateTeacher = (params = {}) => {
   ])
 
   if(teacher.hasProhibitions == 'Yes') {
-    teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-      prohibitions,
+    teacher.restrictions = _.get(params, 'restrictions') || faker.helpers.arrayElements(
+      restrictions,
       faker.datatype.number({min: 1, max: 2})
     )
   }

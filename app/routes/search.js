@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const allTeachers = require('../data/teachers.json')
+const restrictionTypes = require('../data/restriction-types.json')
 
 module.exports = router => {
 
@@ -9,7 +10,8 @@ module.exports = router => {
     })
 
     res.render('search/index', {
-      yourTeachers
+      yourTeachers,
+      restrictionTypes
     })
   })
 

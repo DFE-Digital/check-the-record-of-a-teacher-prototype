@@ -5,20 +5,9 @@
 {% set title = name %}
 
 {% block beforeContent %}
-  {# {{ govukBreadcrumbs({
-    items: [
-      {
-        text: 'Teachers',
-        href: '/teachers'
-      },
-      {
-        text: name
-      }
-    ]
-  }) }} #}
   {{ govukBackLink({
     text: "Back",
-    href: "/search"
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
@@ -52,88 +41,17 @@
           </h2>
         {% set inset %}
 
-          {# {% for prohibition in teacher.prohibitions %}
-            <h3 class="govuk-heading-s">
-              {{prohibition.type}}
-            </h3>
-            {{ govukSummaryList({
-              classes: 'govuk-!-margin-bottom-8' if not loop.last,
-              rows: [
-                {
-                  key: {
-                    text: "Date started"
-                  },
-                  value: {
-                    text: prohibition.date | date
-                  }
-                },
-                {
-                  key: {
-                    text: "Date for review"
-                  },
-                  value: {
-                    text: prohibition.dateForReview | date
-                  }
-                } if prohibition.dateForReview,
-                {
-                  key: {
-                    text: "Details"
-                  },
-                  value: {
-                    text: prohibition.notes
-                  }
-                } if prohibition.notes
-              ]
-            }) }}
-          {% endfor %} #}
-
-          {% for prohibition in teacher.prohibitions %}
+          {% for restriction in teacher.restrictions %}
             <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-0">
-              {{prohibition.type}}
+              {{restriction.type.label}}
             </h3>
             <p class="govuk-!-margin-bottom-1">
-             {{prohibition.date | date}}
-              {% if prohibition.dateForReview %}
-                (Will be reviewed {{prohibition.dateForReview | date}})
+             {{restriction.date | date}}
+              {% if restriction.dateForReview %}
+                (Will be reviewed {{restriction.dateForReview | date}})
               {% endif %}
             </p>
-            <p class="govuk-hint">{{prohibition.notes}}</p>
-
-            {# {% set prohibition %} #}
-              {# {{ govukSummaryList({
-                classes: 'govuk-!-margin-top-0',
-                rows: [
-                  {
-                    key: {
-                      text: "Date started"
-                    },
-                    value: {
-                      text: prohibition.date | date
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Date for review"
-                    },
-                    value: {
-                      text: prohibition.dateForReview | date
-                    }
-                  } if prohibition.dateForReview,
-                  {
-                    key: {
-                      text: "Details"
-                    },
-                    value: {
-                      text: prohibition.notes
-                    }
-                  } if prohibition.notes
-                ]
-              }) }} #}
-            {# {% endset %} #}
-            {# {{ govukInsetText({
-              classes: 'govuk-!-margin-top-2 app-inset-text--blue',
-              html: prohibition
-            }) }} #}
+            <p class="govuk-hint">{{restriction.notes}}</p>
           {% endfor %}
 
 

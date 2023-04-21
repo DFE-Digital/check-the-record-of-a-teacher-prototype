@@ -3,7 +3,7 @@
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start",
-    "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-teachers.js && node ./scripts/generate-users.js"
+    "generate-data": "node ./scripts/generate-restriction-types.js && node ./scripts/generate-organisations.js && node ./scripts/generate-teachers.js && node ./scripts/generate-users.js"
   },
   "dependencies": {
     "@faker-js/faker": "^7.4.0",

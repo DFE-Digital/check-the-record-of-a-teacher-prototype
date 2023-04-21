@@ -14,6 +14,7 @@ router.all('*', (req, res, next) => {
 require('./routes/account')(router)
 require('./routes/teachers')(router)
 require('./routes/search')(router)
+require('./routes/restricted-teachers')(router)
 
 router.get('/', (req, res) => {
   if(!req.session.data.user) {

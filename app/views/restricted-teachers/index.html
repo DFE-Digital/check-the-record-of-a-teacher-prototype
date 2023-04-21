@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% set title = restrictionType + ' (' + totalCount + ')' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-l">
+        Restricted teachers
+      </span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      {% if teachers.length == 0 %}
+        <p>No teachers found.</p>
+      {% else %}
+        <div class="app-list">
+          {% for teacher in teachers %}
+            <div class="app-list__item">
+
+              <h2 class="govuk-heading-s">
+                <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+              </h2>
+
+              {# {{ govukTag({
+                text: teacher.status,
+                classes: teacher.status | statusClass
+              }) if teacher.status != 'No restrictions' }} #}
+              {{ govukSummaryList({
+                classes: 'govuk-summary-list--no-border app-summary-list--compact',
+                rows: [
+                  {
+                    key: {
+                      text: "TRN"
+                    },
+                    value: {
+                      text: teacher.trn
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Organisation"
+                    },
+                    value: {
+                      text: teacher.organisation.name
+                    }
+                  } if teacher.organisation
+                ]
+              }) }}
+            </div>
+          {% endfor %}
+
+          {% if pagination.pageItems.length > 1%}
+
+            {{ govukPagination({
+              classes: 'govuk-!-margin-bottom-2',
+              previous: {
+                href: "#"
+              } if pagination.pageNumber > 1,
+              next: {
+                href: "#"
+              } if pagination.pageNumber < pagination.pageCount,
+              items: pagination.pageItems
+            })}}
+            <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
+          {% endif %}
+
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}
