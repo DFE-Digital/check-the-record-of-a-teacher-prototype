@@ -1,14 +1,18 @@
 [
   {
-    "id": "638987",
-    "label": "Interim prohibition by the Secretary of State"
+    "id": "341206",
+    "label": "Banned from teaching by the Secretary of State for Education"
   },
   {
-    "id": "206865",
-    "label": "Failed induction"
+    "id": "219334",
+    "label": "Failed induction or probation"
   },
   {
-    "id": "553132",
-    "label": "Prohibited by the Secretary of State or independent schools tribunal"
+    "id": "271025",
+    "label": "Sanctioned by the General Teaching Council for England (GTCE)"
+  },
+  {
+    "id": "406170",
+    "label": "Banned or restricted from managing independent schools"
   }
 ]

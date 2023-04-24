@@ -15,15 +15,19 @@ const generateRestrictionTypes = () => {
   const restrictionTypes = []
 
   restrictionTypes.push(generateRestrictionType({
-    label: "Interim prohibition by the Secretary of State"
+    label: "Banned from teaching by the Secretary of State for Education"
   }))
 
   restrictionTypes.push(generateRestrictionType({
-    label: "Failed induction"
+    label: "Failed induction or probation"
   }))
 
   restrictionTypes.push(generateRestrictionType({
-    label: "Prohibited by the Secretary of State or independent schools tribunal"
+    label: "Sanctioned by the General Teaching Council for England (GTCE)"
+  }))
+
+  restrictionTypes.push(generateRestrictionType({
+    label: "Banned or restricted from managing independent schools"
   }))
 
   return restrictionTypes

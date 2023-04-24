@@ -8,24 +8,27 @@ const restrictionTypes = require('../app/data/restriction-types.json')
 
 const restrictions = [
   {
-    type: restrictionTypes.find(type => type.label == 'Interim prohibition by the Secretary of State'),
+    type: restrictionTypes.find(type => type.label == 'Banned from teaching by the Secretary of State for Education'),
     date: faker.date.past(),
-    notes: 'Banned from teaching.'
+    notes: faker.helpers.arrayElement(['Banned from teaching.', 'Interim prohibition by the Secretary of State'])
   },
   {
-    type: restrictionTypes.find(type => type.label == 'Failed induction'),
+    type: restrictionTypes.find(type => type.label == 'Failed induction or probation'),
     date: faker.date.past(),
     notes: 'Can only teach in organisations where the completion of induction is not a requirement.'
   },
   {
-    type: restrictionTypes.find(type => type.label == 'Prohibited by the Secretary of State or independent schools tribunal'),
+    type: restrictionTypes.find(type => type.label == 'Sanctioned by the General Teaching Council for England (GTCE)'),
     date: faker.date.past(),
     dateForReview: faker.date.future(),
     notes: 'Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only.'
   },
+  {
+    type: restrictionTypes.find(type => type.label == 'Banned or restricted from managing independent schools'),
+    date: faker.date.past(),
+    notes: 'Section 128 barring direction'
+  }
 ]
-
-
 
 const generateTeacher = (params = {}) => {
   let teacher = {}
