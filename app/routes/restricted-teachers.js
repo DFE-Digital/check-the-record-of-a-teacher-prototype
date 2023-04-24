@@ -6,6 +6,10 @@ const restrictionTypes = require('../data/restriction-types.json')
 
 module.exports = router => {
 
+  router.get('/restricted-teachers/', (req, res) => {
+    res.redirect('/search')
+  })
+
   router.get('/restricted-teachers/:restrictionTypeId', (req, res) => {
     let teachers = allTeachers
     let restrictionType = restrictionTypes.find(type => type.id == req.params.restrictionTypeId).label

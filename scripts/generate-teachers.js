@@ -171,10 +171,12 @@ const generateTeachers = () => {
   const teachers = []
 
   teachers.push(generateTeacher({
+    trn: '1234567',
     yourTeacher: true
   }))
 
   teachers.push(generateTeacher({
+    trn: '1234568',
     yourTeacher: true
   }))
 

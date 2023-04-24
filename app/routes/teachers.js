@@ -31,6 +31,8 @@ module.exports = router => {
 
   router.get('/teachers', (req, res) => {
 
+    res.redirect('/search')
+
     let teachers = allTeachers
 
     teachers = teachers.map(decorateStatus)
