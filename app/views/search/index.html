@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% set title = 'Find a teacher record' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">{{title}}</h1>
+      <form method="post">
+
+        {{ govukInput({
+          id: "trn",
+          name: "trn",
+          label: {
+            text: "Teacher reference number (TRN)",
+            classes: 'govuk-label--'
+          },
+          classes: "govuk-input--width-20",
+          value: data.trn
+        }) }}
+
+        {{ govukButton({
+          text: "Search"
+        }) }}
+      </form>
+
+      {% if yourTeachers %}
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">
+          Teachers in your organisation
+        </h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+          {% for teacher in yourTeachers %}
+            <li>
+              <a href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Teachers with restrictions
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        {% for type in restrictionTypes %}
+          <li>
+            <a href="/restricted-teachers/{{type.id}}">{{type.label}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

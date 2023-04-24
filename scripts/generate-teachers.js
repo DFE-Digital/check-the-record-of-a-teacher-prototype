@@ -4,27 +4,31 @@ const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
 const organisations = require('../app/data/organisations.json')
+const restrictionTypes = require('../app/data/restriction-types.json')
 
-const prohibitions = [
+const restrictions = [
   {
-    type: 'Interim prohibition by the Secretary of State',
+    type: restrictionTypes.find(type => type.label == 'Banned from teaching by the Secretary of State for Education'),
     date: faker.date.past(),
-    notes: 'Banned from teaching.'
+    notes: faker.helpers.arrayElement(['Banned from teaching.', 'Interim prohibition by the Secretary of State'])
   },
   {
-    type: 'Failed induction',
+    type: restrictionTypes.find(type => type.label == 'Failed induction or probation'),
     date: faker.date.past(),
     notes: 'Can only teach in organisations where the completion of induction is not a requirement.'
   },
   {
-    type: 'Prohibited by the Secretary of State or independent schools tribunal',
+    type: restrictionTypes.find(type => type.label == 'Sanctioned by the General Teaching Council for England (GTCE)'),
     date: faker.date.past(),
     dateForReview: faker.date.future(),
     notes: 'Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only.'
   },
+  {
+    type: restrictionTypes.find(type => type.label == 'Banned or restricted from managing independent schools'),
+    date: faker.date.past(),
+    notes: 'Section 128 barring direction'
+  }
 ]
-
-
 
 const generateTeacher = (params = {}) => {
   let teacher = {}
@@ -49,13 +53,13 @@ const generateTeacher = (params = {}) => {
   ])
 
   if(teacher.hasProhibitions == 'Yes') {
-    teacher.prohibitions = _.get(params, 'prohibitions') || faker.helpers.arrayElements(
-      prohibitions,
+    teacher.restrictions = _.get(params, 'restrictions') || faker.helpers.arrayElements(
+      restrictions,
       faker.datatype.number({min: 1, max: 2})
     )
   }
 
-  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null))
+  teacher.organisation = _.get(params, 'organisation') || faker.helpers.arrayElement(organisations.concat(null, null, null, null, null, null, null, null, null, null, null, null))
 
   // QTS
   teacher.qts = _.get(params, 'qts') || {}
@@ -170,10 +174,12 @@ const generateTeachers = () => {
   const teachers = []
 
   teachers.push(generateTeacher({
+    trn: '1234567',
     yourTeacher: true
   }))
 
   teachers.push(generateTeacher({
+    trn: '1234568',
     yourTeacher: true
   }))
 

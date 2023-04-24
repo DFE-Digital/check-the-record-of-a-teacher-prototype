@@ -21,15 +21,7 @@ function decorateStatus(teacher) {
   teacher.status = 'No restrictions'
 
   if(teacher.hasProhibitions == 'Yes') {
-
-    if(teacher.prohibitions.find(prohibition => prohibition.type == 'Interim prohibition by the Secretary of State')) {
-      teacher.status = 'Restrictions'
-    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Failed induction')) {
-      teacher.status = 'Restrictions'
-    } else if(teacher.prohibitions.find(prohibition => prohibition.type == 'Prohibited by the Secretary of State or independent schools tribunal')) {
-      teacher.status = 'Restrictions'
-    }
-
+    teacher.status = 'Restrictions'
   }
 
   return teacher
@@ -38,6 +30,8 @@ function decorateStatus(teacher) {
 module.exports = router => {
 
   router.get('/teachers', (req, res) => {
+
+    res.redirect('/search')
 
     let teachers = allTeachers
 

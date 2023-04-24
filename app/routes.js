@@ -6,12 +6,15 @@ router.use(flash())
 
 router.all('*', (req, res, next) => {
   res.locals.user = req.session.data.user
+  res.locals.query = req.query
   res.locals.flash = req.flash('success')
   next()
 })
 
 require('./routes/account')(router)
 require('./routes/teachers')(router)
+require('./routes/search')(router)
+require('./routes/restricted-teachers')(router)
 
 router.get('/', (req, res) => {
   if(!req.session.data.user) {
