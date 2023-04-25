@@ -11,10 +11,6 @@ const removeFilter = (value, data) => {
   }
 }
 
-function hasCommonArrayValues(arr1, arr2) {
-  return arr1.some(item => arr2.includes(item))
-}
-
 function decorateStatus(teacher) {
   teacher = _.clone(teacher)
 
@@ -31,7 +27,7 @@ module.exports = router => {
 
   router.get('/teachers', (req, res) => {
 
-    res.redirect('/search')
+    // res.redirect('/search')
 
     let teachers = allTeachers
 
