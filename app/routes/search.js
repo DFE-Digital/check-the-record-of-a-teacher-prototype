@@ -21,8 +21,6 @@ module.exports = router => {
     let teacher
     if(trn) {
       teacher = teachers.find(teacher => {
-        console.log(teacher.trn)
-        console.log(trn)
         return teacher.trn == trn
       })
     }

@@ -175,12 +175,24 @@ const generateTeachers = () => {
 
   teachers.push(generateTeacher({
     trn: '1234567',
-    yourTeacher: true
+    yourTeacher: false,
+    hasProhibitions: 'No'
   }))
 
   teachers.push(generateTeacher({
     trn: '1234568',
-    yourTeacher: true
+    yourTeacher: false,
+    hasProhibitions: 'Yes'
+  }))
+
+  teachers.push(generateTeacher({
+    yourTeacher: true,
+    hasProhibitions: 'No'
+  }))
+
+  teachers.push(generateTeacher({
+    yourTeacher: true,
+    hasProhibitions: 'Yes'
   }))
 
   for(let i = 0; i < 101; i++) {
