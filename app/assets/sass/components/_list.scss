@@ -27,6 +27,12 @@
     margin-bottom: 0;
   }
 
+  .govuk-list {
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   .govuk-summary-list__key, .govuk-summary-list__value {
     padding-bottom: govuk-spacing(0);
   }

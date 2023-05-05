@@ -1,11 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Restricted teachers' + ' (' + totalCount + ')' %}
+{% set title = restrictionType + ' (' + totalCount + ')' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Start again",
-    href: "/search"
+    text: "Back",
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
@@ -13,6 +13,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-l">
+        Restricted teachers
+      </span>
       <h1 class="govuk-heading-l">{{title}}</h1>
 
       {% if teachers.length == 0 %}
@@ -26,17 +29,10 @@
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
               </h2>
 
-              {% set restrictions %}
-                <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
-                  {% for restriction in teacher.restrictions %}
-                    <li>
-                      {{restriction.type.label}}
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endset %}
-
-
+              {# {{ govukTag({
+                text: teacher.status,
+                classes: teacher.status | statusClass
+              }) if teacher.status != 'No restrictions' }} #}
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
@@ -50,12 +46,12 @@
                   },
                   {
                     key: {
-                      text: "Restrictions"
+                      text: "Organisation"
                     },
                     value: {
-                      html: restrictions
+                      text: teacher.organisation.name
                     }
-                  }
+                  } if teacher.organisation
                 ]
               }) }}
             </div>

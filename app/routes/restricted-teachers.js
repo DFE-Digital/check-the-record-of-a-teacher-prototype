@@ -7,7 +7,18 @@ const restrictionTypes = require('../data/restriction-types.json')
 module.exports = router => {
 
   router.get('/restricted-teachers/', (req, res) => {
-    res.redirect('/search')
+    let teachers = allTeachers
+    teachers = teachers
+      .filter(teacher => teacher.hasProhibitions == 'Yes')
+    let totalCount = teachers.length
+    let pagination = PaginationHelper.getPagination(teachers, req.query.page, 25)
+    teachers = PaginationHelper.getDataByPage(teachers, pagination.pageNumber, 25)
+
+    res.render('restricted-teachers/index', {
+      teachers,
+      totalCount,
+      pagination
+    })
   })
 
   router.get('/restricted-teachers/:restrictionTypeId', (req, res) => {
