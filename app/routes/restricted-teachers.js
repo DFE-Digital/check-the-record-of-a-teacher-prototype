@@ -12,11 +12,12 @@ module.exports = router => {
     teachers = teachers
       .filter(teacher => teacher.hasProhibitions == 'Yes')
 
-    let teacherName = _.get(req.session.data, 'teacherName').toLowerCase()
-    if(teacherName) {
+    let searchValue = _.get(req.session.data, 'teacherName')
+    if(searchValue) {
       teachers = teachers.filter(teacher => {
+        searchValue = searchValue.toLowerCase()
         let name = (teacher.firstName + ' ' + teacher.lastName).toLowerCase()
-        return (name).indexOf(teacherName) > -1
+        return (name).indexOf(searchValue) > -1
       })
     }
 
