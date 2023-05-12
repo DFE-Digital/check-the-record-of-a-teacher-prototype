@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Find a teacher record' %}
+{% set title = 'Find teacher' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -12,19 +12,42 @@
           id: "trn",
           name: "trn",
           label: {
-            text: "Teacher reference number (TRN)",
-            classes: 'govuk-label--'
+            text: "Teacher reference number (TRN)"
           },
           classes: "govuk-input--width-20",
           value: data.trn
         }) }}
+
+        {# {{ govukInput({
+          id: "name",
+          name: "name",
+          label: {
+            text: "Name of teacher"
+          },
+          classes: "govuk-input--width-20",
+          value: data.name
+        }) }} #}
 
         {{ govukButton({
           text: "Search"
         }) }}
       </form>
 
-      {% if yourTeachers %}
+      <p><a href="/restricted-teachers">Restricted teachers</a></p>
+
+      {# <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Teachers with restrictions
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        {% for type in restrictionTypes %}
+          <li>
+            <a href="/restricted-teachers/{{type.id}}">{{type.label}}</a>
+          </li>
+        {% endfor %}
+      </ul> #}
+
+      {# {% if yourTeachers %}
         <h2 class="govuk-heading-m govuk-!-margin-top-6">
           Teachers in your organisation
         </h2>
@@ -36,19 +59,7 @@
             </li>
           {% endfor %}
         </ul>
-      {% endif %}
-
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
-        Teachers with restrictions
-      </h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        {% for type in restrictionTypes %}
-          <li>
-            <a href="/restricted-teachers/{{type.id}}">{{type.label}}</a>
-          </li>
-        {% endfor %}
-      </ul>
+      {% endif %} #}
 
     </div>
   </div>

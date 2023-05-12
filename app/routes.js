@@ -20,6 +20,6 @@ router.get('/', (req, res) => {
   if(!req.session.data.user) {
     res.redirect('/account/sign-in')
   } else {
-    res.redirect('/teachers')
+    res.redirect('/search')
   }
 })

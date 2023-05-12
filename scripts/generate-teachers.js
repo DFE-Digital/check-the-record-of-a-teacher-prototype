@@ -195,7 +195,7 @@ const generateTeachers = () => {
     hasProhibitions: 'Yes'
   }))
 
-  for(let i = 0; i < 101; i++) {
+  for(let i = 0; i < 1001; i++) {
     teachers.push(generateTeacher())
   }
   return teachers

@@ -1,11 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Restricted teachers' + ' (' + totalCount + ')' %}
+{% set title = restrictionType + ' (' + totalCount + ')' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Start again",
-    href: "/search"
+    text: "Back",
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
@@ -13,33 +13,10 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-l">
+        Restricted teachers
+      </span>
       <h1 class="govuk-heading-l">{{title}}</h1>
-
-      <div class="app-search-for govuk-!-margin-bottom-6">
-        {{ appSearch({
-          label: {
-            text: 'Search by teacher name',
-            classes: 'govuk-label--'
-          },
-          input: {
-            id: 'teacherName',
-            name: 'teacherName',
-            value: data.teacherName
-          },
-          action: '/restricted-teachers',
-          buttons: [{
-            text: 'Search',
-            classes: 'app-search__button'
-          }],
-          classes: 'govuk-!-margin-bottom-2' if not data.teacherName
-        }) }}
-
-        {% if data.teacherName %}
-          <p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-0">
-            <a class="govuk-link govuk-link--no-visited-state" href="/restricted-teachers/clear-search">Clear search</a>
-          </p>
-        {% endif %}
-        </div>
 
       {% if teachers.length == 0 %}
         <p>No teachers found.</p>
@@ -52,17 +29,10 @@
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
               </h2>
 
-              {% set restrictions %}
-                <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
-                  {% for restriction in teacher.restrictions %}
-                    <li>
-                      {{restriction.type.label}}
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endset %}
-
-
+              {# {{ govukTag({
+                text: teacher.status,
+                classes: teacher.status | statusClass
+              }) if teacher.status != 'No restrictions' }} #}
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
@@ -76,12 +46,12 @@
                   },
                   {
                     key: {
-                      text: "Restrictions"
+                      text: "Organisation"
                     },
                     value: {
-                      html: restrictions
+                      text: teacher.organisation.name
                     }
-                  }
+                  } if teacher.organisation
                 ]
               }) }}
             </div>
