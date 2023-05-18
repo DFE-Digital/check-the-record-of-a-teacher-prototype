@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Restricted teachers' + ' (' + totalCount + ')' %}
+{% set title = 'Restricted teachers found ' + '(' + totalCount + ')' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,32 +14,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">{{title}}</h1>
-
-      <div class="app-search-for govuk-!-margin-bottom-6">
-        {{ appSearch({
-          label: {
-            text: 'Search by teacher name',
-            classes: 'govuk-label--'
-          },
-          input: {
-            id: 'teacherName',
-            name: 'teacherName',
-            value: data.teacherName
-          },
-          action: '/restricted-teachers',
-          buttons: [{
-            text: 'Search',
-            classes: 'app-search__button'
-          }],
-          classes: 'govuk-!-margin-bottom-2' if not data.teacherName
-        }) }}
-
-        {% if data.teacherName %}
-          <p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-0">
-            <a class="govuk-link govuk-link--no-visited-state" href="/restricted-teachers/clear-search">Clear search</a>
-          </p>
-        {% endif %}
-        </div>
 
       {% if teachers.length == 0 %}
         <p>No teachers found.</p>
@@ -72,6 +46,14 @@
                     },
                     value: {
                       text: teacher.trn
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Date of birth"
+                    },
+                    value: {
+                      text: teacher.dob | date
                     }
                   },
                   {

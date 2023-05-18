@@ -5,7 +5,7 @@
 {% block content %}
   <h1 class="govuk-heading-l">{{title}}</h1>
 
-  <div class="app-filter-layout">
+  {# <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
       {% include "_includes/filter-panel.njk" %}
     </div>
@@ -13,9 +13,9 @@
     <div class="app-filter-layout__content">
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
-      </div>
+      </div> #}
 
-      {% include "_includes/search-form.njk" %}
+      {# {% include "_includes/search-form.njk" %} #}
 
       {% if teachers.length == 0 %}
         <p>No teachers found.</p>
@@ -46,6 +46,14 @@
                   },
                   {
                     key: {
+                      text: "Date of birth"
+                    },
+                    value: {
+                      text: teacher.dob | date
+                    }
+                  },
+                  {
+                    key: {
                       text: "Organisation"
                     },
                     value: {
@@ -71,7 +79,7 @@
 
         </div>
       {% endif %}
-    </div>
-  </div>
+    {# </div>
+  </div> #}
 
 {% endblock %}

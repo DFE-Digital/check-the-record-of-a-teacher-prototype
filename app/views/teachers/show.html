@@ -26,7 +26,7 @@
         {{ govukTag({
           text: teacher.status,
           classes: teacher.status | statusClass
-        }) if teacher.status != 'No restrictions' }}
+        }) }}
       </h1>
 
       {% if user.organisation.name == teacher.organisation.name %}
@@ -83,12 +83,20 @@
           },
           {
             key: {
-              text: "Email address"
+              text: "Date of birth"
             },
             value: {
-              text: teacher.emailAddress
+              text: teacher.dob | date
             }
-          }
+          },
+          {
+            key: {
+              text: "Previous last name"
+            },
+            value: {
+              text: teacher.previousLastName
+            }
+          } if teacher.previousLastName
         ]
       }) }}
 

@@ -1,12 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 const faker =  require('@faker-js/faker').faker
-faker.setLocale('en_GB');
 const _ = require('lodash');
 
 const generateRestrictionType = (params = {}) => {
   let restrictionType = {}
-  restrictionType.id = _.get(params, 'id') || ('' + faker.datatype.number({min: 123456, max: 999999}))
+  restrictionType.id = _.get(params, 'id') || ('' + faker.number.int({min: 123456, max: 999999}))
   restrictionType.label = _.get(params, 'label')
   return restrictionType
 }
@@ -24,10 +23,6 @@ const generateRestrictionTypes = () => {
 
   restrictionTypes.push(generateRestrictionType({
     label: "Sanctioned by the General Teaching Council for England (GTCE)"
-  }))
-
-  restrictionTypes.push(generateRestrictionType({
-    label: "Banned or restricted from managing independent schools"
   }))
 
   return restrictionTypes
