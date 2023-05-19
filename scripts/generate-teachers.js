@@ -195,7 +195,16 @@ const generateTeachers = () => {
 
   teachers.push(generateTeacher({
     yourTeacher: true,
-    hasProhibitions: 'Yes'
+    hasProhibitions: 'Yes',
+    lastName: 'Culpan',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
+  }))
+
+  teachers.push(generateTeacher({
+    yourTeacher: true,
+    hasProhibitions: 'No',
+    lastName: 'Silver',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
   }))
 
   for(let i = 0; i < 1001; i++) {

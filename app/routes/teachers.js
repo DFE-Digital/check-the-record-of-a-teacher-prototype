@@ -21,7 +21,7 @@ module.exports = router => {
     let searchLastName = _.get(req.session.data, 'lastName')
 
     if(!searchLastName) {
-      res.redirect('/search')
+      res.redirect('/')
       return
     }
 

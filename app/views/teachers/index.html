@@ -3,16 +3,11 @@
 {% set title = 'Records found (' + totalCount + ')' %}
 
 {% block beforeContent %}
-  {# {{ govukBackLink({
-    text: "Search",
-    href: "/search"
-  }) }} #}
-
   {{ govukBreadcrumbs({
     items: [
       {
         text: "Search",
-        href: "/search"
+        href: "/"
       },
       {
         text: "Records found"
