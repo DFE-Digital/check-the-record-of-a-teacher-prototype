@@ -1,6 +1,5 @@
 const _ = require('lodash');
 const allTeachers = require('../data/teachers.json')
-const restrictionTypes = require('../data/restriction-types.json')
 
 module.exports = router => {
 
@@ -9,6 +8,13 @@ module.exports = router => {
     //   return teacher.organisation && teacher.organisation.name == req.session.data.user.organisation.name
     // })
 
-    res.render('index')
+    if(req.session.data.user) {
+      res.render('index')
+      return
+    } else {
+      res.redirect('/account/sign-in')
+    }
+
+
   })
 }
