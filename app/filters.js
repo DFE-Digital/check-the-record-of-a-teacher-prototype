@@ -74,6 +74,8 @@ function statusClass(text) {
       return 'govuk-tag--red'
     case 'Restrictions':
       return 'govuk-tag--red'
+    case 'No restrictions':
+      return 'govuk-tag--green'
   }
 }
 addFilter('statusClass', statusClass)

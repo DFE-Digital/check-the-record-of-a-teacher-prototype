@@ -23,7 +23,7 @@ module.exports = router => {
     if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
     } else {
-      res.redirect('/search')
+      res.redirect('/')
     }
   })
 

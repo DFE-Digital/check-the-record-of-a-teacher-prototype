@@ -1,10 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 const faker =  require('@faker-js/faker').faker
-faker.setLocale('en_GB');
+// faker.setLocale('en_GB');
 const _ = require('lodash');
 const organisations = require('../app/data/organisations.json')
-const restrictionTypes = require('../app/data/restriction-types.json')
+const restrictionTypes = require('../app/data/restriction-types.json');
+const { DateTime } = require('luxon');
 
 const restrictions = [
   {
@@ -22,21 +23,23 @@ const restrictions = [
     date: faker.date.past(),
     dateForReview: faker.date.future(),
     notes: 'Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only.'
-  },
-  {
-    type: restrictionTypes.find(type => type.label == 'Banned or restricted from managing independent schools'),
-    date: faker.date.past(),
-    notes: 'Section 128 barring direction'
   }
 ]
 
 const generateTeacher = (params = {}) => {
   let teacher = {}
-  teacher.id = _.get(params, 'id') || ('' + faker.datatype.number({min: 123456, max: 999999}))
-  teacher.firstName = _.get(params, 'firstName') || faker.name.firstName()
-  teacher.lastName = _.get(params, 'lastName') || faker.name.lastName()
-  teacher.trn = _.get(params, 'trn') || ('' + faker.datatype.number({min: 1000000, max: 9999999}))
+  teacher.id = _.get(params, 'id') || ('' + faker.number.int({min: 123456, max: 999999}))
+  teacher.firstName = _.get(params, 'firstName') || faker.person.firstName()
+  teacher.lastName = _.get(params, 'lastName') || faker.person.lastName()
+  teacher.trn = _.get(params, 'trn') || ('' + faker.number.int({min: 1000000, max: 9999999}))
   teacher.emailAddress = _.get(params, 'emailAddress') || `${teacher.firstName.toLowerCase()}.${teacher.lastName.toLowerCase()}@gmail.com`;
+
+  let refDate = DateTime.fromObject({ day: 1, month: 1, year: 2000 }).toISO()
+
+  teacher.dob = _.get(params, 'dob') || faker.date.past({ refDate: refDate })
+  if(faker.helpers.arrayElement(true, false)) {
+    teacher.previousLastName = _.get(params, 'previousLastName') || faker.person.lastName()
+  }
 
   teacher.hasProhibitions = _.get(params, 'hasProhibitions') || faker.helpers.arrayElement([
     'Yes',
@@ -55,7 +58,7 @@ const generateTeacher = (params = {}) => {
   if(teacher.hasProhibitions == 'Yes') {
     teacher.restrictions = _.get(params, 'restrictions') || faker.helpers.arrayElements(
       restrictions,
-      faker.datatype.number({min: 1, max: 2})
+      faker.number.int({min: 1, max: 2})
     )
   }
 
@@ -192,7 +195,16 @@ const generateTeachers = () => {
 
   teachers.push(generateTeacher({
     yourTeacher: true,
-    hasProhibitions: 'Yes'
+    hasProhibitions: 'Yes',
+    lastName: 'Culpan',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
+  }))
+
+  teachers.push(generateTeacher({
+    yourTeacher: true,
+    hasProhibitions: 'No',
+    lastName: 'Silver',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
   }))
 
   for(let i = 0; i < 1001; i++) {
