@@ -1,24 +1,33 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Teachers (' + totalCount + ')' %}
+{% set title = 'Records found (' + totalCount + ')' %}
+
+{% block beforeContent %}
+  {# {{ govukBackLink({
+    text: "Search",
+    href: "/search"
+  }) }} #}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Search",
+        href: "/search"
+      },
+      {
+        text: "Records found"
+      }
+    ]
+  }) }}
+{% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-l">{{title}}</h1>
-
-  {# <div class="app-filter-layout">
-    <div class="app-filter-layout__filter">
-      {% include "_includes/filter-panel.njk" %}
-    </div>
-
-    <div class="app-filter-layout__content">
-      <div class="app-action-bar">
-        <div class="app-action-bar__filter"></div>
-      </div> #}
-
-      {# {% include "_includes/search-form.njk" %} #}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">{{title}}</h1>
 
       {% if teachers.length == 0 %}
-        <p>No teachers found.</p>
+        <p>No teachers found. <a href="/search">Try another search</a></p>
       {% else %}
         <div class="app-list">
 
@@ -29,10 +38,20 @@
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
               </h2>
 
+              {% set restrictions %}
+                <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
+                  {% for restriction in teacher.restrictions %}
+                    <li>
+                      {{restriction.type.label}}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endset %}
+
               {{ govukTag({
                 text: teacher.status,
                 classes: teacher.status | statusClass
-              }) if teacher.status != 'No restrictions' }}
+              }) }}
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
@@ -54,32 +73,34 @@
                   },
                   {
                     key: {
-                      text: "Organisation"
+                      text: "Restrictions"
                     },
                     value: {
-                      text: teacher.organisation.name
+                      html: restrictions
                     }
-                  } if teacher.organisation
+                  } if teacher.restrictions.length
                 ]
               }) }}
             </div>
           {% endfor %}
 
-          {{ govukPagination({
-            classes: 'govuk-!-margin-bottom-2',
-            previous: {
-              href: "#"
-            } if pagination.pageNumber > 1,
-            next: {
-              href: "#"
-            } if pagination.pageNumber < pagination.pageCount,
-            items: pagination.pageItems
-          }) }}
-          <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
+
+          {% if pagination.pageItems.length > 1 %}
+            {{ govukPagination({
+              classes: 'govuk-!-margin-bottom-2',
+              previous: {
+                href: "#"
+              } if pagination.pageNumber > 1,
+              next: {
+                href: "#"
+              } if pagination.pageNumber < pagination.pageCount,
+              items: pagination.pageItems
+            }) }}
+            <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
+          {% endif %}
 
         </div>
       {% endif %}
-    {# </div>
-  </div> #}
-
+    </div>
+  </div>
 {% endblock %}

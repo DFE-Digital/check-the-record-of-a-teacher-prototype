@@ -10,26 +10,7 @@ module.exports = router => {
     })
 
     res.render('search/index', {
-      yourTeachers,
-      restrictionTypes
+      yourTeachers
     })
   })
-
-  router.post('/search', (req, res) => {
-    let trn =_.get(req.session.data, 'trn')
-    let teachers = allTeachers
-    let teacher
-    if(trn) {
-      teacher = teachers.find(teacher => {
-        return teacher.trn == trn
-      })
-    }
-
-    if(teacher) {
-      res.redirect(`/teachers/${teacher.id}`)
-    } else {
-      res.redirect(`/search/notfound`)
-    }
-  })
-
 }

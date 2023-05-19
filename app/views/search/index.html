@@ -1,34 +1,13 @@
 {% extends "layouts/main.html" %}
 
 {% set title = serviceName %}
+{% set title = 'Find teacher record' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">{{title}}</h1>
-
-      <h2 class="govuk-heading-m">Find teacher record</h2>
-      <form method="post">
-        {{ govukInput({
-          id: "trn",
-          name: "trn",
-          label: {
-            text: "Teacher reference number (TRN)",
-            classes: 'govuk-label--s'
-          },
-          classes: "govuk-input--width-20",
-          value: data.trn
-        }) }}
-        {{ govukButton({
-          text: "Find teacher record"
-        }) }}
-      </form>
-
-      <hr>
-      <br>
-
-      <h2 class="govuk-heading-m">Search restricted teachers</h2>
-      <form method="get" action="/restricted-teachers">
+      <form method="get" action="/teachers">
         {{ govukInput({
             id: "lastName",
             name: "lastName",
@@ -70,133 +49,10 @@
             ]
           }) }}
         {{ govukButton({
-          text: "Search restricted teachers"
+          text: "Search restricted teachers",
+          text: "Find record"
         }) }}
       </form>
-
-      {# <p><a href="/restricted-teachers">Restricted teachers</a></p> #}
-
-      {# <h2 class="govuk-heading-m govuk-!-margin-top-6">
-        Teachers with restrictions
-      </h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        {% for type in restrictionTypes %}
-          <li>
-            <a href="/restricted-teachers/{{type.id}}">{{type.label}}</a>
-          </li>
-        {% endfor %}
-      </ul> #}
-
-      {# {% if yourTeachers %}
-        <h2 class="govuk-heading-m govuk-!-margin-top-6">
-          Teachers in your organisation
-        </h2>
-
-        <ul class="govuk-list govuk-list--bullet">
-          {% for teacher in yourTeachers %}
-            <li>
-              <a href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %} #}
-
-      {# <form method="get" action="/search">
-
-        {% set trn %}
-          {{ govukInput({
-            id: "trn",
-            name: "trn",
-            label: {
-              text: "TRN",
-              classes: 'govuk-label--s'
-            },
-            classes: "govuk-input--width-20",
-            value: data.trn
-          }) }}
-        {% endset %}
-        {% set name %}
-          {{ govukInput({
-            id: "teacherName",
-            name: "teacherName",
-            label: {
-              text: "Teacher name",
-              classes: 'govuk-label--s'
-            },
-            classes: "govuk-input--width-20",
-            value: data.teacherName
-          }) }}
-
-          {{ govukDateInput({
-            id: "date",
-            namePrefix: "date",
-            fieldset: {
-              legend: {
-                text: "Date of birth",
-                classes: 'govuk-fieldset__legend--s'
-              }
-            },
-            items: [
-              {
-                name: "day",
-                label: "Day",
-                classes: "govuk-input--width-2"
-              },
-              {
-                name: "month",
-                label: "Month",
-                classes: "govuk-input--width-2"
-              },
-              {
-                name: "year",
-                label: "Year",
-                classes: "govuk-input--width-4"
-              }
-            ]
-          }) }}
-        {% endset %}
-
-        {{ govukRadios({
-          idPrefix: "option",
-          name: "option",
-          fieldset: {
-            legend: {
-              text: "Find record by teacher reference number (TRN) or name and date of birth",
-              text: "Search by teacher reference number (TRN) or name and date of birth",
-              classes: "govuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          },
-          items: [
-            {
-              value: "TRN",
-              text: "TRN",
-              hint: {
-                text: ''
-              },
-              conditional: {
-                html: trn
-              }
-            },
-            {
-              value: "Name and date of birth",
-              text: "Name and date of birth",
-              conditional: {
-                html: name
-              }
-            }
-          ]
-        }) }}
-
-        {{ govukButton({
-          text: "Search"
-        }) }}
-
-      </form> #}
-
-
-
     </div>
   </div>
 

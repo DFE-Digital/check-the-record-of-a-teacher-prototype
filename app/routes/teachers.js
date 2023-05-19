@@ -1,15 +1,7 @@
 const _ = require('lodash');
+const { DateTime } = require('luxon')
 const PaginationHelper = require('../helpers/pagination')
 const allTeachers = require('../data/teachers.json')
-
-
-const removeFilter = (value, data) => {
-  if(Array.isArray(data)) {
-    return data.filter(item => item !== value)
-  } else {
-    return null
-  }
-}
 
 function decorateStatus(teacher) {
   teacher = _.clone(teacher)
@@ -24,111 +16,47 @@ function decorateStatus(teacher) {
 }
 
 module.exports = router => {
-
   router.get('/teachers', (req, res) => {
-
-    // res.redirect('/search')
-
     let teachers = allTeachers
+    let searchLastName = _.get(req.session.data, 'lastName')
 
-    teachers = teachers.map(decorateStatus)
-
-    // Search by TRN
-    let trn =_.get(req.session.data, 'trn')
-    if(trn) {
-      teachers = teachers.filter(teacher => teacher.trn == trn)
+    if(!searchLastName) {
+      res.redirect('/search')
+      return
     }
 
-    // Filters
-    let organisations = _.get(req.session.data.filters, 'organisations')
-    let statuses = _.get(req.session.data.filters, 'statuses')
-    let hasFilters = _.get(statuses, 'length') || _.get(organisations, 'length')
-
-    let selectedFilters = {
-      categories: []
-    }
-
-    if(hasFilters) {
+    searchLastName = searchLastName.toLowerCase()
+    let searchDay = parseInt(_.get(req.session.data, 'day'), 10)
+    let searchMonth = parseInt(_.get(req.session.data, 'month'), 10)
+    let searchYear = parseInt(_.get(req.session.data, 'year'), 10)
+    let searchDate = DateTime.fromObject({
+      day: searchDay,
+      month: searchMonth,
+      year: searchYear
+    })
+    if(searchLastName) {
       teachers = teachers.filter(teacher => {
-        let organisationsValid = true
-        let statusesValid = true
-
-        if(statuses) {
-          statusesValid = statuses.includes(teacher.status)
-        }
-
-        if(organisations) {
-          if(organisations.includes('Your organisation')) {
-            organisationsValid = teacher.organisation && teacher.organisation.name == req.session.data.user.organisation.name
-          }
-          if(organisations.includes('Other organisation')) {
-            organisationsValid = teacher.organisation && teacher.organisation.name != req.session.data.user.organisation.name
-          }
-          if(organisations.includes('No organisation')) {
-            organisationsValid = !teacher.organisation
-          }
-        }
-
-        return statusesValid && organisationsValid
+        let name = teacher.lastName.toLowerCase()
+        return (name).indexOf(searchLastName) > -1
       })
-
-      if(_.get(organisations, 'length')) {
-        selectedFilters.categories.push({
-          heading: { text: 'Organisation' },
-          items: organisations.map(organisation => {
-            return {
-              text: organisation,
-              href: `/teachers/remove-organisation/${organisation}`
-            }
-          })
-        })
-      }
-
-      if(_.get(statuses, 'length')) {
-        selectedFilters.categories.push({
-          heading: { text: 'Status' },
-          items: statuses.map(status => {
-            return {
-              text: status,
-              href: `/teachers/remove-status/${status}`
-            }
-          })
-        })
-      }
+      teachers = teachers.filter(teacher => {
+        let date1 = DateTime.fromISO(teacher.dob)
+        let date2 = searchDate
+        return date1.hasSame(date2, "day") && date1.hasSame(date2, "month") && date1.hasSame(date2, "year")
+      })
     }
 
-    // Pagination
     let totalCount = teachers.length
     let pagination = PaginationHelper.getPagination(teachers, req.query.page, 25)
     teachers = PaginationHelper.getDataByPage(teachers, pagination.pageNumber, 25)
 
+    teachers = teachers.map(decorateStatus)
+
     res.render('teachers/index', {
       teachers,
-      selectedFilters,
       totalCount,
       pagination
     })
-  })
-
-  router.get('/teachers/clear-search', (req, res) => {
-    req.session.data.trn = ''
-    res.redirect('/teachers')
-  })
-
-  router.get('/teachers/remove-organisation/:organisation', (req, res) => {
-    req.session.data.filters.organisations = removeFilter(req.params.organisation, req.session.data.filters.organisations)
-    res.redirect('/teachers')
-  })
-
-  router.get('/teachers/remove-status/:status', (req, res) => {
-    req.session.data.filters.statuses = removeFilter(req.params.status, req.session.data.filters.statuses)
-    res.redirect('/teachers')
-  })
-
-  router.get('/teachers/clear-filters', (req, res) => {
-    _.set(req.session.data.filters, 'organisations', null)
-    _.set(req.session.data.filters, 'statuses', null)
-    res.redirect('/teachers')
   })
 
   router.get('/teachers/:id', (req, res) => {
@@ -139,6 +67,7 @@ module.exports = router => {
       teacher
     })
   })
+
 
   router.get('/teachers/:id/add', (req, res) => {
     let teacher = allTeachers
