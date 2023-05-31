@@ -28,7 +28,8 @@ module.exports = router => {
   })
 
   router.get('/account/sign-out', (req, res) => {
-    res.locals.user = req.session.data.user = null
+    // res.locals.user = req.session.data.user = null
+    req.session.data = null
     res.redirect('/')
   })
 
