@@ -194,14 +194,26 @@ const generateTeachers = () => {
   }))
 
   teachers.push(generateTeacher({
-    yourTeacher: true,
+    hasProhibitions: 'Yes',
+    firstName: 'Nancy',
+    lastName: 'Hughes',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
+  }))
+
+  teachers.push(generateTeacher({
+    hasProhibitions: 'No',
+    firstName: 'Nancy',
+    lastName: 'Hughes',
+    dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
+  }))
+
+  teachers.push(generateTeacher({
     hasProhibitions: 'Yes',
     lastName: 'Culpan',
     dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
   }))
 
   teachers.push(generateTeacher({
-    yourTeacher: true,
     hasProhibitions: 'No',
     lastName: 'Silver',
     dob: DateTime.fromObject({day: 1, month: 1, year: 1999 })
