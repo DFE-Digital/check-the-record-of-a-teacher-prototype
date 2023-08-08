@@ -44,3 +44,13 @@ h1 .govuk-tag {
 .app-inset-text--red {
   border-color:govuk-colour('red');
 }
+
+// @include govuk-media-query($from: tablet) {
+//   .govuk-header__logo {
+//     width: 60%;
+//   }
+
+//   .govuk-header__content {
+//     width: 40%;
+//   }
+// }
