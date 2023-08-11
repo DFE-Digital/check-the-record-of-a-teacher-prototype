@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+{% set title = "Give feedback about checking the record of a teacher" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <form method="get" action="/feedback/confirmation">
+
+        {{ govukRadios({
+          idPrefix: "[feedback][satisfaction]",
+          name: "[feedback][satisfaction]",
+          fieldset: {
+            legend: {
+              text: "How satisifed are you with the service?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Very satisfied",
+              text: "Very satisfied"
+            }
+            ,
+            {
+              value: "Satisfied",
+              text: "Satisfied"
+            }
+            ,
+            {
+              value: "Neither satisfied or dissatisfied",
+              text: "Neither satisfied or dissatisfied"
+            }
+            ,
+            {
+              value: "Dissatisifed",
+              text: "Dissatisifed"
+            }
+            ,
+            {
+              value: "Very dissatisfied",
+              text: "Very dissatisfied"
+            }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          id: "[feedback][improve]",
+          name: "[feedback][improve]",
+          label: {
+            text: "How can we improve the service?",
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {% set emailAddress %}
+          {{ govukInput({
+            id: "[feedback][emailAddress]",
+            name: "[feedback][emailAddress]",
+            label: {
+              text: "Email address",
+              classes: 'govuk-label--s'
+            }
+          }) }}
+
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "[feedback][contact]",
+          name: "[feedback][contact]",
+          fieldset: {
+            legend: {
+              text: "Can we contact you about your feedback?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: emailAddress
+              }
+            }
+            ,
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Send feedback"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
