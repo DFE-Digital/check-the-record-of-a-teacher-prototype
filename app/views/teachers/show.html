@@ -32,7 +32,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
         {{title}}
         {{ govukTag({
           text: teacher.status,
@@ -40,11 +40,11 @@
         }) }}
       </h1>
 
-      {% if user.organisation.name == teacher.organisation.name %}
+      {# {% if user.organisation.name == teacher.organisation.name %}
         <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
       {% else %}
         <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
-      {% endif %}
+      {% endif %} #}
 
       {% if teacher.hasProhibitions == 'Yes' %}
           <h2 class="govuk-heading-m">
