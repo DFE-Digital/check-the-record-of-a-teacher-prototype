@@ -4,7 +4,6 @@
 //
 
 // components
-@import "../../views/_components/summary-list/summary-list.scss";
 @import "../../views/_components/search-form/search-form.scss";
 @import "../../views/_components/search/search.scss";
 @import "../../views/_components/primary-navigation/primary-navigation.scss";
@@ -44,13 +43,3 @@ h1 .govuk-tag {
 .app-inset-text--red {
   border-color:govuk-colour('red');
 }
-
-// @include govuk-media-query($from: tablet) {
-//   .govuk-header__logo {
-//     width: 60%;
-//   }
-
-//   .govuk-header__content {
-//     width: 40%;
-//   }
-// }
