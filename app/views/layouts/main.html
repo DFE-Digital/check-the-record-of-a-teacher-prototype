@@ -8,10 +8,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% from "_components/search/macro.njk" import appSearch %}
 {% from "_components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 
-{% block pageTitle %}
-  {{title}} – {{serviceName}} – GOV.UK
-{% endblock %}
-
 {% block header %}
   {% include "_includes/header.njk" %}
   {{ govukPhaseBanner({
