@@ -1,19 +1,19 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Sign in' %}
+{% set pageName = 'Sign in to check a teacher’s record' %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">Sign in</h1>
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
 
       <p>A teacher's record shows their qualifications. It also shows if:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>they failed their induction or probation</li>
-        <li>they have been banned from teaching by the Secretary of State for Education</li>
-        <li>they have been sanctioned by the General Teaching Council for England (GTCE)</li>
-        <li>someone with the teacher's last name and date of birth is on the Children’s Barred List</li>
+        <li>they’re prevented from teaching by a prohibition order</li>
+        <li>they were sanctioned by the General Teaching Council for England (GTCE)</li>
+        <li>someone with their last name and date of birth is on the Children’s Barred List</li>
       </ul>
 
       <form method="post">
