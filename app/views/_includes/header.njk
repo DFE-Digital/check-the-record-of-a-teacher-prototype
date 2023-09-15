@@ -6,6 +6,10 @@
       {
         href: "/account/sign-out",
         text: "Sign out"
-      }
-    ] if user
+      } if data.user,
+      {
+        href: "/account/sign-in",
+        text: "Sign in"
+      } if not data.user
+    ]
   }) }}
