@@ -34,10 +34,12 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
         {{title}}
-        {{ govukTag({
-          text: teacher.status,
-          classes: teacher.status | statusClass
-        }) }}
+        {% if teacher.hasProhibitions == 'Yes' %}
+          {{ govukTag({
+            text: teacher.status,
+            classes: teacher.status | statusClass
+          }) }}
+        {% endif %}
       </h1>
 
       {# {% if user.organisation.name == teacher.organisation.name %}
