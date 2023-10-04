@@ -43,10 +43,13 @@
                 </ul>
               {% endset %}
 
-              {{ govukTag({
-                text: teacher.status,
-                classes: teacher.status | statusClass
-              }) }}
+              {% if teacher.hasProhibitions == 'Yes' %}
+                {{ govukTag({
+                  text: teacher.status,
+                  classes: teacher.status | statusClass
+                }) }}
+              {% endif %}
+
               {{ govukSummaryList({
                 classes: 'govuk-summary-list--no-border app-summary-list--compact',
                 rows: [
