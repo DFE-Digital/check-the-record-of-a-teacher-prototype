@@ -69,7 +69,9 @@ addFilter('dateTime', govukDateTime)
 
 
 function statusClass(text) {
-  switch (text) {
+if (text == 'Restrictions'){
+  return 'govuk-tag-red';
+}
     case 'Restrictions':
       return 'govuk-tag--red'
   }
