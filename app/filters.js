@@ -70,7 +70,7 @@ addFilter('dateTime', govukDateTime)
 
 function statusClass(text) {
   if (text == 'Restrictions'){
-    return 'govuk-tag-red';
+    return 'govuk-tag--red';
   }
 }
 addFilter('statusClass', statusClass)
