@@ -34,12 +34,12 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
         {{title}}
-        {% if teacher.hasProhibitions == 'Yes' %}
+        {# {% if teacher.hasProhibitions == 'Yes' %}
           {{ govukTag({
             text: teacher.status,
             classes: teacher.status | statusClass
           }) }}
-        {% endif %}
+        {% endif %} #}
       </h1>
 
       {# {% if user.organisation.name == teacher.organisation.name %}
@@ -49,22 +49,22 @@
       {% endif %} #}
 
       {% if teacher.hasProhibitions == 'Yes' %}
-          <h2 class="govuk-heading-m">
+          {# <h2 class="govuk-heading-m">
             Restrictions
-          </h2>
+          </h2> #}
         {% set inset %}
 
           {% for restriction in teacher.restrictions %}
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
               {{restriction.type.label}}
-            </h3>
+            </h2>
             <p class="govuk-!-margin-bottom-1">
-             {{restriction.date | date}}
+             {# {{restriction.date | date}} #}
               {% if restriction.dateForReview %}
                 (Will be reviewed {{restriction.dateForReview | date}})
               {% endif %}
             </p>
-            <p class="govuk-hint">{{restriction.notes}}</p>
+            <p class="govuk-body">{{restriction.notes}}</p>
           {% endfor %}
 
 
