@@ -30,7 +30,17 @@
             <div class="app-list__item">
 
               <h2 class="govuk-heading-s">
+
+                {% if teacher.middleName %}
+
+                  <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.middleName}} {{teacher.lastName}}</a>
+
+                {% else %}
+
                 <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+
+                {% endif %}
+
               </h2>
 
               {# {% set restrictions %}
@@ -68,7 +78,15 @@
                     value: {
                       text: teacher.dob | date
                     }
-                  }
+                  },
+                  {
+                    key: {
+                      text: "Previous names"
+                    },
+                    value: {
+                      text: teacher.previousNames
+                    }
+                  } if teacher.previousNames
                 ]
               }) }}
             </div>
