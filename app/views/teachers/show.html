@@ -1,6 +1,14 @@
 {% extends "layouts/main.html" %}
 
-{% set name = teacher.firstName + ' ' + teacher.lastName %}
+{% if teacher.middleName %}
+
+  {% set name = teacher.firstName + ' ' + teacher.middleName + ' ' + teacher.lastName %}
+
+{% else %}
+
+  {% set name = teacher.firstName + ' ' + teacher.lastName %}
+
+{% endif %}
 
 {% set title = name %}
 
@@ -64,7 +72,7 @@
                 (Will be reviewed {{restriction.dateForReview | date}})
               {% endif %}
             </p>
-            <p class="govuk-body">{{restriction.notes}}</p>
+            <p class="govuk-body">{{restriction.notes | safe}}</p>
           {% endfor %}
 
 
@@ -104,12 +112,12 @@
           },
           {
             key: {
-              text: "Previous last name"
+              text: "Previous names"
             },
             value: {
-              text: teacher.previousLastName
+              text: teacher.previousNames
             }
-          } if teacher.previousLastName
+          } if teacher.previousNames
         ]
       }) }}
 
@@ -156,6 +164,154 @@
         }) }}
       {% endif %}
 
+      {% if teacher.mq %}
+
+      <h2 class="govuk-heading-m">
+        Mandatory qualifications (MQs) for specialist teachers of pupils with sensory impairments
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "MQ specialism"
+            },
+            value: {
+              text: teacher.mq.specialism
+            }
+          },
+          {
+            key: {
+              text: "Date awarded"
+            },
+            value: {
+              text: teacher.mq.dateAwarded | date
+            }
+          }
+        ]
+      })}}
+
+      {% endif %}
+
+      {% if teacher.npq %}
+
+      <h2 class="govuk-heading-m">
+        National professional qualifications (NPQs)
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Date NPQ for executive leadership awarded"
+            },
+            value: {
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
+            }
+          } if teacher.npq.dateExecutiveLeadershipAwarded,
+          {
+            key: {
+              text: "Date NPQ for headship awarded"
+            },
+            value: {
+              text: teacher.npq.dateHeadshipAwarded | date
+            }
+          } if teacher.npq.dateHeadshipAwarded,
+          {
+            key: {
+              text: "Date NPQ for senior leadership awarded"
+            },
+            value: {
+              text: teacher.npq.dateExecutiveLeadershipAwarded | date
+            }
+          } if teacher.npq.dateExecutiveLeadershipAwarded,
+          {
+            key: {
+              text: "Date NPQ for middle leadership awarded"
+            },
+            value: {
+              text: teacher.npq.dateMiddleLeadershipAwarded | date
+            }
+          } if teacher.npq.dateMiddleLeadershipAwarded,
+          {
+            key: {
+              text: "Date NPQ for leading teacher development awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
+            }
+          } if teacher.npq.dateLeadingTeacherDevelopmentAwarded,
+          {
+            key: {
+              text: "Date NPQ for leading teaching awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingTeachingAwarded | date
+            }
+          } if teacher.npq.dateLeadingTeachingAwarded,
+          {
+            key: {
+              text: "Date NPQ for leading behaviour and culture awarded"
+            },
+            value: {
+              text: teacher.npq.dateLeadingBehaviourAwarded | date
+            }
+          } if teacher.npq.dateLeadingBehaviourAwarded
+        ]
+      }) }}
+
+      {% endif %}
+
+      {% if teacher.induction %}
+
+      <h2 class="govuk-heading-m">
+        Induction
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Induction status"
+            },
+            value: {
+              text: teacher.induction.status
+            }
+          },
+          {
+            key: {
+              text: "Reason for exemption"
+            },
+            value: {
+              text: teacher.induction.reasonForExemption
+            }
+          } if teacher.induction.reasonForExemption,
+          {
+            key: {
+              text: "Are they eligible to complete a one-year induction period?"
+            },
+            value: {
+              text: teacher.induction.eligibleToCompleteOneYearInduction
+            }
+          } if teacher.induction.eligibleToCompleteOneYearInduction,
+          {
+            key: {
+              text: "Date completed"
+            },
+            value: {
+              text: teacher.induction.dateCompleted | date
+            }
+          } if teacher.induction.dateCompleted
+        ]
+      }) }}
+
+      {% endif %}
+
+      {% if teacher.qts %}
+
       <h2 class="govuk-heading-m">
         Qualified teacher status (QTS)
       </h2>
@@ -186,9 +342,13 @@
             value: {
               text: teacher.qts.datePartiallyAwarded | date
             }
-          }
+          } if teacher.qts.datePartiallyAwarded
         ]
       }) }}
+
+      {% endif %}
+
+      {% if teacher.eyts %}
 
       <h2 class="govuk-heading-m">
         Early years teacher status (EYTS)
@@ -216,47 +376,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">
-        Induction
-      </h2>
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Induction status"
-            },
-            value: {
-              text: teacher.induction.status
-            }
-          },
-          {
-            key: {
-              text: "Reason for exemption"
-            },
-            value: {
-              text: teacher.induction.reasonForExemption
-            }
-          },
-          {
-            key: {
-              text: "Are they eligible to complete a one-year induction period?"
-            },
-            value: {
-              text: teacher.induction.eligibleToCompleteOneYearInduction
-            }
-          },
-          {
-            key: {
-              text: "Date completed"
-            },
-            value: {
-              text: teacher.induction.dateCompleted | date
-            }
-          }
-        ]
-      }) }}
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Initial teacher training (ITT)
@@ -339,97 +459,6 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">
-        Mandatory qualifications (MQ)
-      </h2>
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "MQ specialism"
-            },
-            value: {
-              text: teacher.mq.specialism
-            }
-          },
-          {
-            key: {
-              text: "Date awarded"
-            },
-            value: {
-              text: teacher.mq.dateAwarded | date
-            }
-          }
-        ]
-      })}}
-
-      <h2 class="govuk-heading-m">
-        National professional qualifications (NPQ)
-      </h2>
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Date NPQ for executive leadership awarded"
-            },
-            value: {
-              text: teacher.npq.dateExecutiveLeadershipAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for headship awarded"
-            },
-            value: {
-              text: teacher.npq.dateHeadshipAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for senior leadership awarded"
-            },
-            value: {
-              text: teacher.npq.dateExecutiveLeadershipAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for middle leadership awarded"
-            },
-            value: {
-              text: teacher.npq.dateMiddleLeadershipAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for leading teacher development awarded"
-            },
-            value: {
-              text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for leading teaching awarded"
-            },
-            value: {
-              text: teacher.npq.dateLeadingTeachingAwarded | date
-            }
-          },
-          {
-            key: {
-              text: "Date NPQ for leading behaviour and culture awarded"
-            },
-            value: {
-              text: teacher.npq.dateLeadingBehaviourAwarded | date
-            }
-          }
-        ]
-      }) }}
     </div>
   </div>
 {% endblock %}
