@@ -36,8 +36,10 @@ module.exports = router => {
     })
     if(searchLastName) {
       teachers = teachers.filter(teacher => {
-        let name = teacher.lastName.toLowerCase()
-        return (name).indexOf(searchLastName) > -1
+        let lastNames = [teacher.lastName].concat(teacher.previousLastNames || [])
+        let lowerCaseLastNames = lastNames.map(name => name.toLowerCase())
+
+        return lowerCaseLastNames.indexOf(searchLastName) > -1
       })
       teachers = teachers.filter(teacher => {
         let date1 = DateTime.fromISO(teacher.dob)
