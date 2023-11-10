@@ -112,12 +112,12 @@
           },
           {
             key: {
-              text: "Previous names"
+              text: "Previous last names"
             },
             value: {
-              text: teacher.previousNames
+              text: teacher.previousLastNames | join('<br>') | safe
             }
-          } if teacher.previousNames
+          } if teacher.previousLastNames
         ]
       }) }}
 

@@ -313,7 +313,7 @@
     "firstName": "Elizabeth",
     "middleName": "Laura",
     "lastName": "Silver",
-    "previousNames": "Elizabeth Laura Johanneson",
+    "previousLastNames": ["Johanneson", "Lungard"],
     "trn": "2478726",
     "emailAddress": "kevin.silver@gmail.com",
     "dob": "1999-01-01T00:00:00.000+00:00",
