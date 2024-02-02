@@ -17,13 +17,20 @@
 {% endblock %}
 
 {% block content %}
+{% if teachers.length == 0 %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-m">Records searched at {{ "now" | govukTime }} on {{ "today" | govukDate }}.</span>
       <h1 class="govuk-heading-l">{{title}}</h1>
 
-      {% if teachers.length == 0 %}
-        <p>No teachers found. <a href="/">Try another search</a></p>
+        <p>No teacher record found for <strong>{{data.lastName [0].toUpperCase() + data.lastName.slice(1)}}</strong> born on <strong>{{ data | isoDateFromDateInput("date") | govukDate }}</strong>.</p>
+          
+          <p><a href="/">Search again</a></p>
       {% else %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h1 class="govuk-heading-l">{{title}}</h1>
+
         <div class="app-list">
 
           {% for teacher in teachers %}
@@ -107,6 +114,8 @@
             <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
           {% endif %}
 
+          <p><a href="/">Search again</a></p>
+          
         </div>
       {% endif %}
     </div>
