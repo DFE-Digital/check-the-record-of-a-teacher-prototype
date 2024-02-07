@@ -4,56 +4,56 @@
 {% set title = 'Find teacher record' %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">{{title}}</h1>
-      <form method="get" action="/teachers">
-        {{ govukInput({
-            id: "lastName",
-            name: "lastName",
-            label: {
-              text: "Last name",
-              classes: 'govuk-label--s'
-            },
-            classes: "govuk-input--width-20",
-            value: data.lastName
-          }) }}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">{{title}}</h1>
+    <form method="get" action="/teachers">
+      {{ govukInput({
+      id: "lastName",
+      name: "lastName",
+      label: {
+      text: "Last name",
+      classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20",
+      value: data.lastName
+      }) }}
 
-          {{ govukDateInput({
-            id: "date",
-            fieldset: {
-              legend: {
-                text: "Date of birth",
-                classes: 'govuk-fieldset__legend--s'
-              }
-            },
-            items: [
-              {
-                name: "day",
-                label: "Day",
-                classes: "govuk-input--width-2",
-                value: data.day
-              },
-              {
-                name: "month",
-                label: "Month",
-                classes: "govuk-input--width-2",
-                value: data.month
-              },
-              {
-                name: "year",
-                label: "Year",
-                classes: "govuk-input--width-4",
-                value: data.year
-              }
-            ]
-          }) }}
-        {{ govukButton({
-          text: "Search restricted teachers",
-          text: "Find record"
-        }) }}
-      </form>
-    </div>
+      {{ govukDateInput({
+      id: "date",
+      fieldset: {
+      legend: {
+      text: "Date of birth",
+      classes: 'govuk-fieldset__legend--s'
+      }
+      },
+      items: [
+      {
+      name: "day",
+      label: "Day",
+      classes: "govuk-input--width-2",
+      value: data.day
+      },
+      {
+      name: "month",
+      label: "Month",
+      classes: "govuk-input--width-2",
+      value: data.month
+      },
+      {
+      name: "year",
+      label: "Year",
+      classes: "govuk-input--width-4",
+      value: data.year
+      }
+      ]
+      }) }}
+      {{ govukButton({
+      text: "Search restricted teachers",
+      text: "Find record"
+      }) }}
+    </form>
   </div>
+</div>
 
 {% endblock %}
