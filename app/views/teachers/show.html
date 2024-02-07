@@ -57,6 +57,117 @@
         <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
       {% endif %} #}
 
+      {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            
+            {% if teacher.hasProhibitions == 'Yes' %}
+      
+            {{ govukTag({
+              text: "Restricted from teaching",
+              classes: "govuk-tag--red"
+            }) }}
+
+
+          
+          {% else %}
+    
+          {{ govukTag({
+            text: "No restrictions",
+            classes: "govuk-tag--green"
+          }) }}
+    
+          {% endif %}
+          </dt>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if teacher.induction.status == 'Exempt' %}
+
+                {{ govukTag({
+                  text: "Exempt from induction",
+                  classes: "govuk-tag--green"
+                }) }}
+
+                {% elseif teacher.induction.status == 'In progress' %}
+
+                {{ govukTag({
+                  text: "Induction in progress",
+                  classes: "govuk-tag--blue"
+                }) }}
+
+                {% elseif teacher.induction.status == 'Failed' %}
+
+                {{ govukTag({
+                  text: "Failed induction",
+                  classes: "govuk-tag--blue"
+                }) }}
+
+                {% elseif teacher.induction.status == 'Required' %}
+
+                {{ govukTag({
+                  text: "Induction required",
+                  classes: "govuk-tag--blue"
+                }) }}
+
+                {% elseif teacher.induction.status == 'Passed' %}
+
+                {{ govukTag({
+                  text: "Passed induction",
+                  classes: "govuk-tag--green"
+                }) }}
+
+          {% endif %}
+          </dt>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if teacher.qts.status == 'Qualified (trained outside the UK)' %}
+
+                {{ govukTag({
+                  text: "Qualified Teacher Status",
+                  classes: "govuk-tag--green"
+                }) }}
+
+                {% elseif teacher.qts.status == 'Qualified (trained in the UK)' %}
+
+                {{ govukTag({
+                  text: "Qualified Teacher Status",
+                  classes: "govuk-tag--green"
+                }) }}
+
+                {% elseif teacher.qts.status == 'Trainee' %}
+
+                {{ govukTag({
+                  text: "Trainee QTS",
+                  classes: "govuk-tag--blue"
+                }) }}
+            
+            {% else %}
+
+            {{ govukTag({
+              text: "No QTS",
+              classes: "govuk-tag--blue"
+            }) }}
+    
+          {% endif %}
+
+          {% if teacher.eyts.dateAwarded %}
+      
+          {{ govukTag({
+            text: "Early Years Teacher Status",
+            classes: "govuk-tag--green"
+          }) }}
+
+          {% endif %}
+          </dt>
+        </div>
+          
+      </dl>
+
       {% if teacher.hasProhibitions == 'Yes' %}
           {# <h2 class="govuk-heading-m">
             Restrictions
@@ -83,7 +194,31 @@
           html: inset
         }) }}
 
+        {% elseif teacher.hasProhibitions == 'Maybe' %}
+        {# <h2 class="govuk-heading-m">
+          Restrictions
+        </h2> #}
+      {% set inset %}
 
+        {% for restriction in teacher.restrictions %}
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+            {{restriction.type.label}}
+          </h2>
+          <p class="govuk-!-margin-bottom-1">
+           {# {{restriction.date | date}} #}
+            {% if restriction.dateForReview %}
+              (Will be reviewed {{restriction.dateForReview | date}})
+            {% endif %}
+          </p>
+          <p class="govuk-body">{{restriction.notes | safe}}</p>
+        {% endfor %}
+
+
+      {% endset %}
+      {{ govukInsetText({
+        classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom- govuk-!-margin-top-0',
+        html: inset
+      }) }}
 
 
       {% endif %}

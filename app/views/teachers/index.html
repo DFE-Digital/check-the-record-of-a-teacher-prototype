@@ -2,6 +2,20 @@
 
 {% set title = 'Search results (' + totalCount + ')' %}
 
+
+
+{% if totalCount == 1 %}
+{% set resultsContent = 'One record found' %}
+{% elseif totalCount == 2 %}
+{% set resultsContent = 'Two records found' %}
+{% elseif totalCount == 3 %}
+{% set resultsContent = 'Three records found' %}
+{% elseif totalCount == 4 %}
+{% set resultsContent = 'Four records found' %}
+{% else %}
+{% set resultsContent = '(' + totalCount + ') records found' %}
+{% endif %}
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     items: [
@@ -30,6 +44,10 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
           <h1 class="govuk-heading-l">{{title}}</h1>
+
+        <!---
+          <p>{{resultsContent}} for <strong>{{data.lastName [0].toUpperCase() + data.lastName.slice(1)}}</strong> born on <strong>{{ data | isoDateFromDateInput("date") | govukDate }}</strong>.</p>
+          --->
 
         <div class="app-list">
 

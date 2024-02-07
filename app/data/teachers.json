@@ -300,15 +300,15 @@
     "trn": "1834592",
     "emailAddress": "gregory.culpan@gmail.com",
     "dob": "1987-04-03T00:00:00.000+00:00",
-    "hasProhibitions": "Yes",
+    "hasProhibitions": "Maybe",
     "restrictions": [
       {
         "type": {
           "id": "784648",
-          "label": "Prohibition order"
+          "label": "Found guilty of serious misconduct but not prevented from teaching"
         },
         "date": "2023-04-05T23:01:18.524Z",
-        "notes": "<p>Found guilty of of serious misconduct.</p><p>Cannot teach in any school in England, including sixth-form colleges, relevant youth accommodation and children’s homes.</p><p>Check the <a href='https://www.gov.uk/search/all?parent=&keywords=panel+outcome+misconduct&level_one_taxon=&manual=&organisations%5B%5D=teaching-regulation-agency&organisations%5B%5D=national-college-for-teaching-and-leadership&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=updated-newest'>list of published decisions on GOV.UK</a> for more details."
+        "notes": "<p>Check the <a href='https://www.gov.uk/search/all?parent=&keywords=panel+outcome+misconduct&level_one_taxon=&manual=&organisations%5B%5D=teaching-regulation-agency&organisations%5B%5D=national-college-for-teaching-and-leadership&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=updated-newest'>list of published decisions on GOV.UK</a> for more details."
       }
     ],
     "organisation": null,
