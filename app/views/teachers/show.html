@@ -12,589 +12,554 @@
 
 {% set title = name %}
 
-{% block beforeContent %}
-{{ govukBreadcrumbs({
-items: [
-{
-text: "Home",
-href: "/"
-},
-{
-text: "Search results",
-href: "/teachers"
-},
-{
-text: name
-}
-]
-}) }}
-{% endblock %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
 
-{% block content %}
-
-{{ govukNotificationBanner({
-html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
-type: "success",
-icon: false
-}) if flash and flash.length }}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+    {% block beforeContent %}
+    {{ govukBreadcrumbs({
+    items: [
+    {
+    text: "Home",
+    href: "/"
+    },
+    {
+    text: "Search results",
+    href: "/teachers"
+    },
+    {
+    text: name
+    }
+    ]
+    }) }}
     <span class="govuk-caption-m">Record checked at {{ "now" | govukTime }} on {{ "today" | govukDate }}</span>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
-      {{title}}
-      {# {% if teacher.hasProhibitions == 'Yes' %}
-      {{ govukTag({
-      text: teacher.status,
-      classes: teacher.status | statusClass
-      }) }}
-      {% endif %} #}
-    </h1>
+    {% endblock %}
+    {% block content %}
 
-    {# {% if user.organisation.name == teacher.organisation.name %}
-    <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a></p>
-    {% else %}
-    <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
-    {% endif %} #}
-
-    {%- from "govuk/components/tag/macro.njk" import govukTag -%}
-    <dl class="govuk-summary-list govuk-summary-list--no-border">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-
-          {% if teacher.hasProhibitions == 'Yes' %}
-
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
+          {{title}}
+          {# {% if teacher.hasProhibitions == 'Yes' %}
           {{ govukTag({
-          text: "Restricted from teaching",
-          classes: "govuk-tag--red"
+          text: teacher.status,
+          classes: teacher.status | statusClass
           }) }}
+          {% endif %} #}
+        </h1>
 
-          {% else %}
+        {# {% if user.organisation.name == teacher.organisation.name %}
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/remove">Remove from your organisation</a>
+        </p>
+        {% else %}
+        <p class="govuk-!-margin-bottom-7"><a href="/teachers/{{teacher.id}}/add">Add to your organisation</a></p>
+        {% endif %} #}
 
-          {{ govukTag({
-          text: "No restrictions",
-          classes: "govuk-tag--green"
-          }) }}
+        {% if teacher.hasProhibitions == 'Yes' %}
+        {# <h2 class="govuk-heading-m">
+          Restrictions
+        </h2> #}
+        {% set inset %}
 
+        {% for restriction in teacher.restrictions %}
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+          {{restriction.type.label}}
+        </h2>
+        <p class="govuk-!-margin-bottom-1">
+          {# {{restriction.date | date}} #}
+          {% if restriction.dateForReview %}
+          (Will be reviewed {{restriction.dateForReview | date}})
           {% endif %}
-        </dt>
+        </p>
+        <p class="govuk-body">{{restriction.notes | safe}}</p>
+        {% endfor %}
+
+        {% endset %}
+        {{ govukInsetText({
+        classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom-
+        govuk-!-margin-top-0',
+        html: inset
+        }) }}
+
+        {% elseif teacher.hasProhibitions == 'Maybe' %}
+        {# <h2 class="govuk-heading-m">
+          Restrictions
+        </h2> #}
+        {% set inset %}
+
+        {% for restriction in teacher.restrictions %}
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+          {{restriction.type.label}}
+        </h2>
+        <p class="govuk-!-margin-bottom-1">
+          {# {{restriction.date | date}} #}
+          {% if restriction.dateForReview %}
+          (Will be reviewed {{restriction.dateForReview | date}})
+          {% endif %}
+        </p>
+        <p class="govuk-body">{{restriction.notes | safe}}</p>
+        {% endfor %}
+
+        {% endset %}
+        {{ govukInsetText({
+        classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom-
+        govuk-!-margin-top-0',
+        html: inset
+        }) }}
+
+        {% endif %}
+
+        {% if teacher.mq %}
+
+        <h2 class="govuk-heading-m">
+          Mandatory qualifications (MQs) for specialist teachers of pupils with sensory impairments
+        </h2>
+
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "MQ specialism"
+        },
+        value: {
+        text: teacher.mq.specialism
+        }
+        },
+        {
+        key: {
+        text: "Date awarded"
+        },
+        value: {
+        text: teacher.mq.dateAwarded | date
+        }
+        }
+        ]
+        })}}
+
+        {% endif %}
+
+        {% if teacher.npq %}
+
+        <h2 class="govuk-heading-m">
+          National professional qualifications (NPQs)
+        </h2>
+
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "Date NPQ for executive leadership awarded"
+        },
+        value: {
+        text: teacher.npq.dateExecutiveLeadershipAwarded | date
+        }
+        } if teacher.npq.dateExecutiveLeadershipAwarded,
+        {
+        key: {
+        text: "Date NPQ for headship awarded"
+        },
+        value: {
+        text: teacher.npq.dateHeadshipAwarded | date
+        }
+        } if teacher.npq.dateHeadshipAwarded,
+        {
+        key: {
+        text: "Date NPQ for senior leadership awarded"
+        },
+        value: {
+        text: teacher.npq.dateExecutiveLeadershipAwarded | date
+        }
+        } if teacher.npq.dateExecutiveLeadershipAwarded,
+        {
+        key: {
+        text: "Date NPQ for middle leadership awarded"
+        },
+        value: {
+        text: teacher.npq.dateMiddleLeadershipAwarded | date
+        }
+        } if teacher.npq.dateMiddleLeadershipAwarded,
+        {
+        key: {
+        text: "Date NPQ for leading teacher development awarded"
+        },
+        value: {
+        text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
+        }
+        } if teacher.npq.dateLeadingTeacherDevelopmentAwarded,
+        {
+        key: {
+        text: "Date NPQ for leading teaching awarded"
+        },
+        value: {
+        text: teacher.npq.dateLeadingTeachingAwarded | date
+        }
+        } if teacher.npq.dateLeadingTeachingAwarded,
+        {
+        key: {
+        text: "Date NPQ for leading behaviour and culture awarded"
+        },
+        value: {
+        text: teacher.npq.dateLeadingBehaviourAwarded | date
+        }
+        } if teacher.npq.dateLeadingBehaviourAwarded
+        ]
+        }) }}
+
+        {% endif %}
+
+        {% if teacher.induction %}
+
+        <h2 class="govuk-heading-m">
+          Induction
+        </h2>
+
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "Induction status"
+        },
+        value: {
+        text: teacher.induction.status
+        }
+        },
+        {
+        key: {
+        text: "Reason for exemption"
+        },
+        value: {
+        text: teacher.induction.reasonForExemption
+        }
+        } if teacher.induction.reasonForExemption,
+        {
+        key: {
+        text: "Are they eligible to complete a one-year induction period?"
+        },
+        value: {
+        text: teacher.induction.eligibleToCompleteOneYearInduction
+        }
+        } if teacher.induction.eligibleToCompleteOneYearInduction,
+        {
+        key: {
+        text: "Date completed"
+        },
+        value: {
+        text: teacher.induction.dateCompleted | date
+        }
+        } if teacher.induction.dateCompleted
+        ]
+        }) }}
+
+        {% endif %}
+
+        {% if teacher.qts %}
+
+        <h2 class="govuk-heading-m">
+          Qualified teacher status (QTS)
+        </h2>
+
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "QTS"
+        },
+        value: {
+        text: teacher.qts.status
+        }
+        },
+        {
+        key: {
+        text: "Date awarded"
+        },
+        value: {
+        text: teacher.qts.dateAwarded | date
+        }
+        },
+        {
+        key: {
+        text: "Date partial QTS awarded"
+        },
+        value: {
+        text: teacher.qts.datePartiallyAwarded | date
+        }
+        } if teacher.qts.datePartiallyAwarded
+        ]
+        }) }}
+
+        {% endif %}
+
+        {% if teacher.eyts %}
+
+        <h2 class="govuk-heading-m">
+          Early years teacher status (EYTS)
+        </h2>
+
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "EYTS"
+        },
+        value: {
+        text: teacher.eyts.status
+        }
+        },
+        {
+        key: {
+        text: "Date awarded"
+        },
+        value: {
+        text: teacher.eyts.dateAwarded | date
+        }
+        }
+        ]
+        }) }}
+
+        {% endif %}
+
+        <h2 class="govuk-heading-m">
+          Initial teacher training (ITT)
+        </h2>
+        {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+        key: {
+        text: "Qualification"
+        },
+        value: {
+        text: teacher.itt.qualification
+        }
+        },
+        {
+        key: {
+        text: "ITT provider"
+        },
+        value: {
+        text: teacher.itt.provider
+        }
+        },
+        {
+        key: {
+        text: "Programme type"
+        },
+        value: {
+        text: teacher.itt.programmeType
+        }
+        },
+        {
+        key: {
+        text: "Subject"
+        },
+        value: {
+        text: teacher.itt.subject
+        }
+        },
+        {
+        key: {
+        text: "Additional subjects"
+        },
+        value: {
+        text: teacher.itt.additionalSubject
+        }
+        },
+        {
+        key: {
+        text: "Age range"
+        },
+        value: {
+        text: teacher.itt.ageRange
+        }
+        },
+        {
+        key: {
+        text: "Course end date"
+        },
+        value: {
+        text: teacher.itt.dateCourseEnds | date
+        }
+        },
+        {
+        key: {
+        text: "Course result"
+        },
+        value: {
+        text: teacher.itt.result
+        }
+        },
+        {
+        key: {
+        text: "Grade"
+        },
+        value: {
+        text: teacher.itt.grade
+        }
+        }
+        ]
+        }) }}
       </div>
+      <div class="govuk-grid-column-one-third">
 
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          {% if teacher.induction.status == 'Exempt' %}
+        <h3 class="govuk-heading-m ">Summary</h3>
 
-          {{ govukTag({
-          text: "Exempt from induction",
-          classes: "govuk-tag--green"
-          }) }}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-          {% elseif teacher.induction.status == 'In progress' %}
+        {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
 
-          {{ govukTag({
-          text: "Induction in progress",
-          classes: "govuk-tag--blue"
-          }) }}
+              {% if teacher.hasProhibitions == 'Yes' %}
 
-          {% elseif teacher.induction.status == 'Failed' %}
+              {{ govukTag({
+              text: "Restricted",
+              classes: "govuk-tag--red"
+              }) }}
 
-          {{ govukTag({
-          text: "Failed induction",
-          classes: "govuk-tag--blue"
-          }) }}
+              {% else %}
 
-          {% elseif teacher.induction.status == 'Required' %}
+              {{ govukTag({
+              text: "No restrictions",
+              classes: "govuk-tag--green"
+              }) }}
 
-          {{ govukTag({
-          text: "Induction required",
-          classes: "govuk-tag--blue"
-          }) }}
+              {% endif %}
+            </dt>
+          </div>
 
-          {% elseif teacher.induction.status == 'Passed' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if teacher.induction.status == 'Exempt' %}
 
-          {{ govukTag({
-          text: "Passed induction",
-          classes: "govuk-tag--green"
-          }) }}
+              {{ govukTag({
+              text: "Induction exempt",
+              classes: "govuk-tag--green"
+              }) }}
 
-          {% endif %}
-        </dt>
-      </div>
+              {% elseif teacher.induction.status == 'In progress' %}
 
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          {% if teacher.qts.status == 'Qualified (trained outside the UK)' %}
+              {{ govukTag({
+              text: "No induction",
+              classes: "govuk-tag--blue"
+              }) }}
 
-          {{ govukTag({
-          text: "Qualified Teacher Status",
-          classes: "govuk-tag--green"
-          }) }}
+              {% elseif teacher.induction.status == 'Failed' %}
 
-          {% elseif teacher.qts.status == 'Qualified (trained in the UK)' %}
+              {{ govukTag({
+              text: "Failed induction",
+              classes: "govuk-tag--blue"
+              }) }}
 
-          {{ govukTag({
-          text: "Qualified Teacher Status",
-          classes: "govuk-tag--green"
-          }) }}
+              {% elseif teacher.induction.status == 'Required' %}
 
-          {% elseif teacher.qts.status == 'Trainee' %}
+              {{ govukTag({
+              text: "No induction",
+              classes: "govuk-tag--blue"
+              }) }}
 
-          {{ govukTag({
-          text: "Trainee QTS",
-          classes: "govuk-tag--blue"
-          }) }}
+              {% elseif teacher.induction.status == 'Passed' %}
 
-          {% else %}
+              {{ govukTag({
+              text: "Passed induction",
+              classes: "govuk-tag--green"
+              }) }}
 
-          {{ govukTag({
-          text: "No QTS",
-          classes: "govuk-tag--blue"
-          }) }}
+              {% endif %}
+            </dt>
+          </div>
 
-          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if teacher.qts.status == 'Qualified (trained outside the UK)' %}
+
+              {{ govukTag({
+              text: "QTS",
+              classes: "govuk-tag--green"
+              }) }}
+
+              {% elseif teacher.qts.status == 'Qualified (trained in the UK)' %}
+
+              {{ govukTag({
+              text: "QTS",
+              classes: "govuk-tag--green"
+              }) }}
+
+              {% elseif teacher.qts.status == 'Trainee' %}
+
+              {{ govukTag({
+              text: "Trainee",
+              classes: "govuk-tag--blue"
+              }) }}
+
+              {% else %}
+
+              {{ govukTag({
+              text: "No QTS",
+              classes: "govuk-tag--blue"
+              }) }}
+
+              {% endif %}
+
+            </dt>
+          </div>
 
           {% if teacher.eyts.dateAwarded %}
 
-          {{ govukTag({
-          text: "Early Years Teacher Status",
-          classes: "govuk-tag--green"
-          }) }}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+
+              {{ govukTag({
+              text: "EYTS",
+              classes: "govuk-tag--green"
+              }) }}
+            </dt>
+          </div>
 
           {% endif %}
-        </dt>
+
+        </dl>
+
+        <h3 class="govuk-heading-m ">Personal details</h3>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            Teacher Reference number (TRN)
+          </li>
+          <li>
+            <p class="govuk-!-font-weight-bold">{{ teacher.trn }} </p>
+          </li>
+
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              Date of birth
+            </li>
+            <li>
+              <span class="govuk-!-font-weight-bold">{{ teacher.dob | date }} </span>
+            </li>
+          </ul>
+
+          {% if teacher.previousLastNames %}
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              Previous last names
+            </li>
+            <li>
+              <span class="govuk-!-font-weight-bold">{{ teacher.previousLastNames | join('<br>') | safe }} </span>
+            </li>
+          </ul>
+          {% endif %}
+
+        </ul>
       </div>
-
-    </dl>
-
-    {% if teacher.hasProhibitions == 'Yes' %}
-    {# <h2 class="govuk-heading-m">
-      Restrictions
-    </h2> #}
-    {% set inset %}
-
-    {% for restriction in teacher.restrictions %}
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
-      {{restriction.type.label}}
-    </h2>
-    <p class="govuk-!-margin-bottom-1">
-      {# {{restriction.date | date}} #}
-      {% if restriction.dateForReview %}
-      (Will be reviewed {{restriction.dateForReview | date}})
-      {% endif %}
-    </p>
-    <p class="govuk-body">{{restriction.notes | safe}}</p>
-    {% endfor %}
-
-
-    {% endset %}
-    {{ govukInsetText({
-    classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom-
-    govuk-!-margin-top-0',
-    html: inset
-    }) }}
-
-    {% elseif teacher.hasProhibitions == 'Maybe' %}
-    {# <h2 class="govuk-heading-m">
-      Restrictions
-    </h2> #}
-    {% set inset %}
-
-    {% for restriction in teacher.restrictions %}
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
-      {{restriction.type.label}}
-    </h2>
-    <p class="govuk-!-margin-bottom-1">
-      {# {{restriction.date | date}} #}
-      {% if restriction.dateForReview %}
-      (Will be reviewed {{restriction.dateForReview | date}})
-      {% endif %}
-    </p>
-    <p class="govuk-body">{{restriction.notes | safe}}</p>
-    {% endfor %}
-
-
-    {% endset %}
-    {{ govukInsetText({
-    classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom-
-    govuk-!-margin-top-0',
-    html: inset
-    }) }}
-
-
-    {% endif %}
-
-    <h2 class="govuk-heading-m">
-      Personal details
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "Teacher reference number (TRN)"
-    },
-    value: {
-    text: teacher.trn
-    }
-    },
-    {
-    key: {
-    text: "Date of birth"
-    },
-    value: {
-    text: teacher.dob | date
-    }
-    },
-    {
-    key: {
-    text: "Previous last names"
-    },
-    value: {
-    text: teacher.previousLastNames | join('<br>') | safe
-    }
-    } if teacher.previousLastNames
-    ]
-    }) }}
-
-    {% if teacher.organisation %}
-
-    <h2 class="govuk-heading-m">
-      Organisation details
-    </h2>
-
-    {% set address %}
-    <p>{{teacher.organisation.address.address1}},<br>
-      {{teacher.organisation.address.town}},<br>
-      {{teacher.organisation.address.postcode}}</p>
-    {% endset %}
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "Organisation ID"
-    },
-    value: {
-    text: teacher.organisation.id
-    }
-    },
-    {
-    key: {
-    text: "Name"
-    },
-    value: {
-    text: teacher.organisation.name
-    }
-    },
-    {
-    key: {
-    text: "Address"
-    },
-    value: {
-    html: address
-    }
-    }
-    ]
-    }) }}
-    {% endif %}
-
-    {% if teacher.mq %}
-
-    <h2 class="govuk-heading-m">
-      Mandatory qualifications (MQs) for specialist teachers of pupils with sensory impairments
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "MQ specialism"
-    },
-    value: {
-    text: teacher.mq.specialism
-    }
-    },
-    {
-    key: {
-    text: "Date awarded"
-    },
-    value: {
-    text: teacher.mq.dateAwarded | date
-    }
-    }
-    ]
-    })}}
-
-    {% endif %}
-
-    {% if teacher.npq %}
-
-    <h2 class="govuk-heading-m">
-      National professional qualifications (NPQs)
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "Date NPQ for executive leadership awarded"
-    },
-    value: {
-    text: teacher.npq.dateExecutiveLeadershipAwarded | date
-    }
-    } if teacher.npq.dateExecutiveLeadershipAwarded,
-    {
-    key: {
-    text: "Date NPQ for headship awarded"
-    },
-    value: {
-    text: teacher.npq.dateHeadshipAwarded | date
-    }
-    } if teacher.npq.dateHeadshipAwarded,
-    {
-    key: {
-    text: "Date NPQ for senior leadership awarded"
-    },
-    value: {
-    text: teacher.npq.dateExecutiveLeadershipAwarded | date
-    }
-    } if teacher.npq.dateExecutiveLeadershipAwarded,
-    {
-    key: {
-    text: "Date NPQ for middle leadership awarded"
-    },
-    value: {
-    text: teacher.npq.dateMiddleLeadershipAwarded | date
-    }
-    } if teacher.npq.dateMiddleLeadershipAwarded,
-    {
-    key: {
-    text: "Date NPQ for leading teacher development awarded"
-    },
-    value: {
-    text: teacher.npq.dateLeadingTeacherDevelopmentAwarded | date
-    }
-    } if teacher.npq.dateLeadingTeacherDevelopmentAwarded,
-    {
-    key: {
-    text: "Date NPQ for leading teaching awarded"
-    },
-    value: {
-    text: teacher.npq.dateLeadingTeachingAwarded | date
-    }
-    } if teacher.npq.dateLeadingTeachingAwarded,
-    {
-    key: {
-    text: "Date NPQ for leading behaviour and culture awarded"
-    },
-    value: {
-    text: teacher.npq.dateLeadingBehaviourAwarded | date
-    }
-    } if teacher.npq.dateLeadingBehaviourAwarded
-    ]
-    }) }}
-
-    {% endif %}
-
-    {% if teacher.induction %}
-
-    <h2 class="govuk-heading-m">
-      Induction
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "Induction status"
-    },
-    value: {
-    text: teacher.induction.status
-    }
-    },
-    {
-    key: {
-    text: "Reason for exemption"
-    },
-    value: {
-    text: teacher.induction.reasonForExemption
-    }
-    } if teacher.induction.reasonForExemption,
-    {
-    key: {
-    text: "Are they eligible to complete a one-year induction period?"
-    },
-    value: {
-    text: teacher.induction.eligibleToCompleteOneYearInduction
-    }
-    } if teacher.induction.eligibleToCompleteOneYearInduction,
-    {
-    key: {
-    text: "Date completed"
-    },
-    value: {
-    text: teacher.induction.dateCompleted | date
-    }
-    } if teacher.induction.dateCompleted
-    ]
-    }) }}
-
-    {% endif %}
-
-    {% if teacher.qts %}
-
-    <h2 class="govuk-heading-m">
-      Qualified teacher status (QTS)
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "QTS"
-    },
-    value: {
-    text: teacher.qts.status
-    }
-    },
-    {
-    key: {
-    text: "Date awarded"
-    },
-    value: {
-    text: teacher.qts.dateAwarded | date
-    }
-    },
-    {
-    key: {
-    text: "Date partial QTS awarded"
-    },
-    value: {
-    text: teacher.qts.datePartiallyAwarded | date
-    }
-    } if teacher.qts.datePartiallyAwarded
-    ]
-    }) }}
-
-    {% endif %}
-
-    {% if teacher.eyts %}
-
-    <h2 class="govuk-heading-m">
-      Early years teacher status (EYTS)
-    </h2>
-
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "EYTS"
-    },
-    value: {
-    text: teacher.eyts.status
-    }
-    },
-    {
-    key: {
-    text: "Date awarded"
-    },
-    value: {
-    text: teacher.eyts.dateAwarded | date
-    }
-    }
-    ]
-    }) }}
-
-    {% endif %}
-
-    <h2 class="govuk-heading-m">
-      Initial teacher training (ITT)
-    </h2>
-    {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
-    {
-    key: {
-    text: "Qualification"
-    },
-    value: {
-    text: teacher.itt.qualification
-    }
-    },
-    {
-    key: {
-    text: "ITT provider"
-    },
-    value: {
-    text: teacher.itt.provider
-    }
-    },
-    {
-    key: {
-    text: "Programme type"
-    },
-    value: {
-    text: teacher.itt.programmeType
-    }
-    },
-    {
-    key: {
-    text: "Subject"
-    },
-    value: {
-    text: teacher.itt.subject
-    }
-    },
-    {
-    key: {
-    text: "Additional subjects"
-    },
-    value: {
-    text: teacher.itt.additionalSubject
-    }
-    },
-    {
-    key: {
-    text: "Age range"
-    },
-    value: {
-    text: teacher.itt.ageRange
-    }
-    },
-    {
-    key: {
-    text: "Course end date"
-    },
-    value: {
-    text: teacher.itt.dateCourseEnds | date
-    }
-    },
-    {
-    key: {
-    text: "Course result"
-    },
-    value: {
-    text: teacher.itt.result
-    }
-    },
-    {
-    key: {
-    text: "Grade"
-    },
-    value: {
-    text: teacher.itt.grade
-    }
-    }
-    ]
-    }) }}
-
-  </div>
+    </div>
+  </main>
 </div>
+
 {% endblock %}
