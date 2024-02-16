@@ -1,114 +1,151 @@
 {% extends "layouts/main.html" %}
 
-{% set title = 'Search results (' + totalCount + ')' %}
+        <!---
+{% if totalCount == 1 %}
+{% set resultsContent = 'One record found' %}
+{% elseif totalCount == 2 %}
+{% set resultsContent = 'Two records found' %}
+{% elseif totalCount == 3 %}
+{% set resultsContent = 'Three records found' %}
+{% elseif totalCount == 4 %}
+{% set resultsContent = 'Four records found' %}
+{% else %}
+{% set resultsContent = '' + totalCount + ' records found' %}
+{% endif %}
+          --->
+
+{% if resultsContent == "0 records found" %}
+{% set title = 'No record found' %}
+{% else %}
+{% set title = resultsContent %}
+{% endif %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/"
-      },
-      {
-        text: "Search results"
-      }
-    ]
-  }) }}
+{{ govukBreadcrumbs({
+items: [
+{
+text: "Home",
+href: "/"
+},
+{
+text: "Search results"
+}
+]
+}) }}
+{% if teachers.length == 0 %}
+<span class="govuk-caption-m">Records searched at {{ "now" | govukTime }} on {{ "today" | govukDate }}</span>
+{% endif %}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-l">{{title}}</h1>
+{% if teachers.length == 0 %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      {% if teachers.length == 0 %}
-        <p>No teachers found. <a href="/">Try another search</a></p>
-      {% else %}
+    <h1 class="govuk-heading-l">{{title}}</h1>
+
+    <p>No record found for {{data.lastName [0].toUpperCase() + data.lastName.slice(1)}} born on
+      {{ data | isoDateFromDateInput("date") | govukDate }}.
+    </p>
+
+    <p><a href="/">Search again</a></p>
+    {% else %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        <!---
+          <p>{{resultsContent}} for <strong>{{data.lastName [0].toUpperCase() + data.lastName.slice(1)}}</strong> born on <strong>{{ data | isoDateFromDateInput("date") | govukDate }}</strong>.</p>
+          --->
+
         <div class="app-list">
 
           {% for teacher in teachers %}
-            <div class="app-list__item">
+          <div class="app-list__item">
 
-              <h2 class="govuk-heading-s">
+            <h2 class="govuk-heading-s">
 
-                {% if teacher.middleName %}
+              {% if teacher.middleName %}
 
-                  <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.middleName}} {{teacher.lastName}}</a>
+              <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}}
+                {{teacher.middleName}} {{teacher.lastName}}</a>
 
-                {% else %}
+              {% else %}
 
-                <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+              <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}}
+                {{teacher.lastName}}</a>
 
-                {% endif %}
+              {% endif %}
 
-              </h2>
+            </h2>
 
-              {# {% set restrictions %}
-                <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
-                  {% for restriction in teacher.restrictions %}
-                    <li>
-                      {{restriction.type.label}}
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endset %} #}
+            {# {% set restrictions %}
+            <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
+              {% for restriction in teacher.restrictions %}
+              <li>
+                {{restriction.type.label}}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endset %} #}
 
-              {# {% if teacher.hasProhibitions == 'Yes' %}
-                {{ govukTag({
-                  text: teacher.status,
-                  classes: teacher.status | statusClass
-                }) }}
-              {% endif %} #}
+            {# {% if teacher.hasProhibitions == 'Yes' %}
+            {{ govukTag({
+            text: teacher.status,
+            classes: teacher.status | statusClass
+            }) }}
+            {% endif %} #}
 
-              {{ govukSummaryList({
-                classes: 'govuk-summary-list--no-border app-summary-list--compact',
-                rows: [
-                  {
-                    key: {
-                      text: "TRN"
-                    },
-                    value: {
-                      text: teacher.trn
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Date of birth"
-                    },
-                    value: {
-                      text: teacher.dob | date
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Previous last names"
-                    },
-                    value: {
-                      text: teacher.previousLastNames | join('<br>') | safe
-                    }
-                  } if teacher.previousLastNames
-                ]
-              }) }}
-            </div>
+            {{ govukSummaryList({
+            classes: 'govuk-summary-list--no-border app-summary-list--compact',
+            rows: [
+            {
+            key: {
+            text: "TRN"
+            },
+            value: {
+            text: teacher.trn
+            }
+            },
+            {
+            key: {
+            text: "Date of birth"
+            },
+            value: {
+            text: teacher.dob | date
+            }
+            },
+            {
+            key: {
+            text: "Previous last names"
+            },
+            value: {
+            text: teacher.previousLastNames | join('<br>') | safe
+            }
+            } if teacher.previousLastNames
+            ]
+            }) }}
+          </div>
           {% endfor %}
 
 
           {% if pagination.pageItems.length > 1 %}
-            {{ govukPagination({
-              classes: 'govuk-!-margin-bottom-2',
-              previous: {
-                href: "#"
-              } if pagination.pageNumber > 1,
-              next: {
-                href: "#"
-              } if pagination.pageNumber < pagination.pageCount,
-              items: pagination.pageItems
-            }) }}
-            <p class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of {{pagination.totalCount}} pages</p>
-          {% endif %}
+          {{ govukPagination({
+          classes: 'govuk-!-margin-bottom-2',
+          previous: {
+          href: "#"
+          } if pagination.pageNumber > 1,
+          next: {
+          href: "#"
+          } if pagination.pageNumber < pagination.pageCount, items: pagination.pageItems }) }} <p
+            class="govuk-!-margin-bottom-0">Showing {{pagination.startItem}} to {{pagination.endItem}} of
+            {{pagination.totalCount}} pages</p>
+            {% endif %}
+
+            <p><a href="/">Search again</a></p>
 
         </div>
-      {% endif %}
+        {% endif %}
+      </div>
     </div>
-  </div>
-{% endblock %}
+    {% endblock %}
