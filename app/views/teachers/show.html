@@ -37,7 +37,7 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        
+
         <h1 class="govuk-heading-l govuk-!-margin-bottom-7">
           {{title}}
           {# {% if teacher.hasProhibitions == 'Yes' %}
@@ -60,7 +60,7 @@
           Restrictions
         </h2> #}
         {% set inset %}
-        
+
 
         {% for restriction in teacher.restrictions %}
         <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
@@ -74,7 +74,7 @@
         </p>
         <p class="govuk-body">{{restriction.notes | safe}}</p>
         {% endfor %}
-        
+
 
         {% endset %}
         {{ govukInsetText({
@@ -444,9 +444,9 @@
               {% elseif teacher.hasProhibitions == 'guilty-not-barred' %}
 
               {{ govukTag({
-                text: "No restrictions",
-                classes: "govuk-tag--green"
-                }) }}
+              text: "No restrictions",
+              classes: "govuk-tag--green"
+              }) }}
 
               {% else %}
 
@@ -545,11 +545,11 @@
               }) }}
 
               {% elseif teacher.eyts.dateAwarded %}
-    
-                  {{ govukTag({
-                  text: "EYTS",
-                  classes: "govuk-tag--green"
-                  }) }}
+
+              {{ govukTag({
+              text: "EYTS",
+              classes: "govuk-tag--green"
+              }) }}
 
               {% else %}
 

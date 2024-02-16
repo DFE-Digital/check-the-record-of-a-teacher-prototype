@@ -280,7 +280,8 @@
     },
     "induction": {
       "status": "Pass",
-      "dateCompleted": "2002-04-06T05:15:01.198Z"},
+      "dateCompleted": "2002-04-06T05:15:01.198Z"
+    },
     "itt": {
       "qualification": "PGCE",
       "provider": "Jakubowski LLC School",
@@ -316,7 +317,8 @@
     },
     "induction": {
       "status": "Pass",
-      "dateCompleted": "2002-04-06T05:15:01.198Z"},
+      "dateCompleted": "2002-04-06T05:15:01.198Z"
+    },
     "itt": {
       "qualification": "PGCE",
       "provider": "Jakubowski LLC School",
@@ -375,7 +377,10 @@
     "firstName": "Elizabeth",
     "middleName": "Laura",
     "lastName": "Silver",
-    "previousLastNames": ["Johanneson", "Lungard"],
+    "previousLastNames": [
+      "Johanneson",
+      "Lungard"
+    ],
     "trn": "2478726",
     "emailAddress": "kevin.silver@gmail.com",
     "dob": "1999-01-01T00:00:00.000+00:00",
