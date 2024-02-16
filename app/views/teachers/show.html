@@ -60,6 +60,34 @@
           Restrictions
         </h2> #}
         {% set inset %}
+        
+
+        {% for restriction in teacher.restrictions %}
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
+          {{restriction.type.label}}
+        </h2>
+        <p class="govuk-!-margin-bottom-1">
+          {# {{restriction.date | date}} #}
+          {% if restriction.dateForReview %}
+          (Will be reviewed {{restriction.dateForReview | date}})
+          {% endif %}
+        </p>
+        <p class="govuk-body">{{restriction.notes | safe}}</p>
+        {% endfor %}
+        
+
+        {% endset %}
+        {{ govukInsetText({
+        classes: ' app-inset-text--red govuk-!-padding-bottom-2 govuk-!-padding-top-3 govuk-!-margin-bottom-
+        govuk-!-margin-top-0',
+        html: inset
+        }) }}
+
+        {% elseif teacher.hasProhibitions == 'CBL' %}
+        {# <h2 class="govuk-heading-m">
+          Restrictions
+        </h2> #}
+        {% set inset %}
 
         {% for restriction in teacher.restrictions %}
         <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
@@ -81,7 +109,7 @@
         html: inset
         }) }}
 
-        {% elseif teacher.hasProhibitions == 'Maybe' %}
+        {% elseif teacher.hasProhibitions == 'guilty-not-barred' %}
         {# <h2 class="govuk-heading-m">
           Restrictions
         </h2> #}
@@ -363,14 +391,6 @@
         },
         {
         key: {
-        text: "Additional subjects"
-        },
-        value: {
-        text: teacher.itt.additionalSubject
-        }
-        },
-        {
-        key: {
         text: "Age range"
         },
         value: {
@@ -391,14 +411,6 @@
         },
         value: {
         text: teacher.itt.result
-        }
-        },
-        {
-        key: {
-        text: "Grade"
-        },
-        value: {
-        text: teacher.itt.grade
         }
         }
         ]
@@ -421,6 +433,20 @@
               text: "Restricted",
               classes: "govuk-tag--red"
               }) }}
+
+              {% elseif teacher.hasProhibitions == 'CBL' %}
+
+              {{ govukTag({
+              text: "Check with DBS",
+              classes: "govuk-tag--blue"
+              }) }}
+
+              {% elseif teacher.hasProhibitions == 'guilty-not-barred' %}
+
+              {{ govukTag({
+                text: "No restrictions",
+                classes: "govuk-tag--green"
+                }) }}
 
               {% else %}
 
@@ -452,7 +478,7 @@
               {% elseif teacher.induction.status == 'Failed' %}
 
               {{ govukTag({
-              text: "Failed induction",
+              text: "No induction",
               classes: "govuk-tag--blue"
               }) }}
 
@@ -470,6 +496,13 @@
               classes: "govuk-tag--green"
               }) }}
 
+              {% elseif teacher.induction.status == 'Pass' %}
+
+              {{ govukTag({
+              text: "Passed induction",
+              classes: "govuk-tag--green"
+              }) }}
+
               {% endif %}
             </dt>
           </div>
@@ -477,6 +510,20 @@
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {% if teacher.qts.status == 'Qualified (trained outside the UK)' %}
+
+              {{ govukTag({
+              text: "QTS",
+              classes: "govuk-tag--green"
+              }) }}
+
+              {% elseif teacher.qts.status == 'Qualified' %}
+
+              {{ govukTag({
+              text: "QTS",
+              classes: "govuk-tag--green"
+              }) }}
+
+              {% elseif teacher.qts.status == 'Qualified (trained)' %}
 
               {{ govukTag({
               text: "QTS",
@@ -497,6 +544,13 @@
               classes: "govuk-tag--blue"
               }) }}
 
+              {% elseif teacher.eyts.dateAwarded %}
+    
+                  {{ govukTag({
+                  text: "EYTS",
+                  classes: "govuk-tag--green"
+                  }) }}
+
               {% else %}
 
               {{ govukTag({
@@ -509,19 +563,7 @@
             </dt>
           </div>
 
-          {% if teacher.eyts.dateAwarded %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-
-              {{ govukTag({
-              text: "EYTS",
-              classes: "govuk-tag--green"
-              }) }}
-            </dt>
-          </div>
-
-          {% endif %}
 
         </dl>
 
@@ -530,18 +572,18 @@
 
         <ul class="govuk-list govuk-!-font-size-16">
           <li>
-            Teacher Reference number (TRN)
+            <h4>Teacher Reference number (TRN)</h4>
           </li>
           <li>
-            <p class="govuk-!-font-weight-bold">{{ teacher.trn }} </p>
+            <p>{{ teacher.trn }} </p>
           </li>
 
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              Date of birth
+              <h4>Date of birth</h4>
             </li>
             <li>
-              <span class="govuk-!-font-weight-bold">{{ teacher.dob | date }} </span>
+              <p>{{ teacher.dob | date }} </p>
             </li>
           </ul>
 

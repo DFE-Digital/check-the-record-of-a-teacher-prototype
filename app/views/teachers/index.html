@@ -1,5 +1,6 @@
 {% extends "layouts/main.html" %}
 
+        <!---
 {% if totalCount == 1 %}
 {% set resultsContent = 'One record found' %}
 {% elseif totalCount == 2 %}
@@ -11,9 +12,10 @@
 {% else %}
 {% set resultsContent = '' + totalCount + ' records found' %}
 {% endif %}
+          --->
 
 {% if resultsContent == "0 records found" %}
-{% set title = 'No records found' %}
+{% set title = 'No record found' %}
 {% else %}
 {% set title = resultsContent %}
 {% endif %}
@@ -31,7 +33,7 @@ text: "Search results"
 ]
 }) }}
 {% if teachers.length == 0 %}
-<span class="govuk-caption-m">Records searched at {{ "now" | govukTime }} on {{ "today" | govukDate }}.</span>
+<span class="govuk-caption-m">Records searched at {{ "now" | govukTime }} on {{ "today" | govukDate }}</span>
 {% endif %}
 {% endblock %}
 
@@ -42,8 +44,8 @@ text: "Search results"
 
     <h1 class="govuk-heading-l">{{title}}</h1>
 
-    <p>No teacher record found for <strong>{{data.lastName [0].toUpperCase() + data.lastName.slice(1)}}</strong> born on
-      <strong>{{ data | isoDateFromDateInput("date") | govukDate }}</strong>.
+    <p>No record found for {{data.lastName [0].toUpperCase() + data.lastName.slice(1)}} born on
+      {{ data | isoDateFromDateInput("date") | govukDate }}.
     </p>
 
     <p><a href="/">Search again</a></p>

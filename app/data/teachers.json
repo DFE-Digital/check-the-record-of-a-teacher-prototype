@@ -275,22 +275,56 @@
     "hasProhibitions": "No",
     "organisation": null,
     "qts": {
-      "status": "Qualified (trained in the UK)",
-      "dateAwarded": "2021-04-03T03:53:01.034Z"
+      "status": "Qualified",
+      "dateAwarded": "2001-02-28T03:53:01.034Z"
     },
     "induction": {
-      "status": "Passed",
-      "dateCompleted": "2023-04-06T05:15:01.198Z"},
+      "status": "Pass",
+      "dateCompleted": "2002-04-06T05:15:01.198Z"},
     "itt": {
-      "qualification": "Other qualification",
+      "qualification": "PGCE",
       "provider": "Jakubowski LLC School",
-      "programmeType": "School centered initial teacher training (SCITT)",
+      "programmeType": "Provider led postgraduate",
       "subject": "Mathematics",
-      "additionalSubject": "Foreign languages",
       "ageRange": "7 to 14 years (middle training)",
-      "dateCourseEnds": "2021-02-16T23:56:33.334Z",
-      "result": "In progress",
-      "grade": "First"
+      "dateCourseEnds": "2001-02-16T23:56:33.334Z",
+      "result": "Pass"
+    }
+  },
+  {
+    "id": "985431",
+    "firstName": "Terrence",
+    "lastName": "Houston",
+    "trn": "3220219",
+    "emailAddress": "anna.culpan@gmail.com",
+    "dob": "1981-04-01T00:00:00.000+00:00",
+    "hasProhibitions": "CBL",
+    "restrictions": [
+      {
+        "type": {
+          "id": "784648",
+          "label": "Possible match on the children’s barred list"
+        },
+        "date": "2023-04-05T23:01:18.524Z",
+        "notes": "<p>Email the Disclosure and Barring Service (DBS) at <a>dbscost@dbs.gov.uk</a> to check if this person is allowed to work with children."
+      }
+    ],
+    "organisation": null,
+    "qts": {
+      "status": "Qualified",
+      "dateAwarded": "2001-02-28T03:53:01.034Z"
+    },
+    "induction": {
+      "status": "Pass",
+      "dateCompleted": "2002-04-06T05:15:01.198Z"},
+    "itt": {
+      "qualification": "PGCE",
+      "provider": "Jakubowski LLC School",
+      "programmeType": "Provider led postgraduate",
+      "subject": "Mathematics",
+      "ageRange": "7 to 14 years (middle training)",
+      "dateCourseEnds": "2001-02-16T23:56:33.334Z",
+      "result": "Pass"
     }
   },
   {
@@ -300,7 +334,7 @@
     "trn": "1834592",
     "emailAddress": "gregory.culpan@gmail.com",
     "dob": "1987-04-03T00:00:00.000+00:00",
-    "hasProhibitions": "Maybe",
+    "hasProhibitions": "guilty-not-barred",
     "restrictions": [
       {
         "type": {
@@ -328,7 +362,7 @@
       "additionalSubject": "Foreign languages",
       "ageRange": "11 to 19 years (secondary training)",
       "dateCourseEnds": "2010-03-27T01:21:23.325Z",
-      "result": "In progress",
+      "result": "Passed",
       "grade": "2:2"
     },
     "npq": {
@@ -450,28 +484,19 @@
       {
         "type": {
           "id": "153772",
-          "label": "Sanctioned by the General Teaching Council for England (GTCE)"
+          "label": "Prohibition order"
         },
-        "date": "2022-10-21T18:21:00.119Z",
-        "dateForReview": "2024-03-27T02:33:42.100Z",
-        "notes": "Cannot teach in a maintained school, pupil referral unit or non-maintained special school; can teach in academies and free schools only."
+        "notes": "Prevented from teaching because they failed induction. <br> Cannot teach in a maintained school, pupil referral unit or non-maintained special school in England. <br> Call the Teaching Regulation Agency (TRA) on 0207 593 5393 for more information."
       }
     ],
     "organisation": null,
     "qts": {
-      "status": "Trainee",
-      "dateAwarded": "2022-11-22T14:27:50.589Z",
-      "datePartiallyAwarded": "2023-08-31T01:37:34.587Z"
-    },
-    "eyts": {
-      "status": "Qualified",
-      "dateAwarded": "2023-08-12T14:31:37.078Z"
+      "status": "Qualified (trained)",
+      "dateAwarded": "2022-11-22T14:27:50.589Z"
     },
     "induction": {
       "status": "Failed",
-      "reasonForExemption": "Other reason",
-      "eligibleToCompleteOneYearInduction": "Yes",
-      "dateCompleted": "2022-12-01T00:55:32.822Z"
+      "dateCompleted": "2023-10-10T00:55:32.822Z"
     },
     "itt": {
       "qualification": "PGCE",
@@ -480,22 +505,9 @@
       "subject": "English",
       "additionalSubject": "Foreign languages",
       "ageRange": "7 to 14 years (middle training)",
-      "dateCourseEnds": "2023-05-31T02:57:31.367Z",
-      "result": "Fail",
+      "dateCourseEnds": "2022-11-11T02:57:31.367Z",
+      "result": "Pass",
       "grade": "2:2"
-    },
-    "mq": {
-      "specialism": "Visual impairment",
-      "dateAwarded": "2022-12-22T07:16:58.548Z"
-    },
-    "npq": {
-      "dateExecutiveLeadershipAwarded": "2022-12-29T06:33:06.726Z",
-      "dateHeadshipAwarded": "2023-06-26T12:42:44.758Z",
-      "dateSeniorLeadershipAwarded": "2022-09-24T01:40:29.329Z",
-      "dateMiddleLeadershipAwarded": "2022-09-04T15:21:16.087Z",
-      "dateLeadingTeacherDevelopmentAwarded": "2023-02-11T19:20:06.068Z",
-      "dateLeadingTeachingAwarded": "2022-09-27T11:06:27.469Z",
-      "dateLeadingBehaviourAwarded": "2023-06-28T06:35:29.649Z"
     }
   },
   {
@@ -12057,51 +12069,34 @@
       {
         "type": {
           "id": "153348",
-          "label": "Banned from teaching by the Secretary of State for Education"
+          "label": "Prohibition order"
         },
         "date": "2023-04-29T23:09:39.193Z",
-        "notes": "Banned from teaching."
+        "notes": "Found guilty of serious misconduct. <br>Cannot teach in any school in England, including sixth-form colleges, relevant youth accommodation and children’s homes. <br> <a href='https://www.gov.uk/search/all?parent=&keywords=panel+outcome+misconduct&level_one_taxon=&manual=&organisations%5B%5D=teaching-regulation-agency&organisations%5B%5D=national-college-for-teaching-and-leadership&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=updated-newest'>Check the list of published decisions on GOV.UK </a>"
       }
     ],
     "organisation": null,
-    "qts": {
-      "status": "Trainee",
-      "dateAwarded": "2022-09-05T23:19:16.342Z",
-      "datePartiallyAwarded": "2023-08-23T06:51:43.425Z"
-    },
     "eyts": {
-      "status": "Trainee",
-      "dateAwarded": "2023-07-31T10:32:26.504Z"
+      "status": "Passed",
+      "dateAwarded": "2021-06-13T10:32:26.504Z"
     },
     "induction": {
-      "status": "In progress",
-      "reasonForExemption": "Other reason",
-      "eligibleToCompleteOneYearInduction": "No",
-      "dateCompleted": "2022-10-28T18:53:15.758Z"
+      "status": "Exempt",
+      "reasonForExemption": "Other reason"
     },
     "itt": {
-      "qualification": "PGCE",
+      "qualification": "EYITT",
       "provider": "O'Connell, Lowe and Walsh College",
-      "programmeType": "School centered initial teacher training (SCITT)",
-      "subject": "Mathematics",
-      "additionalSubject": "Physics",
-      "ageRange": "3 to 11 years (primary training)",
-      "dateCourseEnds": "2023-05-06T13:04:45.230Z",
-      "result": "Fail",
+      "programmeType": "Early years graduate entry",
+      "subject": "Early years",
+      "ageRange": "0 to 5 years",
+      "dateCourseEnds": "2021-05-06T13:04:45.230Z",
+      "result": "Pass",
       "grade": "2:1"
     },
     "mq": {
-      "specialism": "Audio and visual impairment",
+      "specialism": "Visual impairment",
       "dateAwarded": "2023-06-23T16:54:00.678Z"
-    },
-    "npq": {
-      "dateExecutiveLeadershipAwarded": "2023-06-07T07:11:03.750Z",
-      "dateHeadshipAwarded": "2023-03-04T09:56:10.291Z",
-      "dateSeniorLeadershipAwarded": "2023-05-02T07:57:11.664Z",
-      "dateMiddleLeadershipAwarded": "2022-12-28T00:48:25.095Z",
-      "dateLeadingTeacherDevelopmentAwarded": "2023-04-03T07:47:59.474Z",
-      "dateLeadingTeachingAwarded": "2022-11-16T19:32:29.359Z",
-      "dateLeadingBehaviourAwarded": "2023-03-24T13:01:54.359Z"
     }
   },
   {
