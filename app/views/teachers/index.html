@@ -38,7 +38,7 @@ text: "Search results"
       {{ data | isoDateFromDateInput("date") | govukDate }}.
     </p>
 
-    <p><a href="/">Search again</a></p>
+    <p><a href="/index">Search again</a></p>
     {% else %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -132,7 +132,7 @@ text: "Search results"
             {{pagination.totalCount}} pages</p>
             {% endif %}
 
-            <p><a href="/">Search again</a></p>
+            <p><a href="/index">Search again</a></p>
 
         </div>
         {% endif %}
