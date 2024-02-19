@@ -1,21 +1,11 @@
 {% extends "layouts/main.html" %}
 
-        <!---
-{% if totalCount == 1 %}
-{% set resultsContent = 'One record found' %}
-{% elseif totalCount == 2 %}
-{% set resultsContent = 'Two records found' %}
-{% elseif totalCount == 3 %}
-{% set resultsContent = 'Three records found' %}
-{% elseif totalCount == 4 %}
-{% set resultsContent = 'Four records found' %}
-{% else %}
 {% set resultsContent = '' + totalCount + ' records found' %}
-{% endif %}
-          --->
 
 {% if resultsContent == "0 records found" %}
-{% set title = 'No record found' %}
+{% set title = 'No records found' %}
+{% elseif resultsContent == "1 records found" %}
+{% set title = 'Record found' %}
 {% else %}
 {% set title = resultsContent %}
 {% endif %}
