@@ -61,7 +61,6 @@
         </h2> #}
         {% set inset %}
 
-
         {% for restriction in teacher.restrictions %}
         <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-0">
           {{restriction.type.label}}
@@ -72,7 +71,30 @@
           (Will be reviewed {{restriction.dateForReview | date}})
           {% endif %}
         </p>
+
+        {% if restriction.type.id == "153772" %}
+        <p class="govuk-body">Prevented from teaching because they failed induction.</p>
+        <p class="govuk-body">Cannot teach in a maintained school, pupil referral unit or non-maintained special school
+          in England.</p>
+        <p class="govuk-body">Call the Teaching Regulation Agency (TRA) on 0207 593 5393 for more information.</p>
+
+        {% elseif restriction.type.id == "153348" %}
+        <p class="govuk-body">Found guilty of serious misconduct.</p>
+        <p class="govuk-body">Check
+          the <a
+            href='https://www.gov.uk/search/all?parent=&keywords=panel+outcome+misconduct&level_one_taxon=&manual=&organisations%5B%5D=teaching-regulation-agency&organisations%5B%5D=national-college-for-teaching-and-leadership&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=updated-newest'>list
+            of published decisions on GOV.UK </a> for more details.</p>
+
+        {% elseif restriction.type.id == "784648" %}
+        <p class="govuk-body">Possible match on the children's barred list.</p>
+        <p class="govuk-body">Email the Disclosure and Barring Service (DBS) at <a
+            href="mailto:dbscost@dbs.gov.uk">dbscost@dbs.gov.uk </a> to check if this person is allowed to work with children.
+        </p>
+
+        {% else %}
         <p class="govuk-body">{{restriction.notes | safe}}</p>
+        {% endif %}
+
         {% endfor %}
 
 
