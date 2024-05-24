@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+{% set signedIn = false %}
+{% set serviceUrl = '/' %}
+{% set serviceName = '' %}
+{% set title = 'GOV.UK' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check the children’s barred list
+      </h1>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>People on the children’s barred list are not allowed to work with children.</p>
+
+      <p>The list is usually checked as part of a new employee’s enhanced Disclosure and Barring Service (DBS) check.</p>
+        
+      <p>Schools, colleges, local authorities and higher education institutions can check the children’s barred list separately if the new employee either:</p> 
+      <ul class="govuk-list govuk-list--bullet">
+      <li>will start working with children while waiting for the result of an enhanced DBS check</li>
+      <li>does not need an enhanced DBS check because they’ve worked with children in a school or college within the last 3 months</li>
+      </ul>
+      <p>You’ll need the new employee’s last name and date of birth to check the children’s barred list.</p>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0 govuk-!-margin-bottom-8",
+        text: "Start now",
+        href: '#',
+        isStartButton: true
+      }) }}
+
+  </div>
+{% endblock %}

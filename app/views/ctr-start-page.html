@@ -1,0 +1,49 @@
+{% extends "layouts/main.html" %}
+{% set signedIn = false %}
+{% set serviceUrl = '/' %}
+{% set serviceName = '' %}
+{% set title = 'GOV.UK' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check a teacher’s record
+      </h1>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>You must check a teacher’s record before they start working for you in a school or college in England.</p>
+      <p>If you use a teacher supply agency then you must make sure they’ve checked the teacher’s record.</p>
+      <p>A teacher’s record tells you whether they:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>have qualified teacher status or early years teacher status</li>
+      <li>passed their induction or prohibition</li>
+      <li>have national professional qualifications or mandatory qualifications for teaching pupils with sensory impairments</li>
+      </ul>
+      <p>It also tells you if they have been:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>prevented from teaching by the Teaching Regulation Agency or General Teaching Council for England</li>
+      <li>found guilty of serious misconduct but not prevented from teaching</li> 
+      </ul>
+      <p>You can search for a teacher’s record using their last name and date of birth.</p>
+      <p>You should <a href="https://www.gov.uk/government/publications/dbs-identity-checking-guidelines">confirm the teacher’s identity</a> before you check their record.</p>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0 govuk-!-margin-bottom-8",
+        text: "Start now",
+        href: '#',
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">Qualified teacher learning and skills (QTLS) status</h2>
+
+      <p>A teacher’s record will not tell you if they have QTLS. You need to check the <a href="https://set.et-foundation.co.uk/your-career/professional-status-register">Society for Education and Training professional register</a>.</p>
+
+      <h2 class="govuk-heading-m">School managers and governors</h2>
+
+      <p>There’s a separate <a href="https://www.gov.uk/government/collections/individuals-prohibited-from-managing-or-governing-schools">list of people who are not allowed to manage or govern schools</a>. This is called the section 128 list.</p>
+  </div>
+{% endblock %}
