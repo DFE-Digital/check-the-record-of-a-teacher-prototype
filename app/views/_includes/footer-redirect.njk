@@ -1,0 +1,21 @@
+{% set footerHtml %}
+    <h2 class="govuk-heading-m">Get help</h2>
+
+    <p class="govuk-!-font-size-16">Email: <a href="mailto:employer.access@education.gov.uk">employer.access@education.gov.uk</a></br>
+    You’ll get a response within 5 working days.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l">
+    <ul class="govuk-footer__inline-list">
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/#">
+          Terms and conditions
+        </a>
+      </li>
+    </ul>
+  {% endset %}
+
+  {{ govukFooter({
+    meta: {
+      html: footerHtml
+    }
+  }) }}

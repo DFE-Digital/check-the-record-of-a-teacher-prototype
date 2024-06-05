@@ -1,17 +1,32 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/redirect.html" %}
 
 {% set pageName = 'We are replacing Employer Access' %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+    <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">We're replacing Employer Access</h1>
 
-      <p>You can use new services to: </p>
+      <p>You can use new services to:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://check-a-teachers-record.education.gov.uk/check-records/sign-in">check a teacher’s record</a> - view a teacher’s qualifications and find out if they have restrictions</li>
-        <li><a href="https://check-the-childrens-barred-list.education.gov.uk/sign-in">check the children’s barred list</a> - find out if someone is not allowed to work with children</li>
+        <li><a href="https://check-a-teachers-record.education.gov.uk/check-records/sign-in">check a teacher’s record</a> – view a teacher’s qualifications and find out if they have restrictions, for example if they’ve been found guilty of serious misconduct</li>
+        <li><a href="https://check-the-childrens-barred-list.education.gov.uk/sign-in">check the children’s barred list</a> – find out if someone is not allowed to work with children</li>
       </ul>
+
+      <!-- <p>You need a DfE Sign-in account with access these services.</p>
+
+    <p>If you have any questions read our <a href="https://schoolexperience.education.gov.uk/dfe_signin_help">DfE Sign-in help</a>.</p>
+    </div> -->
     
+      <!-- <div class="govuk-grid-column-one-third">
+        <div class="x-govuk-related-navigation">
+          <nav class="x-govuk-related-navigation__nav-section" role="navigation" aria-labelledby="related-navigation-related-content">
+            <h2 class="govuk-heading-m" id="related-navigation-related-content">
+              Help
+            </h2>
+            <p><a href="https://schoolexperience.education.gov.uk/dfe_signin_help">DfE Sign-in help</p>
+          </nav>
+        </div>
+      </div> -->
   </div>
 {% endblock %}
