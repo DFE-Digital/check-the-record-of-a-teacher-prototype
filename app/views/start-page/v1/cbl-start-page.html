@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+{% set signedIn = false %}
+{% set serviceUrl = '/' %}
+{% set serviceName = '' %}
+{% set title = 'GOV.UK' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check the children's barred list
+      </h1>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>People on the children’s barred list are not allowed to work with children.</p>
+      <p>The list is usually checked as part of a new employee’s enhanced Disclosure and Barring Service (DBS) check.</p>
+      <p>Schools, colleges, local authorities and higher education institutions can check the children’s barred list separately if the new employee either:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>will start working with children while waiting for the result of an enhanced DBS check</li>
+        <li>does not need an enhanced DBS check because they’ve worked with children in a school or college within the last 3 months</li>
+      </ul>
+      <!-- <h2 class="govuk-heading-m">Before you start</h2>
+      <p>You'll need:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the new employee’s last name and date of birth to check the children's barred list</li>
+        <li>a DfE Sign-in account to use this service</li>
+      </ul>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0 govuk-!-margin-bottom-8",
+        text: "Start now",
+        href: '#',
+        isStartButton: true
+      }) }}
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="x-govuk-related-navigation">
+      <nav class="x-govuk-related-navigation__nav-section" role="navigation" aria-labelledby="related-navigation-related-content">
+        <h2 class="govuk-heading-m" id="related-navigation-related-content">
+          Help and guidance
+        </h2>
+        <ul class="govuk-list">
+          <li>
+            <a href="#">Check the children's barred list: guidance</a>
+          </li>
+          <li>
+            <a href="https://edd-help.signin.education.gov.uk/contact">DfE Sign-in help</a>
+          </li>
+        </ul>
+
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock %}
